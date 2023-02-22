@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetail";
 import ProductList from "./pages/ProductList";
+import ProductRegistration from "./pages/ProductRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductList />,
+      },
+      {
+        path: "/registration",
+        element: <ProductRegistration />,
       },
     ],
   },
