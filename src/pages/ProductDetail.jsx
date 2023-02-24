@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 export default function ProductDetail() {
@@ -6,6 +6,16 @@ export default function ProductDetail() {
   const location = useLocation();
   const { id, name, imageUrl, price, description, size, category } =
     location.state;
+
+  const [isAddCart_3s, setIsAddCart_3s] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsAddCart_3s(true);
+    setTimeout(() => {
+      setIsAddCart_3s(false);
+    }, 3000);
+  };
 
   return (
     <div className="h-detail">
@@ -20,7 +30,7 @@ export default function ProductDetail() {
             ₩{price}
           </div>
           <div className="py-2">{description}</div>
-          <form className="py-2">
+          <form className="py-2" onSubmit={handleSubmit}>
             <div className="w-full flex">
               <label htmlFor="size" className="text-rose-500 font-bold py-2">
                 옵션 :
@@ -44,6 +54,7 @@ export default function ProductDetail() {
             <button className="block w-11/12 bg-red-500 my-4 m-auto py-3 text-white text-xl font-bold">
               장바구니에 추가
             </button>
+            {isAddCart_3s && <div>장바구니에 추가했습니다.</div>}
           </form>
         </div>
       </div>
