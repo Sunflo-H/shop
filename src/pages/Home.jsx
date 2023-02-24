@@ -1,43 +1,34 @@
+import axios from "axios";
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, onValue, ref } from "firebase/database";
 import React, { useEffect, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import ProductCard from "../components/main/ProductCard";
 
 export default function Home() {
-  let [data, setData] = useState([]);
-  const firebaseConfig = {
-    apiKey: "AIzaSyA2j29NglIjYUeKh_hnOABuRAIyvXYShjg",
-    authDomain: "shop-cc77d.firebaseapp.com",
-    databaseURL:
-      "https://shop-cc77d-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "shop-cc77d",
-    storageBucket: "shop-cc77d.appspot.com",
-    messagingSenderId: "960255437665",
-    appId: "1:960255437665:web:fd341b2e3ac603b2c53320",
-    measurementId: "G-W4WHT0MQ5N",
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
-  const productRef = ref(database, "products/");
-
-  useEffect(() => {
-    onValue(productRef, (snapshot) => {
-      const data = snapshot.val();
-      setData(data);
-      console.log(data);
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  return (
-    <div className="grid grid-cols-4 ">
-      {data.map((product, index) => (
-        <ProductCard product={product} key={index} />
-      ))}
-    </div>
+  const { data, isLoading, error } = useQuery(
+    ["products", "product"],
+    fetchProductData
   );
+
+  if (isLoading) return <div>로딩중</div>;
+  if (error) return <div>{error}</div>;
+  return (
+    <>
+      <div>
+        <img className="w-11/12" src="/image/jumbo.jpg" alt="" />
+      </div>
+      <div className="grid grid-cols-4 ">
+        {data &&
+          data.map((product, index) => (
+            <ProductCard product={product} key={index} />
+          ))}
+      </div>
+    </>
+  );
+}
+
+async function fetchProductData({ queryKey }) {
+  const { data } = await axios.get("/data/product.json");
+  return data;
 }

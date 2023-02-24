@@ -1,15 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard({ product }) {
-  const { name, image, category, price } = product;
+  const { name, imageUrl, category, price, id } = product;
+
+  const navigate = useNavigate();
+
+  const handleProductClick = () => {
+    navigate(`/detail/${id}`, { state: product });
+  };
   return (
-    <div className="bg-red-500 m-1 ">
-      <div className="w-10">
-        <img src={image} alt="" />
+    <div className="m-1 " onClick={handleProductClick}>
+      <div className="w-full">
+        <img src={imageUrl} alt="" />
       </div>
-      <div>
+      <div className="flex">
         <div>{name}</div>
-        <div>{price}</div>
+        <div className="ml-auto">{price}</div>
       </div>
       <div>{category}</div>
     </div>

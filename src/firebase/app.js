@@ -25,8 +25,17 @@ export default class Firebase {
     this.database = getDatabase(this.app);
   }
 
-  writeProductData(productId, imageUrl, name, price, category, description) {
-    set(ref(this.database, "products/" + productId), {
+  writeProductData(
+    productIndex,
+    productId,
+    imageUrl,
+    name,
+    price,
+    category,
+    description
+  ) {
+    set(ref(this.database, "products/" + productIndex), {
+      productId,
       imageUrl,
       name,
       price,
@@ -34,6 +43,20 @@ export default class Firebase {
       description,
     });
     console.log("성공");
+  }
+
+  readProductData() {
+    // let [data, setData] = useState([]);
+    // const app = initializeApp(firebaseConfig);
+    // const database = getDatabase(app);
+    // const productRef = ref(database, "products/");
+    // // Firebase로부터 상품 data를 받아와 state에 저장한다.
+    // useEffect(() => {
+    //   onValue(productRef, (snapshot) => {
+    //     const data = snapshot.val();
+    //     setData(data);
+    //   });
+    // }, []);
   }
 }
 

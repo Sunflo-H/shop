@@ -1,12 +1,16 @@
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import Header from "./components/header/Header";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
-      <Header />
-      <Outlet />
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <Outlet />
+      </QueryClientProvider>
     </>
   );
 }
