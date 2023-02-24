@@ -9,6 +9,7 @@ export default function ProductCard({ product }) {
   const handleProductClick = () => {
     navigate(`/detail/${id}`, { state: product });
   };
+
   return (
     <div className="m-1 " onClick={handleProductClick}>
       <div className="w-full">
