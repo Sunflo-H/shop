@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 export default function ProductDetail() {
-  const param = useParams();
   const location = useLocation();
   const { id, name, imageUrl, price, description, size, category } =
     location.state;

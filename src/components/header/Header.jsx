@@ -4,18 +4,9 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-// FireBase
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { getDatabase, ref, set, get, onValue, child } from "firebase/database";
-
-export default function Header({ setNav }) {
+export default function Header() {
   const navigate = useNavigate();
+
   const handleLogoClick = () => {
     navigate("/");
   };
