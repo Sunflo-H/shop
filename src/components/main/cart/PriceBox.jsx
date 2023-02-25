@@ -6,7 +6,7 @@ export default function PriceBox({ title }) {
 
   const deliveryFee = 3000;
 
-  let price = cartList.reduce((acc, cur) => acc + Number(cur.price), 0);
+  let price = cartList.reduce((acc, cur) => acc + Number(cur.product.price), 0);
 
   if (title === "배송비") price = deliveryFee;
   if (title === "총가격") price = price + deliveryFee;

@@ -14,8 +14,8 @@ export default function Cart() {
         <span className="text-xl font-bold">내 장바구니</span>
       </div>
       <div className="px-5">
-        {cartList.map((product) => (
-          <CartItem product={product} key={product.id} />
+        {cartList.map((item, i) => (
+          <CartItem product={item.product} key={i} />
         ))}
 
         <div className="flex justify-around border-t mt-4 py-4">

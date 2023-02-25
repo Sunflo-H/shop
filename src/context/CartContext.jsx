@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
 
   const addCartList = (product) => {
-    setCartList([...cartList, product]);
+    setCartList([...cartList, { product, quantity: 1 }]);
   };
 
   const updateCartList = () => {
