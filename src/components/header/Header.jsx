@@ -1,11 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export default function Header() {
   const navigate = useNavigate();
+
+  const { cartList } = useContext(CartContext);
 
   const handleLogoClick = () => {
     navigate("/");
@@ -44,6 +47,15 @@ export default function Header() {
         </div>
         <div className="cursor-pointer" onClick={handleCartClick}>
           <AiOutlineShoppingCart className="text-2xl" />
+          {cartList.length === 0 ? (
+            ""
+          ) : (
+            <div className="absolute top-2 ml-3 w-4 h-4 z-10 bg-red-500 rounded-full  text-center leading-3 ">
+              <span className="font-bold text-white text-xs">
+                {cartList.length}
+              </span>
+            </div>
+          )}
         </div>
         <div className="pt-1" onClick={handleProductRegistrationClick}>
           <BsFillPencilFill className="text-lg" />

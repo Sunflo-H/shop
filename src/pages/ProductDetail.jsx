@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 export default function ProductDetail() {
   const location = useLocation();
@@ -7,10 +8,13 @@ export default function ProductDetail() {
     location.state;
 
   const [isAddCart_3s, setIsAddCart_3s] = useState(false);
+  const { addCartList } = useContext(CartContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsAddCart_3s(true);
+    addCartList(location.state);
+
     setTimeout(() => {
       setIsAddCart_3s(false);
     }, 3000);
