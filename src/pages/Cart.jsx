@@ -35,12 +35,12 @@ export default function Cart() {
           </div>
           <div className="bg-gray-100 rounded-md p-4 text-center">
             <div className="text-sm font-bold">총가격</div>
-            <div className="text-rose-400 font-bold">₩2003000</div>
+            <div className="text-rose-500 font-bold">₩2003000</div>
           </div>
         </div>
 
-        <div className="bg-rose-500 text-center py-1 mt-4">
-          <span className="text-white font-bold">주문하기</span>
+        <div className="bg-rose-400 text-center py-1 mt-4 cursor-pointer">
+          <span className="text-white font-bold ">주문하기</span>
         </div>
       </div>
     </div>
