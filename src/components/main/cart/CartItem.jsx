@@ -7,10 +7,6 @@ export default function CartItem({ product }) {
   const { id, name, imageUrl, price, description, size, category } = product;
   const { cartList, updateCartList, removeCartList } = useContext(CartContext);
 
-  // const [quantity, setQuantity] = useState(
-  //   cartList.find((item) => item.product === product).quantity
-  // );
-
   const quantity = cartList.find((item) => item.product === product).quantity;
 
   const handlePlusBtnClick = () => {

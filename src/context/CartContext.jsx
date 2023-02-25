@@ -19,7 +19,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateCartList = (product, type) => {
-    console.log(product, type);
     if (type === "plus")
       setCartList(
         cartList.map((item) =>
