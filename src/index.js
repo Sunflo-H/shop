@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
-import ProductList from "./pages/ProductList";
-import ProductRegistration from "./pages/ProductRegistration";
+import AllProduct from "./pages/AllProduct";
+import NewProduct from "./pages/NewProduct";
+import { UserContext } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,20 +22,20 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/cart",
-        element: <Cart />,
+        path: "/carts",
+        element: <MyCart />,
       },
       {
-        path: "/detail/:id",
+        path: "/products/:id",
         element: <ProductDetail />,
       },
       {
         path: "/products",
-        element: <ProductList />,
+        element: <AllProduct />,
       },
       {
-        path: "/registration",
-        element: <ProductRegistration />,
+        path: "/products/new",
+        element: <NewProduct />,
       },
     ],
   },

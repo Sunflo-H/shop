@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-console.log(auth);
+const db = getDatabase(app);
 
 // 매번 로그인 할 때마다 유저를 선택하는 옵션
 provider.setCustomParameters({
@@ -40,35 +40,19 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
-// * 처음으로 콜백함수를 받는 함수를 사용해봤다.
-// onAuthStateChanged가 있으므로 login과 logout은 user값을 반환하지 않고,
-// 로그인해줘! 로그아웃해줘! 이런 명령을 하는 역할만 한다.
-// 로그인한 user의 값을 얻고싶다면 onAuthStateChanged에서 return해서 사용하자
-export function onUserStateChange(callback_setUser) {
-  // auth를 인자로 받고,
-  // '로그인중인 사용자 정보'를 콜백함수의 인자로 전달하는 함수
-  // 나는 '로그인중인 사용자 정보'를 받은 콜백함수에서 이 정보를 다루면 된다.
+export function onUserStateChange(setUser, setIsAdmin) {
   onAuthStateChanged(auth, (user) => {
-    callback_setUser(user);
+    setUser(user);
+    user ? isAdmin(user, setIsAdmin) : setIsAdmin(false);
   });
 }
 
-// export function writeProductData(
-//   productIndex,
-//   productId,
-//   imageUrl,
-//   name,
-//   price,
-//   category,
-//   description
-// ) {
-//   set(ref(this.database, "products/" + productIndex), {
-//     productId,
-//     imageUrl,
-//     name,
-//     price,
-//     category,
-//     description,
-//   });
-//   console.log("성공");
-// }
+// 데이터베이스로부터 admin 을 가져오는 것부터 해보자
+
+function isAdmin(user, setIsAdmin) {
+  const dbRef = ref(db, "admins/");
+  onValue(dbRef, (snapshot) => {
+    const uidList = snapshot.val();
+    setIsAdmin(uidList.find((uid) => uid === user.uid) ? true : false);
+  });
+}

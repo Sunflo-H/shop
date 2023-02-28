@@ -5,7 +5,7 @@ import { FaEquals } from "react-icons/fa";
 import CartItem from "../components/main/cart/CartItem";
 import PriceBox from "../components/main/cart/PriceBox";
 
-export default function Cart() {
+export default function MyCart() {
   const { cartList } = useContext(CartContext);
 
   return (

@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingBag } from "react-icons/fi";
 import { BsFillPencilFill } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { login, logout, onUserStateChange } from "../../api/firebase";
 import User from "./User";
+import { UserContext } from "../../context/UserContext";
 
 export default function Navbar() {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    onUserStateChange(setUser);
-  }, []);
+  // const [user, setUser] = useState();
+  // const [isAdmin, setIsAdmin] = useState();
+  // useEffect(() => {
+  //   onUserStateChange(setUser, setIsAdmin);
+  // }, []);
+  const { user, isAdmin } = useContext(UserContext);
+  // console.log(isAdmin);
 
   const handleLogin = () => {
     login();
@@ -30,9 +33,12 @@ export default function Navbar() {
       <nav className="flex items-center gap-4 font-semibold">
         <Link to="/products">Products</Link>
         <Link to="/carts">cart</Link>
-        <Link to="/products/new" className="text-2xl">
-          <BsFillPencilFill />
-        </Link>
+        {isAdmin && (
+          <Link to="/products/new" className="text-2xl">
+            <BsFillPencilFill />
+          </Link>
+        )}
+
         {user && <User user={user} />}
         {!user && <button onClick={handleLogin}>login</button>}
         {user && <button onClick={handleLogout}>logout</button>}

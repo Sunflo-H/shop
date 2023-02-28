@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import ProductCard from "../components/main/ProductCard";
 
-export default function ProductList() {
+export default function AllProduct() {
   const { data, isLoading, error } = useQuery(
     ["products", "product"],
     fetchProductData
