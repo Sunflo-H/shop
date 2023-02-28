@@ -41,10 +41,6 @@ export const CartProvider = ({ children }) => {
     setCartList(cartList.filter((item) => item.product !== product));
   };
 
-  useEffect(() => {
-    console.log(cartList);
-  }, [cartList]);
-
   return (
     <CartContext.Provider
       value={{ cartList, addCartList, updateCartList, removeCartList }}

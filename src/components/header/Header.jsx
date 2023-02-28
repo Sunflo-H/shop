@@ -1,71 +1,51 @@
-import React, { useContext, useEffect, useState } from "react";
-import { RiShoppingBag3Line } from "react-icons/ri";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FiShoppingBag } from "react-icons/fi";
 import { BsFillPencilFill } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { login, logout, onUserStateChange } from "../../api/firebase";
+import User from "./User";
 
-export default function Header() {
-  const navigate = useNavigate();
+export default function Navbar() {
+  const [user, setUser] = useState();
 
-  const { cartList } = useContext(CartContext);
+  useEffect(() => {
+    onUserStateChange(setUser);
+  }, []);
 
-  const handleLogoClick = () => {
-    navigate("/");
+  const handleLogin = () => {
+    login();
   };
 
-  const handleProductsClick = () => {
-    navigate("/products");
-  };
-
-  const handleCartClick = () => {
-    navigate("/cart");
-  };
-
-  const handleProductRegistrationClick = () => {
-    navigate("/registration");
+  const handleLogout = () => {
+    logout();
   };
 
   return (
-    <div className="flex w-full pt-2 border-b pb-2 mb-2">
-      {/* 로고 */}
-      <div
-        className="flex text-rose-500 cursor-pointer"
-        onClick={handleLogoClick}
-      >
-        <RiShoppingBag3Line className="text-3xl" />
-        <span className="text-2xl font-bold">Shoppy</span>
-      </div>
-
-      {/* 상품과 장바구니 */}
-      <div className="flex ml-auto mr-8 pt-1">
-        <div
-          className=" font-bold mr-4 cursor-pointer"
-          onClick={handleProductsClick}
-        >
-          Products
-        </div>
-        <div className="cursor-pointer" onClick={handleCartClick}>
-          <AiOutlineShoppingCart className="text-2xl" />
-          {cartList.length === 0 ? (
-            ""
-          ) : (
-            <div className="absolute top-2 ml-3 w-4 h-4 z-10 bg-red-500 rounded-full  text-center leading-3 ">
-              <span className="font-bold text-white text-xs">
-                {cartList.length}
-              </span>
-            </div>
-          )}
-        </div>
-        <div className="pt-1" onClick={handleProductRegistrationClick}>
-          <BsFillPencilFill className="text-lg" />
-        </div>
-      </div>
-
-      {/* 로그인 */}
-      <div className="bg-rose-500 text-white text-lg font-bold  py-1 px-4 cursor-pointer">
-        Login
-      </div>
-    </div>
+    <header className="flex justify-between border-b border-gary-300 p-2">
+      <Link to="/" className="flex items-center text-4xl text-brand">
+        <FiShoppingBag className="" />
+        <h1>Shoppy</h1>
+      </Link>
+      <nav className="flex items-center gap-4 font-semibold">
+        <Link to="/products">Products</Link>
+        <Link to="/carts">cart</Link>
+        <Link to="/products/new" className="text-2xl">
+          <BsFillPencilFill />
+        </Link>
+        {user && <User user={user} />}
+        {!user && <button onClick={handleLogin}>login</button>}
+        {user && <button onClick={handleLogout}>logout</button>}
+      </nav>
+    </header>
   );
 }
+/**
+ * 1. 권한이 있는 사용자일때 연필이 보여야 해
+ *    권한이 있는 사용자?
+ *      데이터베이스에 admin과 user로 회원을 관리하면 될것같다.
+ *
+ * 2. 권한이 없는 상태에서 새 상품을 등록하는 페이지로 접근하려하는것 방지
+ *    권한이 없는 사용자?
+ *      user등급이거나, 비로그인상태일때
+ */

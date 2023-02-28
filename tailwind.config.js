@@ -10,6 +10,9 @@ module.exports = {
         detail: "900px",
         image: "720px",
       },
+      colors: {
+        brand: "#f96162",
+      },
     },
   },
   plugins: [],
