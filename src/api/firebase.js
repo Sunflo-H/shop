@@ -40,19 +40,39 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
-export function onUserStateChange(setUser, setIsAdmin) {
-  onAuthStateChanged(auth, (user) => {
-    setUser(user);
-    user ? isAdmin(user, setIsAdmin) : setIsAdmin(false);
+// * 수정 전 코드
+// export function onUserStateChange(setUser, setIsAdmin) {
+//   onAuthStateChanged(auth, async (user) => {
+//     user ? isAdmin(user, setIsAdmin) : setIsAdmin(false);
+//     setUser(finalUserData);
+//   });
+// }
+
+// function isAdmin(user, setIsAdmin) {
+//     const dbRef = ref(db, "admins/");
+//     onValue(dbRef, (snapshot) => {
+//       const uidList = snapshot.val();
+//       setIsAdmin(uidList.find((uid) => uid === user.uid) ? true : false);
+//     });
+// }
+
+// * 수정 후 코드
+export function onUserStateChange(setUser) {
+  onAuthStateChanged(auth, async (user) => {
+    const finalUserData = user && (await isAdmin(user));
+    setUser(finalUserData);
   });
 }
 
-// 데이터베이스로부터 admin 을 가져오는 것부터 해보자
-
-function isAdmin(user, setIsAdmin) {
-  const dbRef = ref(db, "admins/");
-  onValue(dbRef, (snapshot) => {
-    const uidList = snapshot.val();
-    setIsAdmin(uidList.find((uid) => uid === user.uid) ? true : false);
-  });
+async function isAdmin(user) {
+  try {
+    const snapshot = await get(ref(db, `admins/`));
+    if (snapshot.exists()) {
+      const admins = snapshot.val();
+      const isAdmin = admins.includes(user.uid);
+      return { ...user, isAdmin };
+    } else return user;
+  } catch (error) {
+    console.error(error);
+  }
 }
