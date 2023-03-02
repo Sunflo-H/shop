@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiShoppingBag } from "react-icons/fi";
 import { BsFillPencilFill } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import Button from "../ui/Button";
 
 import User from "./User";
 import { AuthContext, useAuthContext } from "../../context/AuthContext";
@@ -33,8 +34,8 @@ export default function Navbar() {
           </Link>
         )}
         {user && <User user={user} />}
-        {!user && <button onClick={handleLogin}>login</button>}
-        {user && <button onClick={handleLogout}>logout</button>}
+        {!user && <Button text="login" onClick={handleLogin} />}
+        {user && <Button text="logout" onClick={handleLogout} />}
       </nav>
     </header>
   );

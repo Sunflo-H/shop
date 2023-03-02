@@ -69,3 +69,16 @@ export function uploadNewProduct(product, imageUrl) {
     options: product.options.split(","),
   });
 }
+
+export async function downloadProduct() {
+  try {
+    const snapshot = await get(ref(db, `products/`));
+    if (snapshot.exists()) {
+      const products = snapshot.val();
+
+      return products;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
