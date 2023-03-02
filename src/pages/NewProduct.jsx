@@ -1,125 +1,109 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import Cloudinary from "../cloudinary/app";
-// import { UserContext } from "../context/AuthContext";
-import Firebase from "../firebase/app";
-import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { imageUploadAndGetUrl } from "../api/cloudinary";
+import { uploadNewProduct } from "../api/firebase";
+
+import Button from "../components/ui/Button";
 
 export default function NewProduct() {
-  const firebase = new Firebase();
-
-  const [inputs, setInputs] = useState({
+  const [isUploading, setIsUploading] = useState();
+  const [success, setSuccess] = useState();
+  const [file, setFile] = useState();
+  const [product, setProduct] = useState({
     imageUrl: "",
-    name: "",
+    title: "",
     price: "",
     category: "",
     description: "",
+    options: "",
   });
 
-  const imageRef = useRef();
-
-  const cloudinary = new Cloudinary();
-
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    setInputs({ ...inputs, [name]: value });
-  };
-
-  const handleButtonClick = (e) => {
-    const { imageUrl, name, price, category, description } = inputs;
-    if (
-      imageUrl === "" ||
-      name === "" ||
-      price === "" ||
-      category === "" ||
-      description === ""
-    ) {
-      alert("비어있는 곳이 있습니다. 다시 입력해주세요");
+    const { name, value, files } = e.target;
+    if (name === "file") {
+      setFile(files[0]);
       return;
     }
+    setProduct({ ...product, [name]: value });
+  };
 
-    cloudinary.uploadFile(imageRef.current.files);
-
-    firebase.writeProductData(
-      10,
-      10,
-      imageUrl,
-      name,
-      price,
-      category,
-      description
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsUploading(true);
+    const imageUrl = await imageUploadAndGetUrl(file);
+    uploadNewProduct(product, imageUrl) //
+      .then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
+      })
+      .finally(() => setIsUploading(false));
   };
 
   return (
-    <div>
-      <div className="text-2xl font-bold text-center my-4 ">
-        새로운 제품 등록
-      </div>
-      <form>
-        <div className="border p-3 mb-3">
-          <input
-            type="file"
-            name="imageUrl"
-            accept="image/"
-            value={inputs.imageUrl}
-            ref={imageRef}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="border p-3 mb-3">
-          <input
-            className="w-full outline-none"
-            type="text"
-            name="name"
-            id=""
-            placeholder="제품명"
-            value={inputs.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="border p-3 mb-3">
-          <input
-            className="w-full outline-none"
-            type="text"
-            name="price"
-            id=""
-            placeholder="가격"
-            value={inputs.price}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="border p-3 mb-3">
-          <input
-            className="w-full outline-none"
-            type="text"
-            name="category"
-            id=""
-            placeholder="카테고리"
-            value={inputs.category}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="border p-3 mb-3">
-          <input
-            className="w-full outline-none"
-            type="text"
-            name="description"
-            id=""
-            placeholder="제품 설명"
-            value={inputs.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div
-          className="px-4 py-2 bg-rose-500 text-white font-bold text-center cursor-pointer"
-          onClick={handleButtonClick}
-        >
-          제품 등록하기
-        </div>
+    <section className="text-center">
+      <h2 className="text-2xl font-bold my-4">새로운 제품 등록</h2>
+      {success && <p className="my-2">✅성공적으로 등록했습니다.</p>}
+      {file && (
+        <img
+          className="w-80 h-96 mx-auto mb-2"
+          src={URL.createObjectURL(file)}
+          alt="local file"
+        />
+      )}
+      <form className="flex flex-col px-12" onSubmit={handleSubmit}>
+        <input
+          type="file"
+          accept="image/*"
+          name="file"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="title"
+          value={product?.title}
+          placeholder="제품명"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="price"
+          value={product?.price}
+          placeholder="가격"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="category"
+          value={product?.category}
+          placeholder="카테고리"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="description"
+          value={product?.description}
+          placeholder="제품 설명"
+          required
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="options"
+          value={product?.options}
+          placeholder="옵션들 (콤마(,)로 구분)"
+          required
+          onChange={handleChange}
+        />
+        <Button
+          text={isUploading ? "업로드중..." : "제품등록"}
+          disabled={isUploading}
+        ></Button>
       </form>
-    </div>
+    </section>
   );
 }

@@ -4,12 +4,10 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  setPersistence,
-  signInWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithRedirect,
 } from "firebase/auth";
-import { getDatabase, ref, set, get, onValue, child } from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
+import { v4 as uuid } from "uuid";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -59,4 +57,15 @@ async function isAdmin(user) {
   } catch (error) {
     console.error(error);
   }
+}
+
+export function uploadNewProduct(product, imageUrl) {
+  const id = uuid();
+  return set(ref(db, "products/" + id), {
+    ...product,
+    id,
+    imageUrl,
+    price: Number(product.price),
+    options: product.options.split(","),
+  });
 }

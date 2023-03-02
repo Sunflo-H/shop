@@ -28,18 +28,4 @@ export default class Cloudinary {
         console.log(data);
       });
   }
-
-  fetchFile() {
-    fetch(this.url, {
-      method: "POST",
-      body: this.formData,
-    })
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        console.log(this.formData);
-        console.log(data);
-      });
-  }
 }
