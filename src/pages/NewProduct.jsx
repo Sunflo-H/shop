@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Cloudinary from "../cloudinary/app";
-import { UserContext } from "../context/UserContext";
+// import { UserContext } from "../context/AuthContext";
 import Firebase from "../firebase/app";
 import { Navigate } from "react-router-dom";
 
@@ -14,12 +14,6 @@ export default function NewProduct() {
     category: "",
     description: "",
   });
-
-  const { isAdmin } = useContext(UserContext);
-
-  useEffect(() => {
-    console.log(isAdmin);
-  }, [isAdmin]);
 
   const imageRef = useRef();
 
@@ -59,83 +53,73 @@ export default function NewProduct() {
   };
 
   return (
-    <>
-      {isAdmin ? (
-        <div>
-          <div className="text-2xl font-bold text-center my-4 ">
-            새로운 제품 등록
-          </div>
-          <form>
-            <div className="border p-3 mb-3">
-              <input
-                type="file"
-                name="imageUrl"
-                accept="image/"
-                value={inputs.imageUrl}
-                ref={imageRef}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="border p-3 mb-3">
-              <input
-                className="w-full outline-none"
-                type="text"
-                name="name"
-                id=""
-                placeholder="제품명"
-                value={inputs.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="border p-3 mb-3">
-              <input
-                className="w-full outline-none"
-                type="text"
-                name="price"
-                id=""
-                placeholder="가격"
-                value={inputs.price}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="border p-3 mb-3">
-              <input
-                className="w-full outline-none"
-                type="text"
-                name="category"
-                id=""
-                placeholder="카테고리"
-                value={inputs.category}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="border p-3 mb-3">
-              <input
-                className="w-full outline-none"
-                type="text"
-                name="description"
-                id=""
-                placeholder="제품 설명"
-                value={inputs.description}
-                onChange={handleChange}
-              />
-            </div>
-            <div
-              className="px-4 py-2 bg-rose-500 text-white font-bold text-center cursor-pointer"
-              onClick={handleButtonClick}
-            >
-              제품 등록하기
-            </div>
-          </form>
+    <div>
+      <div className="text-2xl font-bold text-center my-4 ">
+        새로운 제품 등록
+      </div>
+      <form>
+        <div className="border p-3 mb-3">
+          <input
+            type="file"
+            name="imageUrl"
+            accept="image/"
+            value={inputs.imageUrl}
+            ref={imageRef}
+            onChange={handleChange}
+          />
         </div>
-      ) : (
-        <>
-          {setTimeout(() => {
-            return <Navigate to="/" />;
-          }, 0)}
-        </>
-      )}
-    </>
+        <div className="border p-3 mb-3">
+          <input
+            className="w-full outline-none"
+            type="text"
+            name="name"
+            id=""
+            placeholder="제품명"
+            value={inputs.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="border p-3 mb-3">
+          <input
+            className="w-full outline-none"
+            type="text"
+            name="price"
+            id=""
+            placeholder="가격"
+            value={inputs.price}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="border p-3 mb-3">
+          <input
+            className="w-full outline-none"
+            type="text"
+            name="category"
+            id=""
+            placeholder="카테고리"
+            value={inputs.category}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="border p-3 mb-3">
+          <input
+            className="w-full outline-none"
+            type="text"
+            name="description"
+            id=""
+            placeholder="제품 설명"
+            value={inputs.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div
+          className="px-4 py-2 bg-rose-500 text-white font-bold text-center cursor-pointer"
+          onClick={handleButtonClick}
+        >
+          제품 등록하기
+        </div>
+      </form>
+    </div>
   );
 }

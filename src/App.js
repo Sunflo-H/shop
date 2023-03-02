@@ -3,19 +3,19 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/header/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartProvider } from "./context/CartContext";
-import { UserProvider } from "./context/UserContext";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const queryClient = new QueryClient();
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <UserProvider>
+        <AuthProvider>
           <CartProvider>
             <Header />
             <Outlet />
           </CartProvider>
-        </UserProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </>
   );

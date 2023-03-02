@@ -9,7 +9,8 @@ import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import AllProduct from "./pages/AllProduct";
 import NewProduct from "./pages/NewProduct";
-import { UserContext } from "./context/UserContext";
+import { UserContext } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -22,10 +23,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/carts",
-        element: <MyCart />,
-      },
-      {
         path: "/products/:id",
         element: <ProductDetail />,
       },
@@ -35,7 +32,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/new",
-        element: <NewProduct />,
+        element: (
+          <ProtectedRoute requireAdmin>
+            <NewProduct />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/carts",
+        element: (
+          <ProtectedRoute requireAdmin>
+            <MyCart />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

@@ -40,27 +40,12 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
-// * 수정 전 코드
-// export function onUserStateChange(setUser, setIsAdmin) {
-//   onAuthStateChanged(auth, async (user) => {
-//     user ? isAdmin(user, setIsAdmin) : setIsAdmin(false);
-//     setUser(finalUserData);
-//   });
-// }
-
-// function isAdmin(user, setIsAdmin) {
-//     const dbRef = ref(db, "admins/");
-//     onValue(dbRef, (snapshot) => {
-//       const uidList = snapshot.val();
-//       setIsAdmin(uidList.find((uid) => uid === user.uid) ? true : false);
-//     });
-// }
-
 // * 수정 후 코드
 export function onUserStateChange(setUser) {
   onAuthStateChanged(auth, async (user) => {
-    const finalUserData = user && (await isAdmin(user));
-    setUser(finalUserData);
+    const updateUser = user && (await isAdmin(user));
+    setUser(updateUser);
+    localStorage.setItem("user", JSON.stringify(updateUser));
   });
 }
 
