@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
-import Home from "../pages/Home";
 
 export default function ProtectedRoute({ children, requireAdmin }) {
-  const { user } = useAuthContext();
+  const { user, isLoading } = useAuthContext();
 
-  if (!user || (requireAdmin && !user?.isAdmin)) {
-    return <Navigate to="/" replace={true}></Navigate>;
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return children;
+  if ((user && !requireAdmin) || (requireAdmin && user?.isAdmin)) {
+    return children;
+  }
+
+  return <Navigate to="/" replace />;
 }

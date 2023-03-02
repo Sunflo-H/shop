@@ -45,7 +45,6 @@ export function onUserStateChange(setUser) {
   onAuthStateChanged(auth, async (user) => {
     const updateUser = user && (await isAdmin(user));
     setUser(updateUser);
-    localStorage.setItem("user", JSON.stringify(updateUser));
   });
 }
 
