@@ -6,10 +6,13 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Button from "../ui/Button";
 
 import User from "./User";
-import { AuthContext, useAuthContext } from "../../context/AuthContext";
+import { useAuthContext } from "../../context/AuthContext";
+import { useQuery } from "react-query";
+import { downloadCart } from "../../api/firebase";
 
 export default function Navbar() {
-  const { user, login, logout } = useAuthContext();
+  const { user, uid, login, logout } = useAuthContext();
+  const { data: productsInCart } = useQuery(["carts"], () => downloadCart(uid));
 
   const handleLogin = () => {
     login();
@@ -27,7 +30,18 @@ export default function Navbar() {
       </Link>
       <nav className="flex items-center gap-4 font-semibold">
         <Link to="/products">Products</Link>
-        {user && <Link to="/carts">cart</Link>}
+        {user && (
+          <Link className="relative" to="/carts">
+            <AiOutlineShoppingCart className="text-4xl" />
+            <p className="absolute -top-1 -right-2 w-6 h-6 rounded-full bg-brand text-center text-white">
+              {productsInCart &&
+                productsInCart.reduce(
+                  (acc, cur) => acc + Number(cur.quantity),
+                  0
+                )}
+            </p>
+          </Link>
+        )}
         {user?.isAdmin && (
           <Link to="/products/new" className="text-2xl">
             <BsFillPencilFill />
@@ -40,12 +54,3 @@ export default function Navbar() {
     </header>
   );
 }
-/**
- * 1. 권한이 있는 사용자일때 연필이 보여야 해
- *    권한이 있는 사용자?
- *      데이터베이스에 admin과 user로 회원을 관리하면 될것같다.
- *
- * 2. 권한이 없는 상태에서 새 상품을 등록하는 페이지로 접근하려하는것 방지
- *    권한이 없는 사용자?
- *      user등급이거나, 비로그인상태일때
- */

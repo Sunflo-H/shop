@@ -3,10 +3,32 @@ import { CartContext } from "../context/CartContext";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { FaEquals } from "react-icons/fa";
 import CartItem from "../components/main/cart/CartItem";
-import PriceBox from "../components/main/cart/PriceBox";
+import PriceCard from "../components/main/cart/PriceCard";
+import { downloadCart } from "../api/firebase";
+import { useAuthContext } from "../context/AuthContext";
+import { useQuery } from "react-query";
+
+const DELIVERY_FEE = 3000;
 
 export default function MyCart() {
   const { cartList } = useContext(CartContext);
+  const { uid } = useAuthContext();
+
+  const {
+    isLoading,
+    error,
+    data: productsInCart,
+  } = useQuery(["carts"], () => downloadCart(uid));
+
+  const allPrice = () => {
+    return (
+      productsInCart &&
+      productsInCart.reduce(
+        (acc, cur) => acc + Number(cur.price) * cur.quantity,
+        0
+      )
+    );
+  };
 
   return (
     <div className="px-4">
@@ -14,21 +36,22 @@ export default function MyCart() {
         <span className="text-xl font-bold">내 장바구니</span>
       </div>
       <div className="px-5">
-        {cartList.map((item, i) => (
-          <CartItem product={item.product} key={i} />
-        ))}
+        {productsInCart &&
+          productsInCart.map((product, i) => (
+            <CartItem product={product} key={i} />
+          ))}
 
         <div className="flex justify-around border-t mt-4 py-4">
-          <PriceBox title="상품 총액" />
+          <PriceCard title="상품 총액" price={allPrice()} />
           <div className="py-7">
             <AiFillPlusCircle className="text-xl" />
           </div>
-          <PriceBox title="배송비" />
+          <PriceCard title="배송비" price={DELIVERY_FEE} />
 
           <div className="py-7">
             <FaEquals className="text-xl" />
           </div>
-          <PriceBox title="총가격" />
+          <PriceCard title="총가격" price={allPrice() + DELIVERY_FEE} />
         </div>
 
         <div className="bg-rose-400 text-center py-1 mt-4 mb-20 cursor-pointer">

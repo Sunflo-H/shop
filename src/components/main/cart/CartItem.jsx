@@ -1,20 +1,22 @@
 import React, { useContext, useState } from "react";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import { uploadCart } from "../../../api/firebase";
+import { useAuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/CartContext";
 
 export default function CartItem({ product }) {
-  const { id, name, imageUrl, price, description, size, category } = product;
+  const { uid } = useAuthContext();
+  const { id, title, imageUrl, price, quantity } = product;
   const { cartList, updateCartList, removeCartList } = useContext(CartContext);
 
-  const quantity = cartList.find((item) => item.product === product).quantity;
-
   const handlePlusBtnClick = () => {
-    updateCartList(product, "plus");
+    uploadCart({ ...product, quantity: quantity + 1 }, uid);
   };
 
   const handleMinusBtnClick = () => {
-    updateCartList(product, "minus");
+    if (quantity === 1) return;
+    uploadCart({ ...product, quantity: quantity - 1 }, uid);
   };
 
   const handleRemoveBtnClick = () => {
@@ -29,7 +31,7 @@ export default function CartItem({ product }) {
       <div className="my-auto mx-4">
         <div>
           <div>
-            <span className="font-bold">{name}</span>
+            <span className="font-bold">{title}</span>
           </div>
           <div>
             <span className="text-rose-400 font-bold">M</span>

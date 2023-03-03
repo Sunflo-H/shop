@@ -1,12 +1,13 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import { downloadProduct } from "../api/firebase";
 import ProductCard from "../components/main/ProductCard";
 
 export default function AllProduct() {
   const { data, isLoading, error } = useQuery(
     ["products", "product"],
-    fetchProductData
+    downloadProduct
   );
 
   if (isLoading) return <div>로딩중</div>;

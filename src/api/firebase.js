@@ -74,10 +74,34 @@ export async function downloadProduct() {
   try {
     const snapshot = await get(ref(db, `products/`));
     if (snapshot.exists()) {
-      const products = snapshot.val();
-
+      const data = snapshot.val();
+      let products = Object.values(data);
       return products;
     }
+    return [];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function uploadCart(product, uid) {
+  set(ref(db, `carts/${uid}/${product.id}`), product);
+}
+
+export function updateCart(product, uid) {
+  set(ref(db, `carts/${uid}/${product.id}`), product);
+}
+
+export async function downloadCart(uid) {
+  try {
+    const snapshot = await get(ref(db, `carts/${uid}`));
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      let carts = Object.values(data);
+      return carts;
+    }
+    return [];
   } catch (error) {
     console.error(error);
   }
