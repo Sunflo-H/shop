@@ -4,6 +4,7 @@ import { imageUploadAndGetUrl } from "../api/cloudinary";
 import { uploadNewProduct } from "../api/firebase";
 
 import Button from "../components/ui/Button";
+import useProducts from "../hooks/useProducts";
 
 export default function NewProduct() {
   const [isUploading, setIsUploading] = useState();
@@ -17,25 +18,27 @@ export default function NewProduct() {
     options: "",
   });
 
-  const queryClient = useQueryClient();
-  const mutation = useMutation(
-    ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
-    {
-      onMutate: (variable) => {
-        console.log("onMutate", variable);
-      },
-      onError: (error, variable, context) => {
-        // error
-      },
-      onSuccess: (data, variables, context) => {
-        console.log("success", data, variables, context);
-        queryClient.invalidateQueries(["products"]);
-      },
-      onSettled: () => {
-        console.log("end");
-      },
-    }
-  );
+  // const queryClient = useQueryClient();
+  // const mutation = useMutation(
+  //   ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
+  //   {
+  //     onMutate: (variable) => {
+  //       console.log("onMutate", variable);
+  //     },
+  //     onError: (error, variable, context) => {
+  //       // error
+  //     },
+  //     onSuccess: (data, variables, context) => {
+  //       console.log("success", data, variables, context);
+  //       queryClient.invalidateQueries(["products"]);
+  //     },
+  //     onSettled: () => {
+  //       console.log("end");
+  //     },
+  //   }
+  // );
+
+  const { addProduct } = useProducts();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -51,7 +54,7 @@ export default function NewProduct() {
     setIsUploading(true);
     try {
       const imageUrl = await imageUploadAndGetUrl(file);
-      mutation.mutate(
+      addProduct.mutate(
         { product, imageUrl },
         {
           onSuccess: () => {
