@@ -6,10 +6,6 @@ import ProductCard from "../components/main/ProductCard";
 import useProducts from "../hooks/useProducts";
 
 export default function AllProduct() {
-  // const SEC = 1000;
-  // const { data, isLoading, error } = useQuery(["products"], downloadProduct, {
-  //   staleTime: SEC * 60,
-  // });
   const {
     productsQuery: { isLoading, error, data },
   } = useProducts();

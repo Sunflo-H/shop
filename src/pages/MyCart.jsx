@@ -1,24 +1,17 @@
-import React, { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import React from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { FaEquals } from "react-icons/fa";
 import CartItem from "../components/main/cart/CartItem";
 import PriceCard from "../components/main/cart/PriceCard";
-import { downloadCart } from "../api/firebase";
-import { useAuthContext } from "../context/AuthContext";
-import { useQuery } from "react-query";
+
+import useCart from "../hooks/useCart";
 
 const DELIVERY_FEE = 3000;
 
 export default function MyCart() {
-  const { cartList } = useContext(CartContext);
-  const { uid } = useAuthContext();
-
   const {
-    isLoading,
-    error,
-    data: productsInCart,
-  } = useQuery(["carts"], () => downloadCart(uid));
+    cartQuery: { isLoading, error, data: productsInCart },
+  } = useCart();
 
   const allPrice = () => {
     return (

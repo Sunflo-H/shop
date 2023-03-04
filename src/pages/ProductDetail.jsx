@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { uploadCart } from "../api/firebase";
 import { useAuthContext } from "../context/AuthContext";
-import { CartContext } from "../context/CartContext";
+import useCart from "../hooks/useCart";
 
 export default function ProductDetail() {
   const { uid } = useAuthContext();
+  const { addCart } = useCart();
   const {
     product,
     product: { id, title, imageUrl, price, description, options, category },
@@ -14,7 +15,6 @@ export default function ProductDetail() {
   const [selected, setSelected] = useState(options[0]);
 
   const [isAddCart_3s, setIsAddCart_3s] = useState(false);
-  const { addCartList } = useContext(CartContext);
 
   const handleClick = (e) => {
     const product = {
@@ -22,12 +22,13 @@ export default function ProductDetail() {
       title,
       imageUrl,
       price,
-      option: selected,
-      quantity: 1,
+      option: selected, // 얘랑
+      quantity: 1, // 얘땜에 내부변수 product가 필요
     };
-    uploadCart(product, uid);
+
+    addCart.mutate({ product, uid });
+
     setIsAddCart_3s(true);
-    addCartList(product);
 
     setTimeout(() => {
       setIsAddCart_3s(false);

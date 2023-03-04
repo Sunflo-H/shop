@@ -18,26 +18,6 @@ export default function NewProduct() {
     options: "",
   });
 
-  // const queryClient = useQueryClient();
-  // const mutation = useMutation(
-  //   ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
-  //   {
-  //     onMutate: (variable) => {
-  //       console.log("onMutate", variable);
-  //     },
-  //     onError: (error, variable, context) => {
-  //       // error
-  //     },
-  //     onSuccess: (data, variables, context) => {
-  //       console.log("success", data, variables, context);
-  //       queryClient.invalidateQueries(["products"]);
-  //     },
-  //     onSettled: () => {
-  //       console.log("end");
-  //     },
-  //   }
-  // );
-
   const { addProduct } = useProducts();
 
   const handleChange = (e) => {

@@ -2,7 +2,7 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import Header from "./components/header/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { CartProvider } from "./context/CartContext";
+
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -11,10 +11,8 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <CartProvider>
-            <Header />
-            <Outlet />
-          </CartProvider>
+          <Header />
+          <Outlet />
         </AuthProvider>
       </QueryClientProvider>
     </>

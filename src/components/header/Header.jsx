@@ -9,10 +9,14 @@ import User from "./User";
 import { useAuthContext } from "../../context/AuthContext";
 import { useQuery } from "react-query";
 import { downloadCart } from "../../api/firebase";
+import useCart from "../../hooks/useCart";
 
 export default function Navbar() {
   const { user, uid, login, logout } = useAuthContext();
-  const { data: productsInCart } = useQuery(["carts"], () => downloadCart(uid));
+  const {
+    cartQuery: { data: productsInCart },
+  } = useCart();
+  // const { data: productsInCart } = useQuery(["carts"], () => downloadCart(uid));
 
   const handleLogin = () => {
     login();

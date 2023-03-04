@@ -1,26 +1,35 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import { uploadCart } from "../../../api/firebase";
+import { removeCartItem, uploadCart } from "../../../api/firebase";
 import { useAuthContext } from "../../../context/AuthContext";
-import { CartContext } from "../../../context/CartContext";
+import useCart from "../../../hooks/useCart";
 
 export default function CartItem({ product }) {
   const { uid } = useAuthContext();
+  const { quantityMinus, quantityPlus, removeCart } = useCart();
   const { id, title, imageUrl, price, quantity } = product;
-  const { cartList, updateCartList, removeCartList } = useContext(CartContext);
 
   const handlePlusBtnClick = () => {
-    uploadCart({ ...product, quantity: quantity + 1 }, uid);
+    // uploadCart({ ...product, quantity: quantity + 1 }, uid);
+    quantityPlus.mutate({ product, uid });
   };
 
   const handleMinusBtnClick = () => {
     if (quantity === 1) return;
-    uploadCart({ ...product, quantity: quantity - 1 }, uid);
+    // uploadCart({ ...product, quantity: quantity - 1 }, uid);
+    quantityMinus.mutate({
+      product,
+      uid,
+    });
   };
 
   const handleRemoveBtnClick = () => {
-    removeCartList(product);
+    // removeCartItem(product, uid);
+    removeCart.mutate({
+      product,
+      uid,
+    });
   };
 
   return (
