@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import { uploadNewProduct } from "../api/firebase";
 
@@ -9,13 +10,32 @@ export default function NewProduct() {
   const [success, setSuccess] = useState();
   const [file, setFile] = useState();
   const [product, setProduct] = useState({
-    imageUrl: "",
     title: "",
     price: "",
     category: "",
     description: "",
     options: "",
   });
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
+    {
+      onMutate: (variable) => {
+        console.log("onMutate", variable);
+      },
+      onError: (error, variable, context) => {
+        // error
+      },
+      onSuccess: (data, variables, context) => {
+        console.log("success", data, variables, context);
+        queryClient.invalidateQueries(["products"]);
+      },
+      onSettled: () => {
+        console.log("end");
+      },
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -29,15 +49,31 @@ export default function NewProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsUploading(true);
-    const imageUrl = await imageUploadAndGetUrl(file);
-    uploadNewProduct(product, imageUrl) //
-      .then(() => {
-        setSuccess(true);
-        setTimeout(() => {
-          setSuccess(false);
-        }, 3000);
-      })
-      .finally(() => setIsUploading(false));
+    try {
+      const imageUrl = await imageUploadAndGetUrl(file);
+      mutation.mutate(
+        { product, imageUrl },
+        {
+          onSuccess: () => {
+            setSuccess(true);
+            setTimeout(() => {
+              setSuccess(false);
+            }, 3000);
+          },
+        }
+      );
+    } finally {
+      setIsUploading(false);
+    }
+
+    // uploadNewProduct(product, imageUrl) // 상품이 업데이트되는 부분
+    //   .then(() => {
+    //     setSuccess(true);
+    //     setTimeout(() => {
+    //       setSuccess(false);
+    //     }, 3000);
+    //   })
+    //   .finally(() => setIsUploading(false));
   };
 
   return (

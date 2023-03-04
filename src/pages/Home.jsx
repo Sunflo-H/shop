@@ -7,13 +7,6 @@ import ProductCard from "../components/main/ProductCard";
 import AllProduct from "./AllProduct";
 
 export default function Home() {
-  // const { data, isLoading, error } = useQuery(
-  //   ["products", "product"],
-  //   downloadProduct
-  // );
-
-  // if (isLoading) return <div>로딩중</div>;
-  // if (error) return <div>{error}</div>;
   return (
     <>
       <div>
@@ -22,9 +15,4 @@ export default function Home() {
       <AllProduct />
     </>
   );
-}
-
-async function fetchProductData({ queryKey }) {
-  const { data } = await axios.get("/data/product.json");
-  return data;
 }
