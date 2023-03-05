@@ -8,7 +8,6 @@ export default function ProductDetail() {
   const { uid } = useAuthContext();
   const { addCart } = useCart();
   const {
-    product,
     product: { id, title, imageUrl, price, description, options, category },
   } = useLocation().state;
 

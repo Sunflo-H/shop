@@ -16,7 +16,6 @@ export default function Navbar() {
   const {
     cartQuery: { data: productsInCart },
   } = useCart();
-  // const { data: productsInCart } = useQuery(["carts"], () => downloadCart(uid));
 
   const handleLogin = () => {
     login();
