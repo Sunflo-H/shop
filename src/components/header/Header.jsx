@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import { downloadCart } from "../../api/firebase";
 import useCart from "../../hooks/useCart";
 
+//a
 export default function Navbar() {
   const { user, uid, login, logout } = useAuthContext();
   const {
