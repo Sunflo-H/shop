@@ -13,7 +13,7 @@ export default function AllProduct() {
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
   return (
-    <div className="grid grid-cols-4 ">
+    <div className="grid grid-cols-4 px-30">
       {data &&
         data.map((product, index) => (
           <ProductCard product={product} key={index} />

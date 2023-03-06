@@ -1,19 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingBag } from "react-icons/fi";
-import { BsFillPencilFill } from "react-icons/bs";
+import { BsFillPencilFill, BsBag } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import Button from "../ui/Button";
-//a
+
 import User from "./User";
 import { useAuthContext } from "../../context/AuthContext";
-import { useQuery } from "react-query";
-import { downloadCart } from "../../api/firebase";
 import useCart from "../../hooks/useCart";
 
-//a
 export default function Navbar() {
-  const { user, uid, login, logout } = useAuthContext();
+  const { user, login, logout } = useAuthContext();
   const {
     cartQuery: { data: productsInCart },
   } = useCart();
@@ -27,34 +23,94 @@ export default function Navbar() {
   };
 
   return (
-    <header className="flex justify-between border-b border-gary-300 p-2">
-      <Link to="/" className="flex items-center text-4xl text-brand">
-        <FiShoppingBag className="" />
-        <h1>Shoppy</h1>
+    <header className="flex border-b border-gray-300 mb-10 px-32 ">
+      <Link to="/" className="flex items-center text-3xl mr-20">
+        <h1>Adonis</h1>
       </Link>
-      <nav className="flex items-center gap-4 font-semibold">
-        <Link to="/products">Products</Link>
+      <nav className="flex gap-10 items-center ">
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Home
+        </Link>
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Man
+        </Link>
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Woman
+        </Link>
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Accessories
+        </Link>
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Shoes
+        </Link>
+        <Link
+          to="/products"
+          className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
+        >
+          Blog
+        </Link>
+      </nav>
+      <div className="flex items-center gap-4 font-semibold ml-auto">
         {user && (
-          <Link className="relative" to="/carts">
-            <AiOutlineShoppingCart className="text-4xl" />
-            <p className="absolute -top-1 -right-2 w-6 h-6 rounded-full bg-brand text-center text-white">
+          <Link
+            className="flex border-b border-transparent hover:border-black  h-full pt-5 pb-3"
+            to="/carts"
+          >
+            <BsBag className="text-lg mr-1 " />
+            <span className="text-sm font-normal">$67.00</span>
+            {/* <p className="absolute -top-1 -right-2 w-6 h-6 rounded-full bg-brand text-center text-white">
               {productsInCart &&
                 productsInCart.reduce(
                   (acc, cur) => acc + Number(cur.quantity),
                   0
                 )}
-            </p>
+            </p> */}
           </Link>
         )}
+
         {user?.isAdmin && (
-          <Link to="/products/new" className="text-2xl">
+          <Link
+            to="/products/new"
+            className="border-b border-transparent hover:border-black h-full pt-6 pb-3 cursor-pointer"
+          >
             <BsFillPencilFill />
           </Link>
         )}
-        {user && <User user={user} />}
-        {!user && <Button text="login" onClick={handleLogin} />}
-        {user && <Button text="logout" onClick={handleLogout} />}
-      </nav>
+        <div className="flex gap-2 ">
+          {user && <User user={user} />}
+          {!user && (
+            <div
+              className="border-b border-transparent hover:border-black h-full pt-5 pb-3 cursor-pointer px-2 text-sm"
+              onClick={handleLogin}
+            >
+              Sign In
+            </div>
+          )}
+          {user && (
+            <div
+              className="border-b border-transparent hover:border-black h-full pt-5 pb-3 cursor-pointer px-2 text-sm"
+              onClick={handleLogout}
+            >
+              Sign Out
+            </div>
+          )}
+        </div>
+      </div>
     </header>
   );
 }
