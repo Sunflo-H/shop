@@ -13,7 +13,8 @@ body {
   /* 현재 글꼴 "Segoe UI" */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* @max-width: 1300px; */
+  /* @apply max-w-screen-2xl m-auto; */
+  /* max-width: 1300px; */
   /* margin: auto; */
 }
 

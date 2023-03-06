@@ -9,7 +9,7 @@ import AllProduct from "./AllProduct";
 
 export default function Home() {
   return (
-    <>
+    <div className="max-w-screen-2xl m-auto px-10">
       {/* <div>
         <img
           className="w-11/12"
@@ -19,6 +19,6 @@ export default function Home() {
       </div> */}
       <Banner />
       <AllProduct />
-    </>
+    </div>
   );
 }

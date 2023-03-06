@@ -13,7 +13,7 @@ module.exports = {
         banner: "1040px",
       },
       height: {
-        banner: "600px",
+        banner: "800px",
         image: "720px",
       },
       colors: {
@@ -23,6 +23,26 @@ module.exports = {
         banner1: `url('../public/images/banner1.jpg')`,
         banner2: `url('../public/images/banner2.jpg')`,
         banner3: `url('../public/images/banner3.jpg')`,
+      },
+      animation: {
+        "banner-img": "move-left 1s ease-in-out forwards",
+        "banner-text": "move-left 1s .5s linear forwards",
+        show: "show 1s  1s forwards",
+      },
+      keyframes: {
+        "move-left": {
+          "0%": {
+            transform: "translate(50px,0)",
+            opacity: "0",
+          },
+          "100%": { transform: "translate(0,0)", opacity: "1" },
+        },
+        show: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": { opacity: "1" },
+        },
       },
     },
   },
