@@ -1,12 +1,13 @@
 import React from "react";
 
-export default function Button({ text, onClick }) {
+export default function Button({ onClick, animation }) {
   return (
-    <button
-      className="bg-brand text-white py-2 px-4 rounded-sm hover:brightness-110"
+    <div
+      className={`cursor-pointer ${animation && "animate-show opacity-0"}`}
       onClick={onClick}
     >
-      {text}
-    </button>
+      <span className="bg-black text-white p-4 px-8 text-sm">Shop Now</span>
+      <span className="ml-0.5 pl-1 py-4 bg-black text-sm"></span>
+    </div>
   );
 }

@@ -9,25 +9,27 @@ module.exports = {
       backgroundPosition: {
         "3xl": "center ",
       },
+      objectPosition: {
+        "top-10": "50%",
+      },
       width: {
         banner: "1040px",
       },
       height: {
         banner: "800px",
         image: "720px",
+        section: "800px",
       },
       colors: {
         brand: "#f96162",
       },
       backgroundImage: {
-        banner1: `url('../public/images/banner1.jpg')`,
-        banner2: `url('../public/images/banner2.jpg')`,
-        banner3: `url('../public/images/banner3.jpg')`,
+        banner: `url('../public/images/banner.jpg')`,
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out forwards",
         "banner-text": "move-left 1s .5s linear forwards",
-        show: "show 1s  1s forwards",
+        show: "show 1s 1s ease-in-out forwards",
       },
       keyframes: {
         "move-left": {
