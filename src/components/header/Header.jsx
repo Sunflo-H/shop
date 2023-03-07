@@ -39,13 +39,13 @@ export default function Navbar() {
             to="/products"
             className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
           >
-            Man
+            Men
           </Link>
           <Link
             to="/products"
             className=" border-b border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
           >
-            Woman
+            Women
           </Link>
           <Link
             to="/products"

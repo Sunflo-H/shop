@@ -24,10 +24,11 @@ module.exports = {
         brand: "#f96162",
       },
       backgroundImage: {
-        banner: `url('../public/images/banner.jpg')`,
+        banner: `url('../public/images/woman6.jpg')`,
+        banner2: `url('../public/images/banner4.jpg')`,
       },
       animation: {
-        "banner-img": "move-left 1s ease-in-out forwards",
+        "banner-img": "move-left 1s ease-in-out ",
         "banner-text": "move-left 1s .5s linear forwards",
         show: "show 1s 1s ease-in-out forwards",
       },

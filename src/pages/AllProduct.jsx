@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { downloadProduct } from "../api/firebase";
-import ProductCard from "../components/main/ProductCard";
+import ProductCard from "../components/main/product/ProductCard";
 import useProducts from "../hooks/useProducts";
 
 export default function AllProduct() {
