@@ -24,8 +24,8 @@ module.exports = {
         brand: "#f96162",
       },
       backgroundImage: {
-        banner: `url('../public/images/woman6.jpg')`,
-        banner2: `url('../public/images/banner4.jpg')`,
+        banner: `url('../public/images/home/banner.jpg')`,
+        // banner2: `url('../public/images/banner4.jpg')`,
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out ",

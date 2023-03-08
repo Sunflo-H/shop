@@ -56,10 +56,17 @@ export default function Home() {
           </div>
         </HomeContents>
 
-        {/* <HomeContents></HomeContents> */}
+        <HomeContents>
+          <div className="w-full h-full bg-gray-100 px-24 pt-14">
+            <h1 className="text-5xl font-bold">Our Stories</h1>
+            <div className="flex">
+              <div className="basis-1/4"></div>
+            </div>
+          </div>
+        </HomeContents>
         {/* <HomeContents4 /> */}
       </main>
-      <footer className="border-gray-400 border-t ">
+      <footer className="border-gray-400 border-t">
         <Footer />
       </footer>
     </div>
