@@ -1,6 +1,7 @@
 import React from "react";
 import NavItem from "./NavItem";
 import SignAndUser from "./SignAndUser";
+import SignAndUser_Side from "./SignAndUser_Side";
 import User from "./User";
 
 export default function SideNav({ user, isSideNavOpen }) {
@@ -12,7 +13,7 @@ export default function SideNav({ user, isSideNavOpen }) {
       ${!isSideNavOpen && "-translate-x-full"}`}
     >
       {/* {user && <User user={user} isSide />} */}
-      <SignAndUser isSide />
+      <SignAndUser_Side />
       <div className={`flex flex-col`}>
         {navItemList.map((navItem, i) => (
           <NavItem navItem={navItem} key={i} />
