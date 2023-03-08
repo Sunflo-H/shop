@@ -13,8 +13,8 @@ export default function Home() {
         <Banner />
         <HomeContents>
           <div className="flex w-full h-3/4 justify-around px-20">
-            <img className="w-2/5 " src="/images/woman4.jpg"></img>
-            <img className="w-2/5 " src="/images/man6.jpg"></img>
+            <img className="w-2/5 " src="/images/home/woman.jpg"></img>
+            <img className="w-2/5 " src="/images/home/man.jpg"></img>
           </div>
           <div className="text-center ">
             <p className="text-center  text-3xl my-10 ">

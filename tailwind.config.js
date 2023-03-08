@@ -25,7 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         banner: `url('../public/images/home/banner.jpg')`,
-        // banner2: `url('../public/images/banner4.jpg')`,
+        banner2: `url('../public/images/home/banner2.jpg')`,
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out ",
