@@ -8072,6 +8072,13 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-awesome-slider@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-awesome-slider/-/react-awesome-slider-4.1.0.tgz#6a800300cb3edd556d2388090f65ac731467639a"
+  integrity sha512-cbPI1MTpVLKbEH6gf9bwtJb8Ja6R/YJonKbUQehfq2B2AAJkgDMeHntaa4SgGCRqWd55xKiT+CkjfKau1QRsKw==
+  dependencies:
+    web-animation-club "^0.6.0"
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -8119,6 +8126,13 @@ react-icons@^4.8.0:
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.8.0.tgz#621e900caa23b912f737e41be57f27f6b2bff445"
   integrity sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==
+
+react-id-swiper@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-4.0.0.tgz#eed938c5a4bf464a5cd7316a1bf6778581f47f2f"
+  integrity sha512-BFY8VQYgc1ECkT1Ek6MYSF8MADjWYZctdeRlMA202mjGcdjq1Bugfhg207KHTjGWKWZlY/7/nxFShqQo74RslA==
+  dependencies:
+    object-assign "^4.1.1"
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -8787,6 +8801,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
+ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 stable@^0.1.8:
   version "0.1.8"
   resolved "https://registry.npmjs.org/stable/-/stable-0.1.8.tgz"
@@ -9035,6 +9054,13 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+swiper@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-9.1.0.tgz#1a804254aa5b52724038ea1b4007193742a6bbf3"
+  integrity sha512-Ck8CywwfUghkbUAHbxTAWyeUAcNrIDNJ6EnKFBGGcHDjeqbh0Jq08RbmD5fMu1a0oOv1eIkUGVkqNJy/asm+yA==
+  dependencies:
+    ssr-window "^4.0.2"
 
 symbol-tree@^3.2.4:
   version "3.2.4"
@@ -9498,6 +9524,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+web-animation-club@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/web-animation-club/-/web-animation-club-0.6.0.tgz#c1dd79646b21e4265b5f95ae9cb8b93b73e05e47"
+  integrity sha512-9W+EQu1HiaPLe/7WZlhJ2ULqQ4VL80RPDYW+ZcjfTKp6ayOuT1k3SVO6+tu0VBRmOqueJ/mrG+rjjInIv8Aglg==
 
 web-vitals@^2.1.4:
   version "2.1.4"

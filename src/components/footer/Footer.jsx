@@ -11,9 +11,42 @@ import { HiPhone } from "react-icons/hi";
 import { GrMail, GrLinkedin, GrLinkedinOption } from "react-icons/gr";
 import { FaFacebook, FaFacebookF, FaYoutube } from "react-icons/fa";
 import Button from "../ui/Button";
+import List from "./List";
 
 export default function Footer() {
-  const liStyle = "mt-2 font-semibold text-xs";
+  const liStyle = "mt-2 font-semibold text-xs ";
+  const spanStyle = "border-b-2 border-transparent hover:border-black";
+  const etcList = [
+    [
+      "Help",
+      "Customer Service",
+      "Track Order",
+      "Returns & Exchanges",
+      "Shipping",
+      "International Orders",
+      "Contact Us",
+    ],
+    [
+      "Quick Links",
+      "Find a Store",
+      "Size Charts",
+      "Refer a Friend",
+      "Offers & Promotions",
+      "My Favorites",
+    ],
+    [
+      "About Adonis",
+      "Our Story",
+      "Careers",
+      "Social Responsibility",
+      "California Transparency Act/Modern Slavery Act",
+      "Investor Relations",
+      "Terms of Use",
+      "Privacy Policy",
+      "California Do Not Sell My Personal Information",
+      "Diversity, Equity and Inclusion at J.Crew Group",
+    ],
+  ];
   return (
     <>
       <div className="max-w-screen-2xl m-auto">
@@ -36,44 +69,9 @@ export default function Footer() {
         <div className="flex flex-col-reverse md:flex-row justify-between max-w-screen-xl text-sm pt-14 m-auto">
           <div className="">
             <div className="flex">
-              <ul className="mr-20 shrink-0">
-                <h1 className="font-bold">Help</h1>
-                <li className={liStyle}>Customer Service</li>
-                <li className={liStyle}>Track Order</li>
-                <li className={liStyle}>Returns & Exchanges</li>
-                <li className={liStyle}>Shipping</li>
-                <li className={liStyle}>International Orders</li>
-                <li className={liStyle}>Contact Us</li>
-              </ul>
-              <ul className="mr-20 shrink-0">
-                <h1>Quick Links</h1>
-                <li className={liStyle}>Find a Store</li>
-                <li className={liStyle}>Size Charts</li>
-                <li className={liStyle}>Refer a Friend</li>
-                <li className={liStyle}>Offers & Promotions</li>
-                <li className={liStyle}>My Favorites</li>
-                <li></li>
-              </ul>
-              <ul className="mr-20 shrink-0">
-                <h1>About Adonis</h1>
-                <li className={liStyle}>Our Story</li>
-                <li className={liStyle}>Careers</li>
-                <li className={liStyle}>Social Responsibility</li>
-                <li className={liStyle}>
-                  California Transparency <br /> Act/Modern Slavery Act
-                </li>
-                <li className={liStyle}>Investor Relations</li>
-                <li className={liStyle}>Terms of Use</li>
-                <li className={liStyle}>Privacy Policy</li>
-                <li className={liStyle}>
-                  California Do Not Sell My <br />
-                  Personal Information
-                </li>
-                <li className={liStyle}>
-                  Diversity, Equity and Inclusion <br />
-                  at J.Crew Group
-                </li>
-              </ul>
+              {etcList.map((list) => (
+                <List list={list} />
+              ))}
             </div>
             <div>
               <div className="flex items-center gap-4 mb-8">

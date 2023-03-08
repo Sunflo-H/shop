@@ -1,15 +1,20 @@
 import React from "react";
+import AwesomeSlider from "react-awesome-slider";
 import Footer from "../components/footer/Footer";
 import Banner from "../components/main/Banner";
 import HomeContents from "../components/main/HomeContents";
 import NewProducts from "../components/main/product/NewProducts";
 import Button from "../components/ui/Button";
-import AllProduct from "./AllProduct";
+
+import "react-awesome-slider/dist/custom-animations/cube-animation.css";
+import "react-awesome-slider/dist/styles.css";
+import Slider from "../components/slider/Slider";
 
 export default function Home() {
   return (
     <div>
       <main className="max-w-screen-2xl m-auto px-10">
+        {/* <Slider /> */}
         <Banner />
         <HomeContents>
           <div className="flex w-full h-3/4 justify-around px-20">
@@ -56,15 +61,105 @@ export default function Home() {
           </div>
         </HomeContents>
 
-        <HomeContents>
-          <div className="w-full h-full bg-gray-100 px-24 pt-14">
-            <h1 className="text-5xl font-bold">Our Stories</h1>
-            <div className="flex">
-              <div className="basis-1/4"></div>
+        <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
+          <h1 className="text-5xl font-bold mb-8">Our Stories</h1>
+          <div className="flex gap-10 mb-32">
+            <div className="basis-1/4 cursor-pointer">
+              <img className="mb-4" src="/images/home/blog4.jpg" alt="" />
+              <h1 className="text-xl mb-4">
+                Creative Spirits Series: Nails by Mei X J.Crew
+              </h1>
+              <span className="font-bold border-b-2 border-black pb-1">
+                Shop the jewelry collab
+              </span>
+            </div>
+            <div className="basis-1/4 cursor-pointer">
+              <img className="mb-4" src="/images/home/blog1.jpg" alt="" />
+              <h1 className="text-xl mb-4">The edit: embellished everything</h1>
+              <span className="font-bold border-b-2 border-black pb-1">
+                Shop the roundup
+              </span>
+            </div>
+            <div className="basis-1/4 cursor-pointer">
+              <img className="mb-4" src="/images/home/blog3.jpg" alt="" />
+              <h1 className="text-xl mb-4">Olympia’s picks: March edition</h1>
+              <span className="font-bold border-b-2 border-black pb-1">
+                Shop her favorite styles
+              </span>
+            </div>
+            <div className="basis-1/4 cursor-pointer">
+              <img className="mb-4" src="/images/home/blog2.jpg" alt="" />
+              <h1 className="text-xl mb-4">Local time with Leigh Altshuler</h1>
+              <span className="font-bold border-b-2 border-black pb-1">
+                Explore her NYC bookstore
+              </span>
             </div>
           </div>
-        </HomeContents>
-        {/* <HomeContents4 /> */}
+          <div className="flex border-t-4 border-gray-900 ">
+            <div className="flex flex-wrap w-3/4  items-start">
+              <div className="basis-1/3 pr-4 pb-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog8.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="basis-1/3 px-4 pb-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog6.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="basis-1/3 px-4 pb-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog7.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="basis-1/3 pr-4 py-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog5.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="basis-1/3 p-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog9.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="basis-1/3 p-4 h-80">
+                <img
+                  className="w-full h-full"
+                  src="/images/home/blog10.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-1/4 ">
+              <div className="relative">
+                <div className="absolute -top-5 -left-10 mr-auto ml-6 font-bold">
+                  MEETS CREATIVITY
+                </div>
+                <span className="absolute top-11 -left-16 font-bold -rotate-90  ">
+                  WHERE STYLE
+                </span>
+                <div className="flex items-end w-52 h-52 border-4 border-black mb-10 p-4 text-2xl font-bold">
+                  <h1>
+                    The <br />
+                    Adonis <br /> Collective
+                  </h1>
+                </div>
+              </div>
+
+              <Button text="Meet our Community" />
+            </div>
+          </div>
+        </div>
       </main>
       <footer className="border-gray-400 border-t">
         <Footer />
