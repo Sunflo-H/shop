@@ -13,10 +13,9 @@ import Slider from "../components/slider/Slider";
 export default function Home() {
   return (
     <div>
-      <main className="max-w-screen-2xl m-auto px-10">
-        {/* <Slider /> */}
+      <main className="max-w-screen-2xl m-auto px-5 md:px-10">
         <Banner />
-        <HomeContents>
+        {/* <HomeContents>
           <div className="flex w-full h-3/4 justify-around px-20">
             <img className="w-2/5 " src="/images/home/woman.jpg"></img>
             <img className="w-2/5 " src="/images/home/man.jpg"></img>
@@ -30,9 +29,9 @@ export default function Home() {
 
             <Button text={"View All Collections"} />
           </div>
-        </HomeContents>
+        </HomeContents> */}
 
-        <section className="relative w-full h-96 mb-20 bg-black">
+        {/* <section className="relative w-full h-96 mb-20 bg-black">
           <div className="w-full h-full bg-cover bg-center bg-banner2 opacity-70"></div>
           <div className="absolute w-full top-28 text-center ">
             <h2 className="text-6xl font-bold mb-12 text-white">
@@ -42,9 +41,9 @@ export default function Home() {
               <Button text={"Shop Now"} color={"white"} />
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <HomeContents>
+        {/* <HomeContents>
           <div className="text-center mb-16">
             <p className="text-2xl mb-8">
               <span className="font-bold ">NEW</span> MODELS
@@ -59,9 +58,9 @@ export default function Home() {
           <div className="text-center ">
             <Button text="See All" />
           </div>
-        </HomeContents>
+        </HomeContents> */}
 
-        <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
+        {/* <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
           <h1 className="text-5xl font-bold mb-8">Our Stories</h1>
           <div className="flex gap-10 mb-32">
             <div className="basis-1/4 cursor-pointer">
@@ -159,11 +158,9 @@ export default function Home() {
               <Button text="Meet our Community" />
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
-      <footer className="border-gray-400 border-t">
-        <Footer />
-      </footer>
+      <footer className="border-gray-400 border-t">{/* <Footer /> */}</footer>
     </div>
   );
 }

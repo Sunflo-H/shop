@@ -8,6 +8,7 @@ module.exports = {
       },
       backgroundPosition: {
         "3xl": "center ",
+        left40: "40%",
       },
       objectPosition: {
         "top-10": "50%",
@@ -20,6 +21,12 @@ module.exports = {
         image: "720px",
         section: "800px",
       },
+      maxWidth: {
+        banner: "1040px",
+      },
+      maxHeight: {
+        banner: "800px",
+      },
       colors: {
         brand: "#f96162",
       },
@@ -29,6 +36,7 @@ module.exports = {
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out ",
+        "banner-img-sm": "move-left-sm 1s ease-in-out ",
         "banner-text": "move-left 1s .5s linear forwards",
         show: "show 1s 1s ease-in-out forwards",
       },
@@ -39,6 +47,13 @@ module.exports = {
             opacity: "0",
           },
           "100%": { transform: "translate(0,0)", opacity: "1" },
+        },
+        "move-left-sm": {
+          "0%": {
+            transform: "translate(50px,0)",
+            opacity: "0",
+          },
+          "100%": { transform: "translate(0,0)", opacity: "0.8" },
         },
         show: {
           "0%": {
