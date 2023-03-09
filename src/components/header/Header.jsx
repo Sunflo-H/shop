@@ -15,11 +15,8 @@ import Pen from "./Pen";
 import { GrClose } from "react-icons/gr";
 
 export default function Navbar() {
-  const { user, login, logout } = useAuthContext();
+  const { user } = useAuthContext();
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  useEffect(() => {
-    console.log(isSideNavOpen);
-  }, [isSideNavOpen]);
 
   return (
     <header className="border-b border-gray-300 mb-10 ">
@@ -32,8 +29,6 @@ export default function Navbar() {
         </Link>
         <Nav />
         <div className="flex items-center gap-2 font-semibold shrink-0 ">
-          {/* {user?.isAdmin && <Pen />} */}
-          {/* {user && <User user={user} />} */}
           {user && <Cart />}
           <SignAndUser />
         </div>
@@ -53,7 +48,7 @@ export default function Navbar() {
           />
         )}
 
-        <SideNav user={user} isSideNavOpen={isSideNavOpen} />
+        <SideNav isSideNavOpen={isSideNavOpen} />
       </div>
     </header>
   );

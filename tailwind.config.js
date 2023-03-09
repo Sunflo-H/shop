@@ -7,7 +7,7 @@ module.exports = {
         "3xl": "1800px",
       },
       backgroundPosition: {
-        "3xl": "center ",
+        // "3xl": "center ",
         left40: "40%",
       },
       objectPosition: {
@@ -15,6 +15,8 @@ module.exports = {
       },
       width: {
         banner: "1040px",
+        section: "1465px",
+        slider: "4395px",
       },
       height: {
         banner: "800px",
@@ -31,8 +33,15 @@ module.exports = {
         brand: "#f96162",
       },
       backgroundImage: {
-        banner: `url('../public/images/home/banner.jpg')`,
+        banner1: `url('../public/images/home/banner1.jpg')`,
         banner2: `url('../public/images/home/banner2.jpg')`,
+        banner3: `url('../public/images/home/banner3.jpg')`,
+        banner4: `url('../public/images/home/banner.jpg')`,
+      },
+      translate: {
+        section1: "-1465px",
+        section2: "-2930px",
+        section3: "-4395px",
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out ",

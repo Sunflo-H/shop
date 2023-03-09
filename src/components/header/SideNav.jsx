@@ -22,7 +22,6 @@ export default function SideNav({ user, isSideNavOpen }) {
       className={`absolute w-80 h-screen top-14 left-0 z-10 bg-white border border-gray-300 transition-all md:hidden 
       ${!isSideNavOpen && "-translate-x-full"}`}
     >
-      {/* {user && <User user={user} isSide />} */}
       <SignAndUser_Side />
       <ul className={`flex flex-col mt-4 font-bold`}>
         {navItemList.map((navItem, i) => (

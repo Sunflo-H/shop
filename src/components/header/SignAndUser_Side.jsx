@@ -48,6 +48,7 @@ export default function SignAndUser_Side() {
               !isOpen && "hidden"
             }`}
           >
+            <div>{user.displayName}</div>
             {optionList.map((option) => (
               <SideListItem title={option.title} onClick={option.action} />
             ))}
