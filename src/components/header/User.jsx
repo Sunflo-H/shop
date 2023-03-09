@@ -10,14 +10,14 @@ export default function User({ user: { displayName, photoURL }, isSide }) {
   }
 
   return (
-    <div className="flex items-center h-full pt-5 pb-3 text-sm font-normal">
-      {/* <img
-        className="w-10 h-10 rounded-full"
+    <div className="flex items-center justify-center">
+      <img
+        className="w-10 h-10 rounded-full mr-4"
         src={photoURL}
         alt={displayName}
         referrerPolicy="no-referrer"
-      /> */}
-      <span className="hidden md:block shrink-0">{displayName}</span>
+      />
+      <span className="text-lg">{displayName}</span>
     </div>
   );
 }

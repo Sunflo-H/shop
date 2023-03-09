@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 import { MdArrowDropDown } from "react-icons/md";
+import { BsFillPencilFill } from "react-icons/bs";
 
 import { useAuthContext } from "../../context/AuthContext";
 import SideListItem from "../ui/SideListItem";
+import User from "./User";
+import { Link } from "react-router-dom";
 
 export default function SignAndUser() {
   const { user, login, logout } = useAuthContext();
@@ -41,19 +44,39 @@ export default function SignAndUser() {
               My Account <MdArrowDropDown className="text-2xl" />
             </div>
             {isOpen && (
-              <ul className="absolute top-15 -left-0 w-full px-4 pt-4 border border-black bg-white z-10 text-sm">
+              <ul className="absolute top-15 -left-14 w-44 px-4 pt-4 border border-gray-300 bg-white z-10 text-sm text-center">
+                <li className="mb-4">
+                  <User user={user} />
+                </li>
+                <li className="mb-4">
+                  <Link
+                    to="/products/new"
+                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
+                  >
+                    Add Products
+                  </Link>
+                </li>
                 <li className="mb-4 ">
-                  <span className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer">
+                  <Link
+                    to="/products/favorites"
+                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
+                  >
                     My Favorites
-                  </span>
+                  </Link>
                 </li>
                 <li className="mb-4">
-                  <span className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer">
+                  <Link
+                    to="/products/history"
+                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
+                  >
                     History
-                  </span>
+                  </Link>
                 </li>
                 <li className="mb-4">
-                  <span className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer">
+                  <span
+                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
+                    onClick={handleLogout}
+                  >
                     Sign Out
                   </span>
                 </li>
