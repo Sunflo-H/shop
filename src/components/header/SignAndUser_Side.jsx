@@ -49,8 +49,12 @@ export default function SignAndUser_Side() {
             }`}
           >
             <div>{user.displayName}</div>
-            {optionList.map((option) => (
-              <SideListItem title={option.title} onClick={option.action} />
+            {optionList.map((option, i) => (
+              <SideListItem
+                title={option.title}
+                onClick={option.action}
+                key={i}
+              />
             ))}
           </ul>
         </>
