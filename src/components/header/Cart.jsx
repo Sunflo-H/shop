@@ -10,7 +10,7 @@ export default function Cart() {
   } = useCart();
   return (
     <Link
-      className="absolute right-5 md:static flex h-full pt-5 pb-3"
+      className="absolute right-5 md:static flex h-full pt-5 pb-4 border-b-2 border-transparent hover:border-black"
       to="/carts"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}

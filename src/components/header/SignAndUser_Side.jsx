@@ -13,11 +13,9 @@ export default function SignAndUser_Side() {
     { title: "History", action: () => navigate("/products/history") },
     { title: "Sign Out", action: () => logout() },
   ];
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (action) => {
-    action();
-  };
   return (
     <>
       {/* 로그아웃 상태일때 */}
@@ -37,7 +35,7 @@ export default function SignAndUser_Side() {
         <>
           <div
             className={`flex items-center justify-between px-6 py-5 bg-gray-100 font-bold border-gray-300 border-b
-              ${isOpen ? "border-dashed" : ""}`}
+              ${isOpen && "border-dashed"}`}
             onClick={() => setIsOpen((prev) => !prev)}
           >
             <p>My Account</p>

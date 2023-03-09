@@ -1,11 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import SideListItem from "../ui/SideListItem";
 import NavItem from "./NavItem";
 import SignAndUser from "./SignAndUser";
 import SignAndUser_Side from "./SignAndUser_Side";
 import User from "./User";
 
 export default function SideNav({ user, isSideNavOpen }) {
-  const navItemList = ["Home", "Men", "Women", "Accessories", "Shoes", "Blog"];
+  const navigate = useNavigate();
+  const navItemList = [
+    { title: "Home", action: () => navigate("/") },
+    { title: "Men", action: () => navigate("/products/men") },
+    { title: "Women", action: () => navigate("/products/women") },
+    { title: "Accessories", action: () => navigate("/products/accessories") },
+    { title: "Shoes", action: () => navigate("/products/shoes") },
+    { title: "Blog", action: () => navigate("/products/blog") },
+  ];
 
   return (
     <nav
@@ -14,11 +24,15 @@ export default function SideNav({ user, isSideNavOpen }) {
     >
       {/* {user && <User user={user} isSide />} */}
       <SignAndUser_Side />
-      <div className={`flex flex-col`}>
+      <ul className={`flex flex-col mt-4 font-bold`}>
         {navItemList.map((navItem, i) => (
-          <NavItem navItem={navItem} key={i} />
+          <SideListItem
+            title={navItem.title}
+            onClick={navItem.action}
+            key={i}
+          />
         ))}
-      </div>
+      </ul>
     </nav>
   );
 }
