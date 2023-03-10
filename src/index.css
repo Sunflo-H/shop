@@ -47,6 +47,10 @@ h1 {
   transform: translateX(-5860px);
 }
 
+.first-slide {
+  transform: translateX(-1400px);
+}
+
 .banner1 {
   background-image: url("../public/images/home/banner1.jpg");
 }

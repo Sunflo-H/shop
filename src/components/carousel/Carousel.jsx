@@ -4,16 +4,17 @@ import Images from "./Images";
 import NextImage from "./NextImage";
 import PrevImage from "./PrevImage";
 
-const IMAGE_DURATION = 1000;
+const IMAGE_DURATION = 2000;
 const FIRST_SLIDER_NUM = 1;
 const LAST_SLIDER_NUM = 3;
 
 export default function Slider() {
-  const [isTextAni, setIsTextAni] = useState(false);
-  const [slider, setSlider] = useState(1);
+  const [slider, setSlider] = useState(1); // 몇번째 slider인지 0~4
   const [isTransition, setIsTransition] = useState(true);
-  const [isBtnActive, setIsBtnActive] = useState(true);
-
+  const [isAble_btnClick, setIsAble_btnClick] = useState(true);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
+  const [isTextAni, setIsTextAni] = useState(false);
+  const [isFirst, setIsFirst] = useState(true);
   /**
    * 이미지에는 기본적으로 transition이 있다 (1초)
    * 이동하라는 명령을 하면 1초동안 해당위치로 이동한다
@@ -25,30 +26,32 @@ export default function Slider() {
    */
 
   const handlePrev = () => {
-    if (!isBtnActive) return;
+    if (!isAble_btnClick) return;
 
     setSlider((v) => v - 1);
-    // textAniController();
-    setIsBtnActive(false);
-    setTimeout(() => setIsBtnActive(true), IMAGE_DURATION);
+    textAniController();
+    setIsAble_btnClick(false);
+    setIsBtnClicked((prev) => !prev);
+    setTimeout(() => setIsAble_btnClick(true), IMAGE_DURATION * 1.1);
   };
 
   const handleNext = () => {
-    if (!isBtnActive) return;
+    if (!isAble_btnClick) return;
 
     setSlider((v) => v + 1);
-    // textAniController();
-    setIsBtnActive(false);
-    setTimeout(() => setIsBtnActive(true), IMAGE_DURATION);
+    textAniController();
+    setIsAble_btnClick(false);
+    setIsBtnClicked((prev) => !prev);
+    setTimeout(() => setIsAble_btnClick(true), IMAGE_DURATION * 1.1);
   };
 
   const textAniController = () => {
     setIsTextAni(false);
-    setTimeout(() => setIsTextAni(true), IMAGE_DURATION); // 애니메이션 시간 후 상태 초기화
+    setTimeout(() => setIsTextAni(true), IMAGE_DURATION * 1.1); // 애니메이션 시간 후 상태 초기화
   };
 
   useEffect(() => {
-    // setIsTextAni(true);
+    setIsFirst(false);
   }, []);
 
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function Slider() {
 
       setTimeout(() => {
         setIsTransition(true);
-      }, IMAGE_DURATION * 2);
+      }, IMAGE_DURATION * 1.1); // tanstition이 활성화가 지연되는 시간과 버튼의 활성화가 지연되는 시간을 동일하게 해줘야 움직임에 끊김이 없다.
     }
 
     if (slider === 0) {
@@ -71,23 +74,36 @@ export default function Slider() {
 
       setTimeout(() => {
         setIsTransition(true);
-      }, IMAGE_DURATION * 2);
+      }, IMAGE_DURATION * 1.1);
     }
   }, [slider]);
 
   return (
     <>
       {/* 뷰어 */}
-      <div className="relative w-section ">
+      <div className="relative w-section overflow-hidden ">
         {/* 이미지들 */}
         <div
-          className={`flex w-slider slide${slider} ${
-            isTransition && `duration-${IMAGE_DURATION}`
-          }`}
+          className={`flex w-slider ease-out
+          ${isFirst ? "first-slide opacity-0" : `slide${slider}`} 
+          ${isTransition && `duration-2000`}`}
         >
-          <PrevImage isTextAni={isTextAni} />
-          <Images isTextAni={isTextAni} />
-          <NextImage isTextAni={isTextAni} />
+          <PrevImage
+            isTextAni={isTextAni}
+            slider={slider}
+            isBtnClicked={isBtnClicked}
+          />
+          <Images
+            isTextAni={isTextAni}
+            isAble_btnClick={isAble_btnClick}
+            slider={slider}
+            isBtnClicked={isBtnClicked}
+          />
+          <NextImage
+            isTextAni={isTextAni}
+            slider={slider}
+            isBtnClicked={isBtnClicked}
+          />
         </div>
       </div>
       <div className="absolute bottom-52 right-36">

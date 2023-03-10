@@ -1,10 +1,13 @@
 import React from "react";
 
-export default function Button({ text, onClick, animation, color }) {
+export default function Button({ text, onClick, color, isAni, num, slider }) {
   if (color === "white") {
     return (
       <span
-        className={`cursor-pointer ${animation && "animate-show opacity-0"} `}
+        className={`cursor-pointer opacity-0 
+        ${num !== slider && "animate-hide"}
+          ${num === slider && "opacity-0"}
+        ${isAni && "animate-btn-show "} `}
         onClick={onClick}
       >
         <span className="bg-black text-white p-4 px-8 text-sm border border-white">
@@ -16,7 +19,10 @@ export default function Button({ text, onClick, animation, color }) {
   }
   return (
     <span
-      className={`cursor-pointer ${animation && "animate-show opacity-0"}`}
+      className={`cursor-pointer opacity-0 
+      ${num !== slider && "animate-hide"}
+          ${num === slider && "opacity-0"}
+      ${isAni && "animate-btn-show "}`}
       onClick={onClick}
     >
       <span className="bg-black text-white px-4 py-2.5  md:p-4 md:px-8 text-sm">
