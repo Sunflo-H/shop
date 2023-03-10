@@ -30,3 +30,29 @@ input {
 h1 {
   font-family: "Abril Fatface", cursive;
 }
+
+.slide0 {
+  transform: translateX(0px);
+}
+.slide1 {
+  transform: translateX(-1465px);
+}
+.slide2 {
+  transform: translateX(-2930px);
+}
+.slide3 {
+  transform: translateX(-4395px);
+}
+.slide4 {
+  transform: translateX(-5860px);
+}
+
+.banner1 {
+  background-image: url("../public/images/home/banner1.jpg");
+}
+.banner2 {
+  background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,w_1040/v1678444072/shoppy/aaron-robinson-k1efdruuT5E-unsplash_c8wgjl.jpg");
+}
+.banner3 {
+  background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1080/v1678444074/shoppy/averie-woodard-4nulm-JUYFo-unsplash_abj5b1.jpg");
+}

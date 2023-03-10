@@ -8,16 +8,16 @@ import Button from "../components/ui/Button";
 
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "react-awesome-slider/dist/styles.css";
-import Slider from "../components/Slider";
+import Carousel from "../components/carousel/Carousel";
 import Test from "../components/Test";
 
 export default function Home() {
   return (
     <div>
       <main className="max-w-screen-2xl m-auto px-5 md:px-10">
-        <Test />
+        {/* <Test /> */}
         {/* <Banner /> */}
-        {/* <Slider /> */}
+        <Carousel />
         {/* <HomeContents>
           <div className="flex w-full h-3/4 justify-around px-20">
             <img className="w-2/5 " src="/images/home/woman.jpg"></img>

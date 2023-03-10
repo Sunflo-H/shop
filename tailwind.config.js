@@ -16,7 +16,7 @@ module.exports = {
       width: {
         banner: "1040px",
         section: "1465px",
-        slider: "4395px",
+        slider: "7325px",
       },
       height: {
         banner: "800px",
@@ -36,12 +36,14 @@ module.exports = {
         banner1: `url('../public/images/home/banner1.jpg')`,
         banner2: `url('../public/images/home/banner2.jpg')`,
         banner3: `url('../public/images/home/banner3.jpg')`,
-        banner4: `url('../public/images/home/banner.jpg')`,
+        banner4: `url('../public/images/home/accessories.jpg')`,
       },
       translate: {
+        section0: "0px",
         section1: "-1465px",
         section2: "-2930px",
         section3: "-4395px",
+        section4: "-5860px",
       },
       animation: {
         "banner-img": "move-left 1s ease-in-out ",
