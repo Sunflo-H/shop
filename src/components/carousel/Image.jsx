@@ -13,31 +13,36 @@ export default function Image({ num, slider, isBtnClicked }) {
   useEffect(() => {}, []);
 
   useEffect(() => {
-    setIsAni(false); //true
+    setIsAni(false);
     setTimeout(() => {
       setIsAni(true);
     }, 500);
   }, [isBtnClicked]);
 
   return (
-    <section className="w-section relative transition-all mb-20  ">
+    <section className="w-section relative mb-20  ">
       <div className=" max-w-screen md:max-w-banner max-h-screen md:max-h-banner bg-white overflow-hidden ">
         <div
+          // 현재 이미지의 num과 보여지는 이미지(slider)가 같으면 원하는 애니메이션을 적용시킨다.
+          // 다르다면 투명해지는 애니메이션을 적용시켜 슬라이드의 넘김이 자연스럽게 되도록 한다.
           className={`w-screen h-screen md:w-banner md:h-banner bg-cover bg-no-repeat banner${num} bg-left40 lg:bg-left 
+          opacity-0
           ${num !== slider && "animate-hide"}
-          ${num === slider && "opacity-70"}
-          ${isAni && "animate-banner-img-sm xl:animate-banner-img "}
+          ${
+            num === slider &&
+            isAni &&
+            "animate-banner-img-sm xl:animate-banner-img "
+          }
                   `}
         ></div>
       </div>
       <div className="absolute top-48 md:top-64  left-10 xl:left-auto md:right-14 ">
         <h2
-          className={` text-5xl md:text-6xl  lg:text-7xl xl:text-8xl font-bold mb-10 text-zinc-900 
+          // 위와 같다.
+          className={` text-5xl md:text-6xl  lg:text-7xl xl:text-8xl font-bold mb-10 text-zinc-900 opacity-0
           translate-x-10
           ${num !== slider && "animate-hide"}
-          ${num === slider && "opacity-0"}
-            ${isAni && num === slider && "animate-banner-text"}
-            
+          ${num === slider && isAni && "animate-banner-text"}
         `}
         >
           Discover

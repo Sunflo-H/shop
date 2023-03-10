@@ -50,7 +50,7 @@ module.exports = {
         2000: "2000ms",
       },
       animation: {
-        "banner-img": "show 1s ease-in-out forwards",
+        "banner-img": "show 1s ease-in forwards",
         "banner-img-sm": "show-sm 1s ease-in-out forwards",
         "banner-text": "move-left 1.5s 1.1s ease forwards",
         "btn-show": "show 1.5s 1.3s ease forwards",
@@ -63,13 +63,15 @@ module.exports = {
         },
 
         show: {
-          "0%": {},
+          "0%": { opacity: 0 },
           "100%": { opacity: "1" },
         },
+
         "show-sm": {
-          "0%": {},
+          "0%": { opacity: 0 },
           "100%": { opacity: "0.8" },
         },
+
         hide: {
           "0%": { transform: "translate(0px,0)", opacity: 1 },
           "100%": { transform: "translate(0px,0)", opacity: 0 },

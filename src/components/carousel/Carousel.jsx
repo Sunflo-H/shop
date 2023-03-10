@@ -14,16 +14,7 @@ export default function Slider() {
   const [isAble_btnClick, setIsAble_btnClick] = useState(true);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
   const [isTextAni, setIsTextAni] = useState(false);
-  const [isFirst, setIsFirst] = useState(true);
-  /**
-   * 이미지에는 기본적으로 transition이 있다 (1초)
-   * 이동하라는 명령을 하면 1초동안 해당위치로 이동한다
-   *
-   * 근데 버튼을 계속 누르면 silder의 값이 바뀌어버린다.
-   * 버튼이 1초동안 안눌리게 해야해
-   *
-   *
-   */
+  const [isFirst, setIsFirst] = useState(true); // 첫 렌더링인지 체크후 바로 false가 되는 state
 
   const handlePrev = () => {
     if (!isAble_btnClick) return;
@@ -84,23 +75,22 @@ export default function Slider() {
       <div className="relative w-section overflow-hidden ">
         {/* 이미지들 */}
         <div
+          // * isFirst : 이 페이지에 첫 접근이라면 이미지슬라이드를 살짝 움직여서 배너에 애니메이션 효과를 준다.
+          // * isTransition : transition이 활성화 된 상태라면 duration-2000을 준다.
           className={`flex w-slider ease-out
           ${isFirst ? "first-slide opacity-0" : `slide${slider}`} 
           ${isTransition && `duration-2000`}`}
         >
-          <PrevImage
-            isTextAni={isTextAni}
+          <PrevImage //
             slider={slider}
             isBtnClicked={isBtnClicked}
           />
           <Images
-            isTextAni={isTextAni}
-            isAble_btnClick={isAble_btnClick}
             slider={slider}
             isBtnClicked={isBtnClicked}
+            isAble_btnClick={isAble_btnClick}
           />
-          <NextImage
-            isTextAni={isTextAni}
+          <NextImage //
             slider={slider}
             isBtnClicked={isBtnClicked}
           />
