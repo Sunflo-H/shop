@@ -15,8 +15,8 @@ module.exports = {
       },
       width: {
         banner: "1040px",
-        section: "1465px",
-        slider: "7325px",
+        section: "1456px",
+        slider: "7280px",
       },
       height: {
         banner: "800px",

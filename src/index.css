@@ -31,20 +31,30 @@ h1 {
   font-family: "Abril Fatface", cursive;
 }
 
+/* Carousel */
+.viewer {
+  width: 1456px;
+  background-color: red;
+}
+
+.slider {
+  width: calc(1456px * 4);
+}
+
 .slide0 {
   transform: translateX(0px);
 }
 .slide1 {
-  transform: translateX(-1465px);
+  transform: translateX(-1456px);
 }
 .slide2 {
-  transform: translateX(-2930px);
+  transform: translateX(-2912px);
 }
 .slide3 {
-  transform: translateX(-4395px);
+  transform: translateX(-4368px);
 }
 .slide4 {
-  transform: translateX(-5860px);
+  transform: translateX(-5824px);
 }
 
 .first-slide {
@@ -59,4 +69,52 @@ h1 {
 }
 .banner3 {
   background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1080/v1678444074/shoppy/averie-woodard-4nulm-JUYFo-unsplash_abj5b1.jpg");
+}
+
+/* 작아졌을때 slide1234를 screen으로 100vw지 */
+@media (max-width: 768px) {
+  .viewer {
+    width: 100vw;
+  }
+  .slider {
+    width: calc(100vw * 4);
+  }
+  .first-slide {
+    transform: translateX(-90vw);
+  }
+  .slide1 {
+    transform: translateX(calc(-100vw * 1));
+  }
+  .slide2 {
+    transform: translateX(calc(-100vw * 2));
+  }
+  .slide3 {
+    transform: translateX(calc(-100vw * 3));
+  }
+  .slide4 {
+    transform: translateX(calc(-100vw * 4));
+  }
+}
+
+/* 
+브라우저가 md이하의 사이즈가 되어 slide의 너비가 줄어들면 그에 맞게 slider의 너비도 줄어야 한다.
+
+width: {
+        banner: "1040px",
+        section: "1465px",
+        slider: "7325px",
+      },
+
+뷰어의 너비가 w-section 
+slide의 너비가 w-section
+위 둘은 같은 클래스를 주면 돼
+
+slider의 너비는 w-slider = w-section * 4
+
+
+
+*/
+
+.test {
+  width: calc(25vw * 2);
 }

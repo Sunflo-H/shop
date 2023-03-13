@@ -70,16 +70,18 @@ export default function Slider() {
       }, IMAGE_DURATION * 1.1);
     }
   }, [slider]);
-
   return (
     <>
       {/* 뷰어 */}
-      <div className="relative w-section bg-red-500 overflow-hidden">
-        {/* 이미지들 */}
+      {/* 스크린만큼 줬을때 패딩을 어떻게 하지? */}
+      {/* <div className="relative w-screen md:w-section bg-red-500 overflow-hidden"> */}
+      <div className="relative viewer overflow-hidden">
+        {/* slider */}
         <div
           // * isFirst : 이 페이지에 첫 접근이라면 이미지슬라이드를 살짝 움직여서 배너에 애니메이션 효과를 준다.
           // * isTransition : transition이 활성화 된 상태라면 duration-2000을 준다.
-          className={`flex w-slider ease-out
+          // className={`flex w-screen md:w-slider ease-out
+          className={`flex slider ease-out
           ${isFirst ? "first-slide opacity-0" : `slide${slider}`} 
           ${isTransition && `duration-2000`}`}
         >

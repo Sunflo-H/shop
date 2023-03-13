@@ -14,10 +14,11 @@ import Test from "../components/Test";
 export default function Home() {
   return (
     <div>
-      <main className="max-w-screen-2xl m-auto px-5 md:px-10">
+      <main className="max-w-screen-2xl m-auto px-5 md:px-10 overflow-hidden">
         {/* <Test /> */}
         {/* <Banner /> */}
         <Carousel />
+        <div className="bg-green-400 test">하이</div>
         {/* <HomeContents>
           <div className="flex w-full h-3/4 justify-around px-20">
             <img className="w-2/5 " src="/images/home/woman.jpg"></img>

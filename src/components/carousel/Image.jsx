@@ -20,8 +20,9 @@ export default function Image({ num, slider, isBtnClicked }) {
   }, [isBtnClicked]);
 
   return (
-    <section className="w-section relative mb-20 bg-blue-500 ">
-      <div className="w-banner h-banner max-w-banner max-h-banner bg-white overflow-hidden ">
+    // 여기서 section에 너비는 왜 w-section만 가능한가?
+    <section className="w-section relative mb-20 ">
+      <div className="w-screen h-screen md:w-banner md:h-banner md:max-w-banner md:max-h-banner bg-white overflow-hidden ">
         <div
           // 현재 이미지의 num과 보여지는 이미지(slider)가 같으면 원하는 애니메이션을 적용시킨다.
           // 다르다면 투명해지는 애니메이션을 적용시켜 슬라이드의 넘김이 자연스럽게 되도록 한다.
