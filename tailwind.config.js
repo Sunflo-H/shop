@@ -54,7 +54,7 @@ module.exports = {
         "banner-img-sm": "show-sm 1s ease-in-out forwards",
         "banner-text": "move-left 1.5s 1.1s ease forwards",
         "btn-show": "show 1.5s 1.3s ease forwards",
-        hide: "hide 1.7s  ease forwards",
+        hide: "hide 1.7s ease forwards",
       },
       keyframes: {
         "move-left": {

@@ -4,6 +4,8 @@ import Images from "./Images";
 import NextImage from "./NextImage";
 import PrevImage from "./PrevImage";
 
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+
 const IMAGE_DURATION = 2000;
 const FIRST_SLIDER_NUM = 1;
 const LAST_SLIDER_NUM = 3;
@@ -72,7 +74,7 @@ export default function Slider() {
   return (
     <>
       {/* 뷰어 */}
-      <div className="relative w-section overflow-hidden ">
+      <div className="relative w-section bg-red-500 overflow-hidden">
         {/* 이미지들 */}
         <div
           // * isFirst : 이 페이지에 첫 접근이라면 이미지슬라이드를 살짝 움직여서 배너에 애니메이션 효과를 준다.
@@ -95,10 +97,14 @@ export default function Slider() {
             isBtnClicked={isBtnClicked}
           />
         </div>
-      </div>
-      <div className="absolute bottom-52 right-36">
-        <button onClick={handlePrev}>왼쪽</button> <br />
-        <button onClick={handleNext}>오른쪽</button>
+        <div className="absolute left-0 bottom-44 xl:left-auto xl:right-20 text-6xl ">
+          <button className="mr-20 animate-pulse" onClick={handlePrev}>
+            <HiArrowLongLeft />
+          </button>
+          <button className="animate-pulse" onClick={handleNext}>
+            <HiArrowLongRight />
+          </button>
+        </div>
       </div>
     </>
   );
