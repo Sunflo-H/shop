@@ -33,32 +33,41 @@ h1 {
 
 /* Carousel */
 .viewer {
-  width: 1456px;
+  width: 100vw;
+  max-width: 1456px;
+  overflow: hidden;
   background-color: red;
 }
 
 .slider {
-  width: calc(1456px * 4);
+  width: calc(100vw * 5);
 }
 
-.slide0 {
-  transform: translateX(0px);
+.slide {
+  width: 100vw;
 }
+
 .slide1 {
-  transform: translateX(-1456px);
+  transform: translateX(calc(-100vw * 1));
 }
 .slide2 {
-  transform: translateX(-2912px);
+  transform: translateX(calc(-100vw * 2));
 }
 .slide3 {
-  transform: translateX(-4368px);
+  transform: translateX(calc(-100vw * 3));
 }
 .slide4 {
-  transform: translateX(-5824px);
+  transform: translateX(calc(-100vw * 4));
 }
-
 .first-slide {
   transform: translateX(-1400px);
+}
+
+.banner-img {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1040px;
+  max-height: 800px;
 }
 
 .banner1 {
@@ -72,12 +81,12 @@ h1 {
 }
 
 /* 작아졌을때 slide1234를 screen으로 100vw지 */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .viewer {
     width: 100vw;
   }
   .slider {
-    width: calc(100vw * 4);
+    width: calc(100vw * 5);
   }
   .first-slide {
     transform: translateX(-90vw);
@@ -94,7 +103,7 @@ h1 {
   .slide4 {
     transform: translateX(calc(-100vw * 4));
   }
-}
+} */
 
 /* 
 브라우저가 md이하의 사이즈가 되어 slide의 너비가 줄어들면 그에 맞게 slider의 너비도 줄어야 한다.

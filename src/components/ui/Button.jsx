@@ -4,7 +4,7 @@ export default function Button({ text, onClick, color, isAni, num, slider }) {
   if (color === "white") {
     return (
       <span
-        className={`cursor-pointer opacity-0 
+        className={`cursor-pointer opacity-0
         ${num !== slider && "animate-hide"}
         ${num === slider && isAni && "animate-btn-show "} `}
         onClick={onClick}
@@ -18,7 +18,8 @@ export default function Button({ text, onClick, color, isAni, num, slider }) {
   }
   return (
     <span
-      className={`cursor-pointer opacity-0 
+      className={`cursor-pointer
+      opacity-0
       ${num !== slider && "animate-hide"}
       ${num === slider && isAni && "animate-btn-show "}`}
       onClick={onClick}

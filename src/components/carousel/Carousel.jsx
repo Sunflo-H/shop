@@ -75,15 +75,19 @@ export default function Slider() {
       {/* 뷰어 */}
       {/* 스크린만큼 줬을때 패딩을 어떻게 하지? */}
       {/* <div className="relative w-screen md:w-section bg-red-500 overflow-hidden"> */}
-      <div className="relative viewer overflow-hidden">
+      <div className="relative viewer ">
         {/* slider */}
         <div
           // * isFirst : 이 페이지에 첫 접근이라면 이미지슬라이드를 살짝 움직여서 배너에 애니메이션 효과를 준다.
           // * isTransition : transition이 활성화 된 상태라면 duration-2000을 준다.
-          // className={`flex w-screen md:w-slider ease-out
-          className={`flex slider ease-out
-          ${isFirst ? "first-slide opacity-0" : `slide${slider}`} 
-          ${isTransition && `duration-2000`}`}
+
+          // ! slider의 너비 때문에 생기는 문제같아
+          className={`flex slider
+          ease-out
+          ${isFirst ? "first-slide opacity-0" : `slide${slider}`}
+          ${isTransition && `duration-2000`}
+          `}
+          // className={`flex slider slide${slider}`}
         >
           <PrevImage //
             slider={slider}
