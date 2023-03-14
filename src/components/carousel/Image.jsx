@@ -22,8 +22,8 @@ export default function Image({ num, slider, isBtnClicked, text }) {
   return (
     // 여기서 section에 너비는 왜 w-section만 가능한가?
     // <section className="w-section relative mb-20 ">
-    <section className="slide relative mb-20 ">
-      <div className=" bg-white ">
+    <section className=" slide relative mb-20 ">
+      <div className=" slide bg-white ">
         <div
           className={` bg-cover bg-no-repeat banner${num} banner-img
           bg-left40
@@ -37,7 +37,8 @@ export default function Image({ num, slider, isBtnClicked, text }) {
           `}
         ></div>
       </div>
-      <div className="absolute top-48 md:top-64  left-10 xl:left-auto md:right-14 ">
+      {/* <div className="text-box top-48 md:top-64  left-10 xl:left-auto md:right-14 "> */}
+      <div className="text-box ">
         <h2
           className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-10 text-zinc-900 opacity-0
             translate-x-10

@@ -14,7 +14,7 @@ import Test from "../components/Test";
 export default function Home() {
   return (
     <div>
-      <main className="max-w-screen-2xl m-auto px-5 md:px-10 ">
+      <main className="px-5 md:px-10 m-auto max-w-screen-2xl ">
         {/* <Test /> */}
         {/* <Banner /> */}
         <Carousel />

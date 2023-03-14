@@ -4,6 +4,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap");
 
+:root {
+  --screen: calc(100vw - 5rem);
+}
+
 body {
   margin: 0;
   font-family: "Raleway", sans-serif, "Abril Fatface", cursive, -apple-system,
@@ -33,76 +37,92 @@ h1 {
 
 /* Carousel */
 .viewer {
-  width: 100vw;
+  width: var(--screen);
   max-width: 1456px;
   overflow: hidden;
 }
 
 .slider {
-  width: calc(100vw * 5);
+  width: calc(var(--screen) * 5);
 }
 
 .slide {
-  width: 100vw;
+  width: var(--screen);
 }
 
 .slide1 {
-  transform: translateX(calc(-100vw * 1));
+  transform: translateX(calc(var(--screen) * -1));
 }
 .slide2 {
-  transform: translateX(calc(-100vw * 2));
+  transform: translateX(calc(var(--screen) * -2));
 }
 .slide3 {
-  transform: translateX(calc(-100vw * 3));
+  transform: translateX(calc(var(--screen) * -3));
 }
 .slide4 {
-  transform: translateX(calc(-100vw * 4));
+  transform: translateX(calc(var(--screen) * -4));
 }
 .first-slide {
   transform: translateX(-1400px);
 }
 
 .banner-img {
-  width: 100vw;
+  width: var(--screen);
   height: 100vh;
   max-width: 1040px;
   max-height: 800px;
 }
 
 .banner1 {
-  background-image: url("../public/images/home/banner1.jpg");
+  /* background-image: url("../public/images/home/banner1.jpg"); */
+  background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1040/v1678772735/shoppy/jonas-svidras-t6TvCg7Ft5E-unsplash_xp02ba.jpg");
 }
 .banner2 {
   background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,w_1040/v1678444072/shoppy/aaron-robinson-k1efdruuT5E-unsplash_c8wgjl.jpg");
 }
 .banner3 {
-  background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1080/v1678444074/shoppy/averie-woodard-4nulm-JUYFo-unsplash_abj5b1.jpg");
+  /* background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1080/v1678444074/shoppy/averie-woodard-4nulm-JUYFo-unsplash_abj5b1.jpg"); */
+  background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1040/v1678772735/shoppy/ke-atlas-eqHRrgRQDew-unsplash_grixz9.jpg");
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translateY(-50%);
+
+  width: 700px;
+}
+
+.arrow-box {
+  position: absolute;
+  width: 350px;
+  right: 0;
+  padding: 0 1rem;
 }
 
 /* 작아졌을때 slide1234를 screen으로 100vw지 */
-/* @media (max-width: 768px) {
-  .viewer {
-    width: 100vw;
+@media (max-width: 768px) {
+  .text-box {
+    top: 40%;
+    left: 10%;
   }
-  .slider {
-    width: calc(100vw * 5);
+  :root {
+    --screen: calc(100vw - 2.5rem);
   }
-  .first-slide {
-    transform: translateX(-90vw);
+}
+
+@media (max-width: 1280px) {
+  .arrow-box {
+    width: var(--screen);
   }
-  .slide1 {
-    transform: translateX(calc(-100vw * 1));
+}
+
+@media (min-width: 1500px) {
+  .text-box {
+    left: 700px;
   }
-  .slide2 {
-    transform: translateX(calc(-100vw * 2));
-  }
-  .slide3 {
-    transform: translateX(calc(-100vw * 3));
-  }
-  .slide4 {
-    transform: translateX(calc(-100vw * 4));
-  }
-} */
+}
 
 /* 
 브라우저가 md이하의 사이즈가 되어 slide의 너비가 줄어들면 그에 맞게 slider의 너비도 줄어야 한다.
@@ -124,5 +144,5 @@ slider의 너비는 w-slider = w-section * 4
 */
 
 .test {
-  width: calc(25vw * 2);
+  /* width: calc(25vw * 2); */
 }

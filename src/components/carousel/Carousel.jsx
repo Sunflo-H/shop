@@ -103,8 +103,9 @@ export default function Slider() {
             isBtnClicked={isBtnClicked}
           />
         </div>
-        <div className="absolute left-0 bottom-44 xl:left-auto xl:right-20 text-6xl ">
-          <button className="mr-20 animate-pulse" onClick={handlePrev}>
+        {/* <div className="absolute left-0 bottom-44 md:left-auto md:right-20 text-6xl bg-red-500 pr-10"> */}
+        <div className="arrow-box  flex justify-between bottom-44 text-6xl  ">
+          <button className=" animate-pulse" onClick={handlePrev}>
             <HiArrowLongLeft />
           </button>
           <button className="animate-pulse" onClick={handleNext}>
