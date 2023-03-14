@@ -16,6 +16,7 @@ export default function Home() {
     <div>
       <main className="px-5 md:px-10 m-auto max-w-screen-2xl ">
         <Carousel />
+
         <section className="w-full flex flex-col mb-20 ">
           <div className="flex flex-col md:flex-row w-full justify-around gap-2 md:px-20 ">
             <div className="h-48 md:w-2/5 md:h-auto overflow-hidden ">
@@ -42,7 +43,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative w-full h-96 mb-20 bg-black">
+        <section className="relative w-full h-screen max-h-96 mb-20 bg-black">
           <div className="w-full h-full bg-cover bg-center bg-accessories opacity-70"></div>
           <div className="absolute w-full top-28 text-center ">
             <h2 className="text-6xl font-bold mb-12 text-white">
