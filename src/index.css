@@ -74,14 +74,12 @@ h1 {
 }
 
 .banner1 {
-  /* background-image: url("../public/images/home/banner1.jpg"); */
   background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1040/v1678772735/shoppy/jonas-svidras-t6TvCg7Ft5E-unsplash_xp02ba.jpg");
 }
 .banner2 {
   background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,w_1040/v1678444072/shoppy/aaron-robinson-k1efdruuT5E-unsplash_c8wgjl.jpg");
 }
 .banner3 {
-  /* background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1080/v1678444074/shoppy/averie-woodard-4nulm-JUYFo-unsplash_abj5b1.jpg"); */
   background-image: url("https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_800,w_1040/v1678772735/shoppy/ke-atlas-eqHRrgRQDew-unsplash_grixz9.jpg");
 }
 
@@ -101,7 +99,6 @@ h1 {
   padding: 0 1rem;
 }
 
-/* 작아졌을때 slide1234를 screen으로 100vw지 */
 @media (max-width: 768px) {
   .text-box {
     top: 40%;

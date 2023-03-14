@@ -21,22 +21,19 @@ module.exports = {
       height: {
         banner: "800px",
         image: "720px",
-        section: "800px",
       },
       maxWidth: {
         banner: "1040px",
       },
       maxHeight: {
         banner: "800px",
+        section: "800px",
       },
       colors: {
         brand: "#f96162",
       },
       backgroundImage: {
-        banner1: `url('../public/images/home/banner1.jpg')`,
-        banner2: `url('../public/images/home/banner2.jpg')`,
-        banner3: `url('../public/images/home/banner3.jpg')`,
-        banner4: `url('../public/images/home/accessories.jpg')`,
+        accessories: `url('../public/images/home/accessories.jpg')`,
       },
       translate: {
         section0: "0px",
