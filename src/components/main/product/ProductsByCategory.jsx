@@ -13,13 +13,20 @@ export default function ProductsByCategory({ category }) {
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
+
+  let title =
+    category === "Men" || category === "Women"
+      ? `SHOP ALL ${category.toUpperCase()}'S CLOTHING
+      `
+      : `The ${category} Shop`;
+
   return (
     <section>
-      <p className="text-center">The category's Shop</p>
+      <h1 className="text-center text-4xl my-14">{title}</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl m-auto px-10 gap-5">
         {data &&
           data.map((product, index) => (
-            <ProductCard product={product} key={index} />
+            <ProductCard product={product} key={index} index={index} />
           ))}
       </div>
     </section>

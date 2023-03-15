@@ -76,6 +76,7 @@ export async function getProduct(category) {
     const snapshot = await get(ref(db, `products/${category}`));
     if (snapshot.exists()) {
       const data = snapshot.val();
+      console.log(data);
       let products = Object.values(data);
       return products;
     }

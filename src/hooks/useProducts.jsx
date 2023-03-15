@@ -7,11 +7,14 @@ const SEC = 1000;
  */
 export default function useProducts(category) {
   const queryClient = useQueryClient();
-  console.log(category);
   // 상품 정보를 불러온다.
-  const productsQuery = useQuery(["products"], () => getProduct(category), {
-    staleTime: SEC * 60,
-  });
+  const productsQuery = useQuery(
+    ["products", category],
+    async () => getProduct(category),
+    {
+      staleTime: SEC * 60,
+    }
+  );
 
   // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
   const addProduct = useMutation(
@@ -25,7 +28,7 @@ export default function useProducts(category) {
       },
       onSuccess: (data, variables, context) => {
         console.log("success", data, variables, context);
-        queryClient.invalidateQueries(["products"]);
+        queryClient.invalidateQueries(["products", category]);
       },
       onSettled: () => {
         // console.log("end");

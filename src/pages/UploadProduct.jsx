@@ -8,7 +8,6 @@ import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
 
 export default function UploadProduct() {
-  const { addProduct } = useProducts();
   const [isUploading, setIsUploading] = useState();
   const [success, setSuccess] = useState();
   const [file, setFile] = useState();
@@ -20,6 +19,7 @@ export default function UploadProduct() {
     size: "",
     color: "",
   });
+  const { addProduct } = useProducts(product?.category);
   const inputStyle = "p-4 outline-none border border-gray-300 my-1";
 
   const handleChange = (e) => {
