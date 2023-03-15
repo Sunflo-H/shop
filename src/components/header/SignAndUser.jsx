@@ -53,7 +53,7 @@ export default function SignAndUser() {
                     to="/products/new"
                     className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
                   >
-                    Add Products
+                    Upload Products
                   </Link>
                 </li>
                 <li className="mb-4 ">

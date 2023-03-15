@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import AllProduct from "./pages/AllProduct";
-import NewProduct from "./pages/NewProduct";
+import UploadProduct from "./pages/UploadProduct";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         path: "/products/new",
         element: (
           <ProtectedRoute requireAdmin>
-            <NewProduct />
+            <UploadProduct />
           </ProtectedRoute>
         ),
       },

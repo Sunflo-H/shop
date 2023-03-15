@@ -55,13 +55,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* <HomeContents>
-          <div className="text-center mb-16">
-            <p className="text-2xl mb-8">
-              <span className="font-bold ">NEW</span> MODELS
+        <section className="w-full flex flex-col m-auto mb-20 ">
+          <div className="text-center mb-6">
+            <p className="text-md mb-4 tracking-widest">
+              <span className="font-bold mr-4">NEW</span>
+              <span className="">COLLECTIONS</span>
             </p>
-            <h2 className="text-5xl font-semibold">Featured Item</h2>
+            <h2 className="text-5xl font-semibold">Featured Items</h2>
           </div>
+          <ul className="flex justify-center gap-8 mb-6">
+            <li className="cursor-pointer">Men</li>
+            <li className="cursor-pointer">Women</li>
+            <li className="cursor-pointer">Accessories</li>
+            <li className="cursor-pointer">Shoes</li>
+          </ul>
           <div className="flex justify-center  mb-14">
             <div className="md:w-2/3">
               <NewProducts />
@@ -70,7 +77,7 @@ export default function Home() {
           <div className="text-center ">
             <Button text="See All" />
           </div>
-        </HomeContents> */}
+        </section>
 
         {/* <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
           <h1 className="text-5xl font-bold mb-8">Our Stories</h1>

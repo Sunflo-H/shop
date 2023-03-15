@@ -13,11 +13,14 @@ export default function AllProduct() {
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
   return (
-    <div className="grid grid-cols-4 ">
-      {data &&
-        data.map((product, index) => (
-          <ProductCard product={product} key={index} />
-        ))}
-    </div>
+    <section>
+      <p className="text-center">The category's Shop</p>
+      <div className="grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl m-auto px-10 gap-5">
+        {data &&
+          data.map((product, index) => (
+            <ProductCard product={product} key={index} />
+          ))}
+      </div>
+    </section>
   );
 }

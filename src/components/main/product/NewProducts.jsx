@@ -13,7 +13,7 @@ export default function NewProducts() {
     <div className="grid grid-cols-2 md:grid-cols-4 ">
       {data &&
         data.map((product, index) => {
-          if (index >= 4) return;
+          if (index >= 8) return;
           return <ProductCard product={product} key={index} />;
         })}
     </div>
