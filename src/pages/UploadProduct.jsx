@@ -4,29 +4,24 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import { uploadNewProduct } from "../api/firebase";
 
-import Button from "../components/ui/Button";
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
 
 export default function UploadProduct() {
+  const { addProduct } = useProducts();
   const [isUploading, setIsUploading] = useState();
   const [success, setSuccess] = useState();
   const [file, setFile] = useState();
   const [product, setProduct] = useState({
     category: "",
-    url: "",
     title: "",
     price: "",
     description: "",
     size: "",
-    colors: "",
+    color: "",
   });
-  const [category, setCategory] = useState();
-  const [isUploadTypeFile, setIsUploadTypeFile] = useState(true); // true면 "이미지", false면 "Url"
-
-  const { addProduct } = useProducts();
-
   const inputStyle = "p-4 outline-none border border-gray-300 my-1";
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "file") {
@@ -57,17 +52,11 @@ export default function UploadProduct() {
     }
   };
 
-  const handleUploadTypeClick = (e) => {
-    if (e.currentTarget.innerText === "URL") {
-      setIsUploadTypeFile(false);
-    } else setIsUploadTypeFile(true);
-  };
-
   return (
     <section className="text-center max-w-screen-2xl m-auto">
       <h2 className="text-2xl font-bold my-4">Upload New Products</h2>
 
-      {success && <p className="my-2">✅Registered Successfully.</p>}
+      {success && <p className="my-2">✅Upload Successfully.</p>}
       {file && (
         <img
           className="w-80 h-96 mx-auto mb-2"
@@ -89,7 +78,7 @@ export default function UploadProduct() {
           />
           <label
             className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product.category === "Men" && "bg-black text-white"
+              product?.category === "Men" && "bg-black text-white"
             }`}
             htmlFor="Men"
           >
@@ -105,7 +94,7 @@ export default function UploadProduct() {
           />
           <label
             className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product.category === "Women" && "bg-black text-white"
+              product?.category === "Women" && "bg-black text-white"
             }`}
             htmlFor="Women"
           >
@@ -121,7 +110,7 @@ export default function UploadProduct() {
           />
           <label
             className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product.category === "Accessories" && "bg-black text-white"
+              product?.category === "Accessories" && "bg-black text-white"
             }`}
             htmlFor="Accessories"
           >
@@ -137,73 +126,22 @@ export default function UploadProduct() {
           />
           <label
             className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product.category === "Shoes" && "bg-black text-white"
+              product?.category === "Shoes" && "bg-black text-white"
             }`}
             htmlFor="Shoes"
           >
             Shoes
           </label>
         </div>
-        {isUploadTypeFile ? (
-          <div className="flex flex-col">
-            <div className="flex">
-              <div
-                className={`w-32 px-4 py-2 font-bold cursor-pointer
-                          border border-gray-300 
-                          ${isUploadTypeFile && "bg-black text-white"} `}
-                onClick={handleUploadTypeClick}
-              >
-                Image
-              </div>
-              <div
-                className={`px-4 w-32 py-2 font-bold cursor-pointer
-                          border border-gray-300 border-l-0 
-                          ${!isUploadTypeFile && "bg-black text-white"}`}
-                onClick={handleUploadTypeClick}
-              >
-                URL
-              </div>
-            </div>
-            <input
-              className="px-4 pt-3.5 pb-3 outline-none border border-gray-300 my-1"
-              type="file"
-              accept="image/*"
-              name="file"
-              required
-              onChange={handleChange}
-            />
-          </div>
-        ) : (
-          <div className="flex flex-col">
-            <div className="flex">
-              <div
-                className={`w-32 px-4 py-2 font-bold cursor-pointer
-                          border border-gray-300 
-                          ${isUploadTypeFile && "bg-black text-white"} `}
-                onClick={handleUploadTypeClick}
-              >
-                Image
-              </div>
-              <div
-                className={`px-4 w-32 py-2 font-bold cursor-pointer
-                          border border-gray-300 border-l-0 
-                          ${!isUploadTypeFile && "bg-black text-white"}`}
-                onClick={handleUploadTypeClick}
-              >
-                URL
-              </div>
-            </div>
-            <input
-              className={inputStyle}
-              type="text"
-              name="url"
-              value={product?.url}
-              placeholder="Image Url"
-              required
-              onChange={handleChange}
-            />
-          </div>
-        )}
+
+        <input
+          className="px-4 pt-3.5 pb-3 outline-none border border-gray-300 my-1"
+          type="file"
+          accept="image/*"
+          name="file"
+          required
+          onChange={handleChange}
+        />
 
         <input
           className={inputStyle}

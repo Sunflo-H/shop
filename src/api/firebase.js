@@ -66,10 +66,12 @@ export function uploadNewProduct(product, imageUrl) {
     id,
     imageUrl,
     price: Number(product.price),
-    options: product.options.split(","),
+    size: product.size.split(","),
+    color: product.color.split(","),
   });
 }
 
+//! 이름을 download인게 마음에 안든다. 상품 정보를 불러오는 기능
 export async function downloadProduct() {
   try {
     const snapshot = await get(ref(db, `products/`));

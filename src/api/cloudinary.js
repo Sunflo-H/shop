@@ -9,6 +9,8 @@ export async function imageUploadAndGetUrl(file) {
     method: "POST",
     body: formData,
   });
+
   const data = await response.json();
+
   return data.url;
 }
