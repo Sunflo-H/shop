@@ -5,6 +5,7 @@ import NextImage from "./NextImage";
 import PrevImage from "./PrevImage";
 
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+import { AiOutlineSwapLeft, AiOutlineSwapRight } from "react-icons/ai";
 
 const IMAGE_DURATION = 2000;
 const FIRST_SLIDER_NUM = 1;
@@ -102,10 +103,10 @@ export default function Slider() {
         </div>
         <div className="arrow-box  flex justify-between bottom-44 text-6xl  ">
           <button className=" animate-pulse" onClick={handlePrev}>
-            <HiArrowLongLeft />
+            <AiOutlineSwapLeft />
           </button>
           <button className="animate-pulse" onClick={handleNext}>
-            <HiArrowLongRight />
+            <AiOutlineSwapRight />
           </button>
         </div>
       </div>

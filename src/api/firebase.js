@@ -61,7 +61,7 @@ async function isAdmin(user) {
 
 export function uploadNewProduct(product, imageUrl) {
   const id = uuid();
-  return set(ref(db, "products/" + id), {
+  return set(ref(db, `products/${product.category}/${id}`), {
     ...product,
     id,
     imageUrl,
@@ -71,10 +71,9 @@ export function uploadNewProduct(product, imageUrl) {
   });
 }
 
-//! 이름을 download인게 마음에 안든다. 상품 정보를 불러오는 기능
-export async function downloadProduct() {
+export async function getProduct(category) {
   try {
-    const snapshot = await get(ref(db, `products/`));
+    const snapshot = await get(ref(db, `products/${category}`));
     if (snapshot.exists()) {
       const data = snapshot.val();
       let products = Object.values(data);
@@ -89,10 +88,6 @@ export async function downloadProduct() {
 export function uploadCart(product, uid) {
   set(ref(db, `carts/${uid}/${product.id}`), product);
 }
-
-// export function updateCart(product, uid) {
-//   set(ref(db, `carts/${uid}/${product.id}`), product);
-// }
 
 export async function downloadCart(uid) {
   try {

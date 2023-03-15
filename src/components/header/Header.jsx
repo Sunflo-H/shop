@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className="relative flex items-center justify-center md:justify-between max-w-screen-2xl m-auto  md:px-10">
         <Link
           to="/"
-          className="flex items-center text-3xl md:mr-6 xl:mr-20 pt-2 pb-3 md:pb-2"
+          className="flex items-center text-3xl md:mr-6 xl:mr-20 pt-2 pb-3 md:pb-2 cursor-pointer"
         >
           <h1>Adonis</h1>
         </Link>

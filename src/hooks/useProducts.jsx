@@ -1,15 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { downloadProduct, uploadNewProduct } from "../api/firebase";
+import { getProduct, uploadNewProduct } from "../api/firebase";
 
 const SEC = 1000;
 /**
  * 상품 정보를 불러오거나, 새 상품을 등록하는 훅
  */
-export default function useProducts() {
+export default function useProducts(category) {
   const queryClient = useQueryClient();
-
+  console.log(category);
   // 상품 정보를 불러온다.
-  const productsQuery = useQuery(["products"], downloadProduct, {
+  const productsQuery = useQuery(["products"], () => getProduct(category), {
     staleTime: SEC * 60,
   });
 

@@ -8,7 +8,8 @@ export default function NavItem({ navItem, isSide }) {
 
   return (
     <Link
-      to="/products"
+      to={`/products/${navItem}`}
+      state={navItem}
       className=" border-b-2 border-transparent hover:border-black  h-full pt-5 pb-3 px-2"
     >
       {navItem}

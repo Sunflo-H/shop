@@ -7,9 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
-import AllProduct from "./pages/AllProduct";
 import UploadProduct from "./pages/UploadProduct";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Products from "./pages/Products";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
-        element: <AllProduct />,
+        path: "/products/:category",
+        element: <Products />,
       },
       {
         path: "/products/new",

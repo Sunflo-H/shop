@@ -1,14 +1,15 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
-import { downloadProduct } from "../api/firebase";
-import ProductCard from "../components/main/product/ProductCard";
-import useProducts from "../hooks/useProducts";
+import { downloadProduct } from "../../../api/firebase";
+import ProductCard from "./ProductCard";
+import useProducts from "../../../hooks/useProducts";
 
-export default function AllProduct() {
+export default function ProductsByCategory({ category }) {
   const {
     productsQuery: { isLoading, error, data },
-  } = useProducts();
+  } = useProducts(category);
+  console.log(data);
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
