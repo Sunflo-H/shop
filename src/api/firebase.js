@@ -26,10 +26,12 @@ const auth = getAuth();
 const db = getDatabase(app);
 
 // 매번 로그인 할 때마다 유저를 선택하는 옵션
+// 로그인할 유저 선택
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
+// 로그인
 export function login() {
   signInWithPopup(auth, provider).catch(console.error);
 }

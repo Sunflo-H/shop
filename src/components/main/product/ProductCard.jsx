@@ -4,7 +4,6 @@ import { AiFillHeart } from "react-icons/ai";
 
 export default function ProductCard({ product }) {
   const { title, imageUrl, category, price, id } = product;
-  const [isNew, setNew] = useState(); // 새상품
   const [isLove, setIsLove] = useState(false); // 찜
   const navigate = useNavigate();
 

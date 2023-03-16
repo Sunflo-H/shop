@@ -9,7 +9,7 @@ import Button from "../components/ui/Button";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "react-awesome-slider/dist/styles.css";
 import Carousel from "../components/carousel/Carousel";
-import Test from "../components/Test";
+import ProductsByCategory from "../components/main/product/ProductsByCategory";
 
 export default function Home() {
   return (
@@ -71,7 +71,7 @@ export default function Home() {
           </ul>
           <div className="flex justify-center  mb-14">
             <div className="md:w-2/3">
-              <NewProducts />
+              <ProductsByCategory category="Men" count={8} grid_cols={4} />
             </div>
           </div>
           <div className="text-center ">
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
+        <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
           <h1 className="text-5xl font-bold mb-8">Our Stories</h1>
           <div className="flex gap-10 mb-32">
             <div className="basis-1/4 cursor-pointer">
@@ -177,9 +177,11 @@ export default function Home() {
               <Button text="Meet our Community" />
             </div>
           </div>
-        </div> */}
+        </div>
       </main>
-      <footer className="border-gray-400 border-t">{/* <Footer /> */}</footer>
+      <footer className="border-gray-400 border-t">
+        <Footer />
+      </footer>
     </div>
   );
 }
