@@ -33,7 +33,7 @@ export default function Navbar() {
           <SignAndUser />
         </div>
 
-        {/* 반응형 */}
+        {/* 너비가 작아졌을때 */}
 
         {/* 햄버거 */}
         {isSideNavOpen ? (

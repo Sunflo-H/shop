@@ -8,10 +8,10 @@ export default function ProductDetail() {
   const { uid } = useAuthContext();
   const { addCart } = useCart();
   const {
-    product: { id, title, imageUrl, price, description, options, category },
+    product: { id, title, imageUrl, price, description, size, color, category },
   } = useLocation().state;
 
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(size[0]);
 
   const [isAddCart_3s, setIsAddCart_3s] = useState(false);
 
@@ -21,7 +21,7 @@ export default function ProductDetail() {
       title,
       imageUrl,
       price,
-      option: selected, // 얘랑
+      size: selected, // 얘랑
       quantity: 1, // 얘땜에 내부변수 product가 필요
     };
 
@@ -60,8 +60,8 @@ export default function ProductDetail() {
                 value={selected}
                 onChange={handleChange}
               >
-                {options &&
-                  options.map((option, index) => (
+                {size &&
+                  size.map((option, index) => (
                     <option key={index}>{option}</option>
                   ))}
               </select>
