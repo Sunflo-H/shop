@@ -1,12 +1,7 @@
 import React from "react";
-import { BsFillPencilFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../../context/AuthContext";
-import Cart from "./Cart";
 import NavItem from "./NavItem";
-import User from "./User";
 
-export default function Nav({ isNavOpen }) {
+export default function Nav() {
   const navItemList = ["Home", "Men", "Women", "Accessories", "Shoes", "Blog"];
 
   return (
