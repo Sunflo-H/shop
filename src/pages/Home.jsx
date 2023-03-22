@@ -3,7 +3,7 @@ import AwesomeSlider from "react-awesome-slider";
 import Footer from "../components/footer/Footer";
 import Banner from "../components/main/Banner";
 import HomeContents from "../components/main/HomeContents";
-import NewProducts from "../components/main/product/NewProducts";
+import HomeProducts from "../components/main/product/HomeProducts";
 import Button from "../components/ui/Button";
 
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
@@ -71,7 +71,7 @@ export default function Home() {
           </ul>
           <div className="flex justify-center  mb-14">
             <div className="md:w-2/3">
-              <ProductsByCategory category="Men" count={8} grid_cols={4} />
+              <HomeProducts category="Men" />
             </div>
           </div>
           <div className="text-center ">
