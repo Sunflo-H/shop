@@ -83,7 +83,11 @@ export default function Home() {
           <h1 className="text-5xl font-bold mb-8">Our Stories</h1>
           <div className="flex gap-10 mb-32">
             <div className="basis-1/4 cursor-pointer">
-              <img className="mb-4" src="/images/home/blog4.jpg" alt="" />
+              <img
+                className="mb-4"
+                src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_405,w_270/v1679413296/shoppy/blog4_gmrzw8.jpg"
+                alt=""
+              />
               <h1 className="text-xl mb-4">
                 Creative Spirits Series: Nails by Mei X J.Crew
               </h1>
@@ -92,21 +96,33 @@ export default function Home() {
               </span>
             </div>
             <div className="basis-1/4 cursor-pointer">
-              <img className="mb-4" src="/images/home/blog1.jpg" alt="" />
+              <img
+                className="mb-4"
+                src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_405,w_270/v1679413299/shoppy/blog1_uot0ej.jpg"
+                alt=""
+              />
               <h1 className="text-xl mb-4">The edit: embellished everything</h1>
               <span className="font-bold border-b-2 border-black pb-1">
                 Shop the roundup
               </span>
             </div>
             <div className="basis-1/4 cursor-pointer">
-              <img className="mb-4" src="/images/home/blog3.jpg" alt="" />
+              <img
+                className="mb-4"
+                src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_405,w_270/v1679413298/shoppy/blog3_ufgcyf.jpg"
+                alt=""
+              />
               <h1 className="text-xl mb-4">Olympia’s picks: March edition</h1>
               <span className="font-bold border-b-2 border-black pb-1">
                 Shop her favorite styles
               </span>
             </div>
             <div className="basis-1/4 cursor-pointer">
-              <img className="mb-4" src="/images/home/blog2.jpg" alt="" />
+              <img
+                className="mb-4"
+                src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_405,w_270/v1679413299/shoppy/blog2_twfun4.jpg"
+                alt=""
+              />
               <h1 className="text-xl mb-4">Local time with Leigh Altshuler</h1>
               <span className="font-bold border-b-2 border-black pb-1">
                 Explore her NYC bookstore
@@ -114,46 +130,46 @@ export default function Home() {
             </div>
           </div>
           <div className="flex border-t-4 border-gray-900 ">
-            <div className="flex flex-wrap w-3/4  items-start">
-              <div className="basis-1/3 pr-4 pb-4 h-80">
+            <div className="flex flex-wrap w-3/4  items-start ">
+              <div className="basis-1/3 pr-8 pb-6 h-80 ">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog8.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog8_ewqvt6.jpg"
                   alt=""
                 />
               </div>
-              <div className="basis-1/3 px-4 pb-4 h-80">
+              <div className="basis-1/3 pr-8 pb-6 h-80 ">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog6.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413297/shoppy/blog6_g5hgqh.jpg"
                   alt=""
                 />
               </div>
-              <div className="basis-1/3 px-4 pb-4 h-80">
+              <div className="basis-1/3 pr-8 pb-6 h-80 ">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog7.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413299/shoppy/blog7_znvyes.jpg"
                   alt=""
                 />
               </div>
-              <div className="basis-1/3 pr-4 py-4 h-80">
+              <div className="basis-1/3 pr-8 pt-2 pb-4 h-80">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog5.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413297/shoppy/blog5_ynq6j0.jpg"
                   alt=""
                 />
               </div>
-              <div className="basis-1/3 p-4 h-80">
+              <div className="basis-1/3 pr-8 pt-2 pb-4 h-80">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog9.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog9_vmczy4.jpg"
                   alt=""
                 />
               </div>
-              <div className="basis-1/3 p-4 h-80">
+              <div className="basis-1/3 pr-8 pt-2 pb-4 h-80">
                 <img
                   className="w-full h-full"
-                  src="/images/home/blog10.jpg"
+                  src="https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog10_cw41yu.jpg"
                   alt=""
                 />
               </div>
