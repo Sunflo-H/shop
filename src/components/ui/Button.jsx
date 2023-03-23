@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function Button({ text, onClick, color, isAni, num, slider }) {
+export default function Button({
+  text,
+  handleClick,
+  color,
+  isAni,
+  num,
+  slider,
+}) {
   if (slider) {
     return (
       <span
@@ -8,7 +15,7 @@ export default function Button({ text, onClick, color, isAni, num, slider }) {
         opacity-0
         ${num !== slider && "animate-hide"}
         ${num === slider && isAni && "animate-btn-show "}`}
-        onClick={onClick}
+        onClick={handleClick}
       >
         <span className="bg-black text-white px-4 py-2.5  md:p-4 md:px-8 text-sm">
           {text}
@@ -20,7 +27,7 @@ export default function Button({ text, onClick, color, isAni, num, slider }) {
 
   if (color === "white") {
     return (
-      <span className={`cursor-pointer`} onClick={onClick}>
+      <span className={`cursor-pointer`} onClick={handleClick}>
         <span className="bg-black text-white p-4 px-8 text-sm border border-white">
           {text}
         </span>
@@ -30,7 +37,7 @@ export default function Button({ text, onClick, color, isAni, num, slider }) {
   }
 
   return (
-    <span className={`cursor-pointer`} onClick={onClick}>
+    <span className={`cursor-pointer`} onClick={handleClick}>
       <span className="bg-black text-white px-4 py-2.5  md:p-4 md:px-8 text-sm">
         {text}
       </span>
