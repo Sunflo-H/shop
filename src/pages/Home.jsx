@@ -121,7 +121,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="w-full h-full bg-gray-100 px-32 pt-14 py-10 mb-20 ">
+        <div className="w-full h-full bg-gray-100 px-4 md:px-32 pt-14 py-10 mb-20 ">
           <HomeContents_blog />
         </div>
       </main>
