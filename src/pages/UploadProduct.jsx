@@ -53,7 +53,7 @@ export default function UploadProduct() {
   };
 
   return (
-    <section className="text-center max-w-screen-2xl m-auto">
+    <section className="text-center max-w-screen-2xl m-auto pt-20">
       <h2 className="text-2xl font-bold my-4">Upload New Products</h2>
 
       {success && <p className="my-2">✅Upload Successfully.</p>}

@@ -49,7 +49,7 @@ export default function ProductDetail() {
   };
 
   return (
-    <section className=" px-4 md:px-20 ">
+    <section className=" px-4 md:px-20 pt-20">
       {isAddCart_3s && (
         <div
           className={`fixed top-0 left-1/2  px-4 py-2 font-bold

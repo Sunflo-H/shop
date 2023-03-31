@@ -19,7 +19,7 @@ export default function Navbar() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   return (
-    <header className="border-b border-gray-300 mb-10">
+    <header className="fixed w-full border-b border-gray-300 mb-10 z-50 bg-white">
       <div className="relative flex items-center justify-center md:justify-between max-w-screen-2xl m-auto  md:px-10">
         <Link
           to="/"

@@ -24,7 +24,7 @@ export default function MyCart() {
   };
 
   return (
-    <div className="px-4">
+    <div className="px-4 pt-20">
       <div className="text-center py-2 px-4 border-b">
         <span className="text-xl font-bold">내 장바구니</span>
       </div>

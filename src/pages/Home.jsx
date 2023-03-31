@@ -7,7 +7,7 @@ import HomeContents_ProductsByCategory from "../components/main/Home/HomeContent
 
 export default function Home() {
   return (
-    <div>
+    <div className="pt-20">
       <main className="px-5 md:px-10 m-auto max-w-screen-2xl ">
         <Carousel />
 

@@ -20,7 +20,7 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
       : `The ${category} Shop`;
 
   return (
-    <section>
+    <section className="pt-20">
       {category && <h1 className="text-center text-4xl my-14">{title}</h1>}
       <div
         className={`grid grid-cols-2 
