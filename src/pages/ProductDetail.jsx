@@ -50,6 +50,15 @@ export default function ProductDetail() {
 
   return (
     <section className=" px-4 md:px-20 ">
+      {isAddCart_3s && (
+        <div
+          className={`fixed top-0 left-1/2  px-4 py-2 font-bold
+                            rounded border border-green-300 bg-green-100
+                          animate-toast`}
+        >
+          Added Cart
+        </div>
+      )}
       <div
         className="flex flex-col lg:flex-row w-full justify-center m-auto max-w-screen-2xl 
                       gap-0 md:gap-20 "
@@ -105,16 +114,6 @@ export default function ProductDetail() {
                 )}
               </div>
             </div>
-
-            {isAddCart_3s && (
-              <div
-                className={`absolute top-0 left-1/2  px-4 py-2 
-                            rounded border border-green-300 bg-green-100
-                          animate-toast`}
-              >
-                Added Cart
-              </div>
-            )}
           </div>
         </div>
       </div>
