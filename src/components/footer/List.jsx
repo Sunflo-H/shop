@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function List({ list }) {
-  const liStyle = "w-36  mt-2 font-semibold text-xs ";
+  const liStyle = "w-24 md:w-36  mt-2 font-semibold text-xs ";
   const spanStyle =
     "border-b-2 border-transparent hover:border-black cursor-pointer";
   return (

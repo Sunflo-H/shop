@@ -49,8 +49,8 @@ export default function Footer() {
   ];
   return (
     <>
-      <div className="max-w-screen-2xl m-auto">
-        <ul className="flex justify-center items-center p-4 gap-10 text-lg font-bold">
+      <div className="max-w-screen-2xl m-auto hidden md:block">
+        <ul className="flex justify-center items-center p-4 gap-10 text-lg font-bold ">
           <li className="flex items-center ">
             <BsGithub className="mr-2 text-2xl" />
             <span>Sunflo-H</span>
@@ -66,14 +66,20 @@ export default function Footer() {
         </ul>
       </div>
       <div className="bg-gray-100 pb-10">
-        <div className="flex flex-col-reverse md:flex-row justify-between max-w-screen-xl text-sm pt-14 m-auto">
+        <div
+          className=" flex  justify-between max-w-screen-xl text-sm  m-auto
+                     flex-col-reverse md:flex-row md:pt-14"
+        >
           <div className="">
-            <div className="flex">
+            <div
+              className="flex 
+                        flex-wrap md:flex-nowrap gap-4 md:gap-0 p-8 md:p-0"
+            >
               {etcList.map((list) => (
                 <List list={list} />
               ))}
             </div>
-            <div>
+            <div className="px-8 md:p-0">
               <div className="flex items-center gap-4 mb-8">
                 <BsInstagram className="text-2xl" />
                 <FaFacebookF className="text-2xl" />
@@ -88,7 +94,7 @@ export default function Footer() {
               <p className="font-bold px-2">© 2023 Adonis</p>
             </div>
           </div>
-          <div>
+          <div className="p-8 ">
             <h1 className="mb-2">Like Being First?</h1>
             <p className="text-gray-400 font-semibold mb-2">
               Get can't-miss style news, before everybody else.
