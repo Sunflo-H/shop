@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { uploadCart } from "../api/firebase";
 import Option_color from "../components/main/product/Option_color";
 import Option_size from "../components/main/product/Option_size";
@@ -47,17 +47,23 @@ export default function ProductDetail() {
   };
 
   return (
-    <section className="px-20">
-      <div className="my-4 pl-4"> &gt; {category}</div>
-      <section className="flex flex-col lg:flex-row w-full">
-        <div className="w-full basis-7/12">
+    <section className=" px-4 md:px-20 ">
+      <div
+        className="flex flex-col lg:flex-row w-full justify-center m-auto max-w-screen-2xl 
+                      gap-0 md:gap-20 "
+      >
+        <div className="w-full basis-5/12">
+          <div className="text-xl ml-2 mb-4">
+            <Link to="/"> Home </Link> /{" "}
+            <Link to={`/products/${category}`} state={category}>
+              {category}
+            </Link>
+          </div>
           <img src={imageUrl} alt="" className="w-full" />
         </div>
-        <div className="w-full basis-5/12 pl-4 pt-4">
+        <div className="w-full basis-5/12 pt-14 ">
           <div className="text-2xl font-bold">{title}</div>
-          <div className="font-bold py-2 border-b border-gray-400">
-            ₩{price}
-          </div>
+          <div className="font-bold py-2 text-xl">$ {price}</div>
           <div className="py-2">{description}</div>
           <div className="py-2">
             <div className="w-full ">
@@ -73,7 +79,7 @@ export default function ProductDetail() {
               />
             </div>
             <button
-              className="block w-11/12 bg-black my-4 m-auto py-3 text-white text-xl font-bold"
+              className="block w-full bg-black my-10 m-auto py-3 text-white text-xl font-bold"
               onClick={handleClick}
             >
               Add Cart
@@ -81,7 +87,7 @@ export default function ProductDetail() {
             {isAddCart_3s && <div>Added Cart </div>}
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 }
