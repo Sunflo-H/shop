@@ -60,9 +60,6 @@ export default function Home() {
           <HomeContents_blog />
         </div>
       </main>
-      <footer className="border-gray-400 border-t">
-        <Footer />
-      </footer>
     </div>
   );
 }

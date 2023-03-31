@@ -10,7 +10,7 @@ export default function List({ list }) {
       {list.map(
         (text, index) =>
           index !== 0 && (
-            <li className={liStyle}>
+            <li className={liStyle} key={index}>
               <span className={spanStyle}>{text}</span>
             </li>
           )

@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { AuthProvider } from "./context/AuthContext";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,6 +13,7 @@ function App() {
         <AuthProvider>
           <Header />
           <Outlet />
+          <Footer />
         </AuthProvider>
       </QueryClientProvider>
     </>

@@ -14,8 +14,6 @@ import Button from "../ui/Button";
 import List from "./List";
 
 export default function Footer() {
-  const liStyle = "mt-2 font-semibold text-xs ";
-  const spanStyle = "border-b-2 border-transparent hover:border-black";
   const etcList = [
     [
       "Help",
@@ -48,8 +46,8 @@ export default function Footer() {
     ],
   ];
   return (
-    <>
-      <div className="max-w-screen-2xl m-auto hidden md:block">
+    <div className="border-t border-gray-300 mt-10">
+      <div className="max-w-screen-2xl m-auto hidden md:block ">
         <ul className="flex justify-center items-center p-4 gap-10 text-lg font-bold ">
           <li className="flex items-center ">
             <BsGithub className="mr-2 text-2xl" />
@@ -75,8 +73,8 @@ export default function Footer() {
               className="flex 
                         flex-wrap md:flex-nowrap gap-4 md:gap-0 p-8 md:p-0"
             >
-              {etcList.map((list) => (
-                <List list={list} />
+              {etcList.map((list, i) => (
+                <List list={list} key={i} />
               ))}
             </div>
             <div className="px-8 md:p-0">
@@ -112,6 +110,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
