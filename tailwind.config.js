@@ -52,6 +52,7 @@ module.exports = {
         "banner-text": "move-left 1.5s 1.1s ease forwards",
         "btn-show": "show 1.5s 1.3s ease forwards",
         hide: "hide 1.7s ease forwards",
+        toast: "toast 3s ease forwards",
       },
       keyframes: {
         "move-left": {
@@ -72,6 +73,12 @@ module.exports = {
         hide: {
           "0%": { transform: "translate(0px,0)", opacity: 1 },
           "100%": { transform: "translate(0px,0)", opacity: 0 },
+        },
+        toast: {
+          "0%": { transform: "translate(-50%,60px)", opacity: 0 },
+          "30%": { transform: "translate(-50%, 80px)", opacity: 1 },
+          "90%": { transform: "translate(-50%, 80px)", opacity: 1 },
+          "100%": { transform: "translate(-50%,70px)", opacity: 0 },
         },
       },
     },
