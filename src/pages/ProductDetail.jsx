@@ -5,6 +5,7 @@ import Option_color from "../components/main/product/Option_color";
 import Option_size from "../components/main/product/Option_size";
 import { useAuthContext } from "../context/AuthContext";
 import useCart from "../hooks/useCart";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 export default function ProductDetail() {
   const { uid } = useAuthContext();
@@ -17,6 +18,7 @@ export default function ProductDetail() {
 
   const [currentSize, setCurrentSize] = useState("S");
   const [currentColor, setCurrentColor] = useState("Black");
+  const [isLove, setIsLove] = useState(false); // 찜
 
   const handleClick = (e) => {
     const product = {
@@ -78,13 +80,41 @@ export default function ProductDetail() {
                 onChange={handleColorChange}
               />
             </div>
-            <button
-              className="block w-full bg-black my-10 m-auto py-3 text-white text-xl font-bold"
-              onClick={handleClick}
-            >
-              Add Cart
-            </button>
-            {isAddCart_3s && <div>Added Cart </div>}
+            <div className="flex items-center mt-10 gap-4">
+              <div
+                className="block w-full bg-black m-auto py-3 text-white text-xl font-bold text-center cursor-pointer"
+                onClick={handleClick}
+              >
+                Add Cart
+              </div>
+              <div className="flex items-center px-10 py-3 border border-black">
+                {isLove ? (
+                  <AiFillHeart
+                    className={`text-2xl  cursor-pointer ${
+                      isLove && "text-red-600"
+                    }`}
+                    onClick={() => setIsLove((prev) => !prev)}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    className={`text-2xl  cursor-pointer ${
+                      isLove && "text-rose-500"
+                    }`}
+                    onClick={() => setIsLove((prev) => !prev)}
+                  />
+                )}
+              </div>
+            </div>
+
+            {isAddCart_3s && (
+              <div
+                className={`absolute top-0 left-1/2  px-4 py-2 
+                            rounded border border-green-300 bg-green-100
+                          animate-toast`}
+              >
+                Added Cart
+              </div>
+            )}
           </div>
         </div>
       </div>
