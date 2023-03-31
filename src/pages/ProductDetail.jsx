@@ -63,7 +63,7 @@ export default function ProductDetail() {
         className="flex flex-col lg:flex-row w-full justify-center m-auto max-w-screen-2xl 
                       gap-0 md:gap-20 "
       >
-        <div className="w-full basis-5/12">
+        <div className="w-full basis-4/12">
           <div className="text-xl ml-2 mb-4">
             <Link to="/"> Home </Link> /{" "}
             <Link to={`/products/${category}`} state={category}>
@@ -72,7 +72,7 @@ export default function ProductDetail() {
           </div>
           <img src={imageUrl} alt="" className="w-full" />
         </div>
-        <div className="w-full basis-5/12 pt-14 ">
+        <div className="w-full basis-4/12 pt-14 ">
           <div className="text-2xl font-bold">{title}</div>
           <div className="font-bold py-2 text-xl">$ {price}</div>
           <div className="py-2">{description}</div>
@@ -89,7 +89,7 @@ export default function ProductDetail() {
                 onChange={handleColorChange}
               />
             </div>
-            <div className="flex items-center mt-10 gap-4">
+            <div className="flex items-center my-10 gap-4">
               <div
                 className="block w-full bg-black m-auto py-3 text-white text-xl font-bold text-center cursor-pointer"
                 onClick={handleClick}

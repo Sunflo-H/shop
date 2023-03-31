@@ -17,7 +17,6 @@ export default function Option_color({ colorList, currentColor, onChange }) {
 }
 
 function OptionItem({ color, currentColor, onChange }) {
-  console.log(currentColor);
   let bg;
   switch (color) {
     case "Black":
@@ -36,7 +35,7 @@ function OptionItem({ color, currentColor, onChange }) {
       bg = "bg-yellow-500";
       break;
   }
-  console.log(bg);
+
   return (
     <>
       <input
