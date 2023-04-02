@@ -8,7 +8,7 @@ export default function Cart() {
   const {
     cartQuery: { data: productsInCart },
   } = useCart();
-  console.log(productsInCart);
+
   return (
     <Link
       className="absolute right-5 md:static flex h-full pt-5 pb-4 border-b-2 border-transparent hover:border-black"

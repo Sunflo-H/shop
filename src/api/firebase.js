@@ -73,7 +73,6 @@ async function isAdmin(user) {
     const snapshot = await get(ref(db, `admins/`)); // DB에서 admins/ 경로의 데이터를 가져온다.
     if (snapshot.exists()) {
       const admins = snapshot.val();
-      console.log(admins);
       const isAdmin = admins.includes(user.uid);
       return { ...user, isAdmin }; //유저 데이터에 isAdmin 속성 추가
     } else return user;
@@ -94,6 +93,17 @@ export function uploadNewProduct(product, imageUrl) {
     size: product.size.split(","),
     color: product.color.split(","),
   });
+}
+
+export async function getProduct_url() {
+  let menProducts = await getProduct("Men");
+  let womenProducts = await getProduct("Women");
+
+  let menUrls = menProducts.map((product) => product.imageUrl);
+  let womenUrls = womenProducts.map((product) => product.imageUrl);
+
+  return menUrls.concat(womenUrls);
+  // return menProducts.concat(womenProducts);
 }
 
 export async function getProduct(category) {
