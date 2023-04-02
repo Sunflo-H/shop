@@ -8,6 +8,7 @@ export default function Cart() {
   const {
     cartQuery: { data: productsInCart },
   } = useCart();
+  console.log(productsInCart);
   return (
     <Link
       className="absolute right-5 md:static flex h-full pt-5 pb-4 border-b-2 border-transparent hover:border-black"
@@ -21,13 +22,15 @@ export default function Cart() {
         <BsBag className="text-lg mr-1 " />
       )}
 
-      <span className="hidden md:inline text-sm font-normal">
-        {productsInCart && (
-          <span>
-            ${productsInCart.reduce((acc, cur) => acc + Number(cur.price), 0)}
-          </span>
-        )}
-      </span>
+      {productsInCart && (
+        <span className="hidden md:inline text-sm font-normal ">
+          $
+          {productsInCart.reduce(
+            (acc, cur) => acc + Number(cur.price * cur.quantity),
+            0
+          )}
+        </span>
+      )}
     </Link>
   );
 }

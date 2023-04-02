@@ -8,16 +8,14 @@ import useCart from "../../../hooks/useCart";
 export default function CartItem({ product }) {
   const { uid } = useAuthContext();
   const { quantityMinus, quantityPlus, removeCart } = useCart();
-  const { id, title, imageUrl, price, quantity } = product;
+  const { id, title, imageUrl, price, quantity, size, color } = product;
 
   const handlePlusBtnClick = () => {
-    // uploadCart({ ...product, quantity: quantity + 1 }, uid);
     quantityPlus.mutate({ product, uid });
   };
 
   const handleMinusBtnClick = () => {
     if (quantity === 1) return;
-    // uploadCart({ ...product, quantity: quantity - 1 }, uid);
     quantityMinus.mutate({
       product,
       uid,
@@ -25,7 +23,6 @@ export default function CartItem({ product }) {
   };
 
   const handleRemoveBtnClick = () => {
-    // removeCartItem(product, uid);
     removeCart.mutate({
       product,
       uid,
@@ -40,13 +37,17 @@ export default function CartItem({ product }) {
       <div className="my-auto mx-4">
         <div>
           <div>
-            <span className="font-bold">{title}</span>
+            <span className="font-bold text-xl">{title}</span>
           </div>
           <div>
-            <span className="text-rose-400 font-bold">M</span>
+            <span className=" font-bold">{size}</span>
           </div>
           <div>
-            <span className="font-bold">₩{price}</span>
+            <span className=" font-bold">{color}</span>
+          </div>
+
+          <div>
+            <span className="font-bold font-sans">₩{price}</span>
           </div>
         </div>
       </div>
@@ -57,8 +58,8 @@ export default function CartItem({ product }) {
             onClick={handleMinusBtnClick}
           />
         </div>
-        <div className="px-3">
-          <span className="text-xl">{quantity}</span>
+        <div className="w-12 text-center">
+          <span className="text-xl font-sans">{quantity}</span>
         </div>
         <div className="py-1.5">
           <AiOutlinePlusSquare

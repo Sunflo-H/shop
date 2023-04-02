@@ -6,7 +6,7 @@ import PriceCard from "../components/main/cart/PriceCard";
 
 import useCart from "../hooks/useCart";
 
-const DELIVERY_FEE = 3000;
+const DELIVERY_FEE = 3;
 
 export default function MyCart() {
   const {
@@ -26,7 +26,7 @@ export default function MyCart() {
   return (
     <div className="px-4 pt-20">
       <div className="text-center py-2 px-4 border-b">
-        <span className="text-xl font-bold">내 장바구니</span>
+        <span className="text-xl font-bold">My Cart</span>
       </div>
       <div className="px-5">
         {productsInCart &&
@@ -34,21 +34,21 @@ export default function MyCart() {
             <CartItem product={product} key={i} />
           ))}
 
-        <div className="flex justify-around border-t mt-4 py-4">
-          <PriceCard title="상품 총액" price={allPrice()} />
+        <div className="flex justify-around border-t mt-10 py-4 bg-gray-100">
+          <PriceCard title="Product total" price={allPrice()} />
           <div className="py-7">
             <AiFillPlusCircle className="text-xl" />
           </div>
-          <PriceCard title="배송비" price={DELIVERY_FEE} />
+          <PriceCard title="Shipping cost" price={DELIVERY_FEE} />
 
           <div className="py-7">
             <FaEquals className="text-xl" />
           </div>
-          <PriceCard title="총가격" price={allPrice() + DELIVERY_FEE} />
+          <PriceCard title="Total price" price={allPrice() + DELIVERY_FEE} />
         </div>
 
-        <div className="bg-rose-400 text-center py-1 mt-4 mb-20 cursor-pointer">
-          <span className="text-white font-bold ">주문하기</span>
+        <div className="bg-black text-center py-1 mt-10 mb-20 cursor-pointer">
+          <div className="text-white font-bold py-2">주문하기</div>
         </div>
       </div>
     </div>

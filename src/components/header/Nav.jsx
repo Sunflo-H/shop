@@ -2,7 +2,14 @@ import React from "react";
 import NavItem from "./NavItem";
 
 export default function Nav() {
-  const navItemList = ["Home", "Men", "Women", "Accessories", "Shoes", "Blog"];
+  const navItemList = [
+    "Home",
+    "Men",
+    "Women",
+    "Accessories",
+    "Shoes",
+    "Recommend",
+  ];
 
   return (
     <nav className="hidden md:flex grow">
