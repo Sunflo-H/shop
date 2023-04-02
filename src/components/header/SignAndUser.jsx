@@ -48,14 +48,16 @@ export default function SignAndUser() {
                 <li className="mb-4">
                   <User user={user} />
                 </li>
-                <li className="mb-4">
-                  <Link
-                    to="/products/new"
-                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
-                  >
-                    Upload Products
-                  </Link>
-                </li>
+                {user.isAdmin && (
+                  <li className="mb-4">
+                    <Link
+                      to="/products/new"
+                      className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
+                    >
+                      Upload Products
+                    </Link>
+                  </li>
+                )}
                 <li className="mb-4 ">
                   <Link
                     to="/products/favorites"
