@@ -1,5 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { getProduct, uploadNewProduct } from "../api/firebase";
+import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
+import { getProduct, uploadNewProduct, getProduct_url } from "../api/firebase";
 
 const SEC = 1000;
 /**
@@ -17,6 +17,20 @@ export default function useProducts(category) {
     }
   );
 
+  // 상품의 URL을 불러온다.
+  const productsQueries = useQueries(
+    [
+      { queryKey: ["products", "Men"], queryFn: async () => getProduct("Men") },
+      {
+        queryKey: ["products", "Women"],
+        queryFn: async () => getProduct("Women"),
+      },
+    ],
+    {
+      staleTime: SEC * 60,
+    }
+  );
+
   // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
   const addProduct = useMutation(
     ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
@@ -26,5 +40,5 @@ export default function useProducts(category) {
       },
     }
   );
-  return { productsQuery, addProduct };
+  return { productsQuery, addProduct, productsQueries };
 }

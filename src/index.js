@@ -10,6 +10,7 @@ import ProductDetail from "./pages/ProductDetail";
 import UploadProduct from "./pages/UploadProduct";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Products from "./pages/Products";
+import Recommend from "./pages/Recommend";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -22,9 +23,14 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/products/recommend",
+        element: <Recommend />,
+      },
+      {
         path: "/products/:category",
         element: <Products />,
       },
+
       {
         path: "/products/new",
         element: (

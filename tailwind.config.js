@@ -21,6 +21,7 @@ module.exports = {
       height: {
         banner: "800px",
         image: "720px",
+        recommend: "660px",
       },
       maxWidth: {
         banner: "1040px",
