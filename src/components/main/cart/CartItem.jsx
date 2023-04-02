@@ -31,39 +31,40 @@ export default function CartItem({ product }) {
 
   return (
     <div className="flex my-2">
-      <div className="w-40">
-        <img src={imageUrl} alt="" />
-      </div>
+      {/* <div className="w-28  md:w-40"> */}
+      <img className="w-28 md:w-40 " src={imageUrl} alt="" />
+      {/* </div> */}
       <div className="my-auto mx-4">
         <div>
           <div>
-            <span className="font-bold text-xl">{title}</span>
+            <span className="font-bold md:text-xl">{title}</span>
           </div>
           <div>
-            <span className=" font-bold">{size}</span>
+            <span className=" font-bold text-sm md:text-base">{size}</span>
           </div>
           <div>
-            <span className=" font-bold">{color}</span>
+            <span className=" font-bold text-sm md:text-base">{color}</span>
           </div>
-
           <div>
-            <span className="font-bold font-sans">₩{price}</span>
+            <span className="font-bold font-sans text-sm md:text-base">
+              ₩{price}
+            </span>
           </div>
         </div>
       </div>
-      <div className="flex my-auto ml-auto">
+      <div className="flex items-center my-auto ml-auto">
         <div className="py-1.5 ">
           <AiOutlineMinusSquare
-            className="text-lg cursor-pointer"
+            className="md:text-lg cursor-pointer"
             onClick={handleMinusBtnClick}
           />
         </div>
         <div className="w-12 text-center">
-          <span className="text-xl font-sans">{quantity}</span>
+          <span className="md:text-xl font-sans">{quantity}</span>
         </div>
         <div className="py-1.5">
           <AiOutlinePlusSquare
-            className="text-lg cursor-pointer"
+            className="md:text-lg cursor-pointer"
             onClick={handlePlusBtnClick}
           />
         </div>
