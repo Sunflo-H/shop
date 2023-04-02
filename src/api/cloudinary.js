@@ -1,3 +1,12 @@
+/**
+ *
+ * @param {*} file
+ * @returns data.url
+ *
+ * 상품을 등록할때 사용하는 함수
+ * - 이미지파일을 Cloudinary에 업로드한다.
+ * - 업로드한 이미지의 url을 return한다.
+ */
 export async function imageUploadAndGetUrl(file) {
   const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
   const formData = new FormData();

@@ -9,6 +9,7 @@ import {
 import { getDatabase, ref, set, get, remove } from "firebase/database";
 import { v4 as uuid } from "uuid";
 
+// 내 Firebase 계정의 정보
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -22,16 +23,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
-const auth = getAuth();
-const db = getDatabase(app);
+const auth = getAuth(); // 인증 기능
+const db = getDatabase(app); // 실시간 데이터베이스 기능
 
-// 매번 로그인 할 때마다 유저를 선택하는 옵션
-// 로그인할 유저 선택
+// 로그인 할 때마다 유저를 선택하는 옵션
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
-// 로그인
+// * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 인증 관련 함수들
+
 export function login() {
   signInWithPopup(auth, provider).catch(console.error);
 }
@@ -40,26 +41,48 @@ export function logout() {
   signOut(auth).catch(console.error);
 }
 
-// * 수정 후 코드
+/**
+ *
+ * @param {*} setUser
+ *
+ * - 인증 방법으로 로그인한 유저의 정보를 가져오는 함수
+ */
 export function onUserStateChange(setUser) {
   onAuthStateChanged(auth, async (user) => {
-    const updateUser = user && (await isAdmin(user));
-    setUser(updateUser);
+    const user_addAdminData = user && (await isAdmin(user));
+    setUser(user_addAdminData); // 유저 정보 저장
+
+    /*
+     * setUser 는 콜백함수
+     *  (user) => {
+     *   setIsLoading(false);
+     *   setUser(user);
+     *  }
+     */
   });
 }
 
+/**
+ * @param {*} user
+ * @returns user or user_addAdminData
+ *
+ * user.uid와 일치하는 값이 admins에 있는지 확인하여 있다면 user에 isAdmin 속성을 추가하여 반환하는 함수
+ */
 async function isAdmin(user) {
   try {
-    const snapshot = await get(ref(db, `admins/`));
+    const snapshot = await get(ref(db, `admins/`)); // DB에서 admins/ 경로의 데이터를 가져온다.
     if (snapshot.exists()) {
       const admins = snapshot.val();
+      console.log(admins);
       const isAdmin = admins.includes(user.uid);
-      return { ...user, isAdmin };
+      return { ...user, isAdmin }; //유저 데이터에 isAdmin 속성 추가
     } else return user;
   } catch (error) {
     console.error(error);
   }
 }
+
+// * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DB 관련 함수들
 
 export function uploadNewProduct(product, imageUrl) {
   const id = uuid();
@@ -78,8 +101,7 @@ export async function getProduct(category) {
     const snapshot = await get(ref(db, `products/${category}`));
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data);
-      let products = Object.values(data);
+      let products = Object.values(data); // data객체의 value만 가져온다.
       return products;
     }
     return [];
@@ -92,7 +114,7 @@ export function uploadCart(product, uid) {
   set(ref(db, `carts/${uid}/${product.id}`), product);
 }
 
-export async function downloadCart(uid) {
+export async function getCart(uid) {
   try {
     const snapshot = await get(ref(db, `carts/${uid}`));
 

@@ -7,6 +7,7 @@ const SEC = 1000;
  */
 export default function useProducts(category) {
   const queryClient = useQueryClient();
+
   // 상품 정보를 불러온다.
   const productsQuery = useQuery(
     ["products", category],
@@ -20,18 +21,8 @@ export default function useProducts(category) {
   const addProduct = useMutation(
     ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
     {
-      onMutate: (variable) => {
-        // console.log("onMutate", variable);
-      },
-      onError: (error, variable, context) => {
-        // error
-      },
-      onSuccess: (data, variables, context) => {
-        console.log("success", data, variables, context);
+      onSuccess: () => {
         queryClient.invalidateQueries(["products", category]);
-      },
-      onSettled: () => {
-        // console.log("end");
       },
     }
   );

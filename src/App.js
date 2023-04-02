@@ -13,8 +13,8 @@ function App() {
         <AuthProvider>
           <Header />
           <Outlet />
-          <Footer />
         </AuthProvider>
+        <Footer />
       </QueryClientProvider>
     </>
   );
