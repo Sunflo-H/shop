@@ -5,6 +5,9 @@ import { downloadProduct, getFavorites } from "../../../api/firebase";
 import ProductCard from "./ProductCard";
 import useProducts from "../../../hooks/useProducts";
 import { useAuthContext } from "../../../context/AuthContext";
+import { useMemo } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function ProductsByCategory({ category, count, grid_cols }) {
   const {
@@ -17,6 +20,10 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
     async () => getFavorites(uid),
     { staleTime: 60000 }
   );
+
+  const favoritesIdSet = useMemo(() => {
+    return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
+  }, [favoriteQuery.data]);
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
@@ -42,7 +49,8 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
               <ProductCard
                 product={product}
                 key={index}
-                favorites={favoriteQuery.data}
+                favoritesIdSet={favoritesIdSet}
+                currentCategory={category}
               />
             );
           })}
