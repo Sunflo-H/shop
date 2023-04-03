@@ -14,7 +14,13 @@ export default function HomeProducts({ category }) {
       {data &&
         data.map((product, index) => {
           if (index >= 8) return;
-          return <ProductCard product={product} key={index} />;
+          return (
+            <ProductCard
+              product={product}
+              currentCategory={category}
+              key={index}
+            />
+          );
         })}
     </div>
   );
