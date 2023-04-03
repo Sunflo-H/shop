@@ -1,14 +1,22 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
-import { downloadProduct } from "../../../api/firebase";
+import { downloadProduct, getFavorites } from "../../../api/firebase";
 import ProductCard from "./ProductCard";
 import useProducts from "../../../hooks/useProducts";
+import { useAuthContext } from "../../../context/AuthContext";
 
 export default function ProductsByCategory({ category, count, grid_cols }) {
   const {
     productsQuery: { isLoading, error, data },
   } = useProducts(category);
+
+  const { uid } = useAuthContext();
+  const favoriteQuery = useQuery(
+    ["favorites", uid],
+    async () => getFavorites(uid),
+    { staleTime: 60000 }
+  );
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
@@ -30,7 +38,13 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
         {data &&
           data.map((product, index) => {
             if (index >= count) return;
-            return <ProductCard product={product} key={index} index={index} />;
+            return (
+              <ProductCard
+                product={product}
+                key={index}
+                favorites={favoriteQuery.data}
+              />
+            );
           })}
       </div>
     </section>
