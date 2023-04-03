@@ -1,16 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { uploadCart } from "../api/firebase";
+import {
+  addFavorites,
+  getFavorites,
+  removeFavorites,
+  uploadCart,
+} from "../api/firebase";
 import Option_color from "../components/main/product/Option_color";
 import Option_size from "../components/main/product/Option_size";
 import { useAuthContext } from "../context/AuthContext";
 import useCart from "../hooks/useCart";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useQuery } from "react-query";
+import { useMemo } from "react";
 
 export default function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { user, uid } = useAuthContext();
   const { addCart } = useCart();
   const {
+    product,
     product: { id, title, imageUrl, price, description, size, color, category },
   } = useLocation().state;
 
@@ -18,7 +26,15 @@ export default function ProductDetail() {
 
   const [currentSize, setCurrentSize] = useState("S");
   const [currentColor, setCurrentColor] = useState("Black");
-  const [isLove, setIsLove] = useState(false); // 찜
+  const [isFavorite, setIsFavorite] = useState(false); // 찜
+  const favoriteQuery = useQuery(
+    ["favorites", uid],
+    async () => getFavorites(uid),
+    { staleTime: 60000, refetchOnWindowFocus: false }
+  );
+  const favoritesIdSet = useMemo(() => {
+    return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
+  }, [favoriteQuery.data]);
 
   const handleClick = (e) => {
     const product = {
@@ -38,6 +54,21 @@ export default function ProductDetail() {
     setTimeout(() => {
       setIsAddCart_3s(false);
     }, 3000);
+  };
+
+  useEffect(() => {
+    setIsFavorite(favoritesIdSet.has(id));
+  }, [favoriteQuery.data]);
+
+  const handleFavoriteClick = () => {
+    if (user) {
+      setIsFavorite((prev) => {
+        !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
+        return !prev;
+      });
+    } else {
+      alert("로그인 해주세요");
+    }
   };
 
   const handleSizeChange = (e) => {
@@ -97,19 +128,19 @@ export default function ProductDetail() {
                 Add Cart
               </div>
               <div className="flex items-center px-10 py-3 border border-black">
-                {isLove ? (
+                {isFavorite ? (
                   <AiFillHeart
                     className={`text-2xl  cursor-pointer ${
-                      isLove && "text-red-600"
+                      isFavorite && "text-red-600"
                     }`}
-                    onClick={() => setIsLove((prev) => !prev)}
+                    onClick={handleFavoriteClick}
                   />
                 ) : (
                   <AiOutlineHeart
                     className={`text-2xl  cursor-pointer ${
-                      isLove && "text-rose-500"
+                      isFavorite && "text-rose-500"
                     }`}
-                    onClick={() => setIsLove((prev) => !prev)}
+                    onClick={handleFavoriteClick}
                   />
                 )}
               </div>
