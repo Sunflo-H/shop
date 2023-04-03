@@ -8,10 +8,15 @@ import {
 } from "../../../api/firebase";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useQuery } from "react-query";
+import { useEffect } from "react";
 
-export default function ProductCard({ product, favorites }) {
+export default function ProductCard({
+  product,
+  favoritesIdSet,
+  currentCategory,
+}) {
   const { title, imageUrl, category, price, id } = product;
-  const [isLove, setIsLove] = useState(false); // 찜
+  const [isFavorite, setIsFavorite] = useState(false); // 찜
   const { uid } = useAuthContext();
   const navigate = useNavigate();
 
@@ -20,18 +25,23 @@ export default function ProductCard({ product, favorites }) {
   };
 
   const handleFavoriteClick = () => {
-    setIsLove((prev) => {
+    setIsFavorite((prev) => {
       !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
       return !prev;
     });
   };
+
+  useEffect(() => {
+    setIsFavorite(favoritesIdSet.has(product.id));
+    favoritesIdSet.has(product.id);
+  }, [favoritesIdSet, currentCategory]);
 
   return (
     <div className="m-1 ">
       <div className="flex items-center justify-between mb-4">
         <span className="bg-black text-white py-px px-1 text-sm">New</span>
         <AiFillHeart
-          className={`text-2xl cursor-pointer ${isLove && "text-rose-500"}`}
+          className={`text-2xl cursor-pointer ${isFavorite && "text-rose-500"}`}
           onClick={handleFavoriteClick}
         />
       </div>
