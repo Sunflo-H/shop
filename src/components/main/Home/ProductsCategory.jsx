@@ -1,52 +1,35 @@
 import React from "react";
 
-export default function ProductsCategory({ category, setCategory }) {
+export default function ProductsCategory({
+  currentCategory,
+  setCurrentCategory,
+}) {
+  const categoryList = ["Men", "Women", "Accessories", "Shoes"];
   return (
     <ul className="flex justify-center gap-8 mb-10">
-      <li
-        className={`cursor-pointer hover:border-black border-b-2 
-              ${
-                category === "Men"
-                  ? "border-black font-bold"
-                  : "border-transparent"
-              }`}
-        onClick={() => setCategory("Men")}
-      >
-        Men
-      </li>
-      <li
-        className={`cursor-pointer hover:border-black border-b-2 "
-              ${
-                category === "Women"
-                  ? "border-black font-bold"
-                  : "border-transparent"
-              }`}
-        onClick={() => setCategory("Women")}
-      >
-        Women
-      </li>
-      <li
-        className={`cursor-pointer hover:border-black border-b-2 
-              ${
-                category === "Accessories"
-                  ? "border-black font-bold"
-                  : "border-transparent"
-              }`}
-        onClick={() => setCategory("Accessories")}
-      >
-        Accessories
-      </li>
-      <li
-        className={`cursor-pointer hover:border-black border-b-2 
-              ${
-                category === "Shoes"
-                  ? "border-black font-bold"
-                  : "border-transparent"
-              }`}
-        onClick={() => setCategory("Shoes")}
-      >
-        Shoes
-      </li>
+      {categoryList.map((category) => (
+        <CategoryItem
+          category={category}
+          currentCategory={currentCategory}
+          setCurrentCategory={setCurrentCategory}
+        />
+      ))}
     </ul>
+  );
+}
+
+function CategoryItem({ category, currentCategory, setCurrentCategory }) {
+  return (
+    <li
+      className={`cursor-pointer hover:border-black border-b-2 
+              ${
+                currentCategory === category
+                  ? "border-black font-bold"
+                  : "border-transparent"
+              }`}
+      onClick={() => setCurrentCategory(category)}
+    >
+      {category}
+    </li>
   );
 }

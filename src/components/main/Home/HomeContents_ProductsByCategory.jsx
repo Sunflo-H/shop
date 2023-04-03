@@ -5,10 +5,10 @@ import HomeProducts from "../product/HomeProducts";
 import ProductsCategory from "./ProductsCategory";
 
 export default function HomeContents_ProductsByCategory() {
-  const [category, setCategory] = useState("Men");
+  const [currentCategory, setCurrentCategory] = useState("Men");
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/products/${category}`, { state: category });
+    navigate(`/products/${currentCategory}`, { state: currentCategory });
   };
   return (
     <>
@@ -20,11 +20,14 @@ export default function HomeContents_ProductsByCategory() {
         <h2 className="text-5xl font-semibold">Featured Items</h2>
       </div>
 
-      <ProductsCategory category={category} setCategory={setCategory} />
+      <ProductsCategory
+        currentCategory={currentCategory}
+        setCurrentCategory={setCurrentCategory}
+      />
 
       <div className="flex justify-center  mb-14">
         <div className="md:w-2/3">
-          <HomeProducts category={category} />
+          <HomeProducts category={currentCategory} />
         </div>
       </div>
 
