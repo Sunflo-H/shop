@@ -11,11 +11,7 @@ import { useQuery } from "react-query";
 import { useEffect } from "react";
 import useFavorites from "../../../hooks/useFavorites";
 
-export default function ProductCard({
-  product,
-  favoritesIdSet,
-  currentCategory,
-}) {
+export default function ProductCard({ product, currentCategory }) {
   const { title, imageUrl, category, price, id } = product;
   const { isFavorite, updateFavorites } = useFavorites(
     product,
