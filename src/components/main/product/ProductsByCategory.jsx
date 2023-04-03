@@ -18,7 +18,7 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
   const favoriteQuery = useQuery(
     ["favorites", uid],
     async () => getFavorites(uid),
-    { staleTime: 60000 }
+    { staleTime: 60000, refetchOnWindowFocus: false }
   );
 
   const favoritesIdSet = useMemo(() => {
