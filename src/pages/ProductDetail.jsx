@@ -13,9 +13,10 @@ import useCart from "../hooks/useCart";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { useMemo } from "react";
+import useFavorites from "../hooks/useFavorites";
 
 export default function ProductDetail() {
-  const { user, uid } = useAuthContext();
+  const { uid } = useAuthContext();
   const { addCart } = useCart();
   const {
     product,
@@ -26,15 +27,8 @@ export default function ProductDetail() {
 
   const [currentSize, setCurrentSize] = useState("S");
   const [currentColor, setCurrentColor] = useState("Black");
-  const [isFavorite, setIsFavorite] = useState(false); // 찜
-  const favoriteQuery = useQuery(
-    ["favorites", uid],
-    async () => getFavorites(uid),
-    { staleTime: 60000, refetchOnWindowFocus: false }
-  );
-  const favoritesIdSet = useMemo(() => {
-    return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
-  }, [favoriteQuery.data]);
+
+  const { isFavorite, handleFavoriteClick } = useFavorites(product);
 
   const handleClick = (e) => {
     const product = {
@@ -54,21 +48,6 @@ export default function ProductDetail() {
     setTimeout(() => {
       setIsAddCart_3s(false);
     }, 3000);
-  };
-
-  useEffect(() => {
-    setIsFavorite(favoritesIdSet.has(id));
-  }, [favoriteQuery.data]);
-
-  const handleFavoriteClick = () => {
-    if (user) {
-      setIsFavorite((prev) => {
-        !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
-        return !prev;
-      });
-    } else {
-      alert("로그인 해주세요");
-    }
   };
 
   const handleSizeChange = (e) => {

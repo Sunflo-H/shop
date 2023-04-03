@@ -9,35 +9,16 @@ import {
 import { useAuthContext } from "../../../context/AuthContext";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
+import useFavorites from "../../../hooks/useFavorites";
 
-export default function ProductCard({
-  product,
-  favoritesIdSet,
-  currentCategory,
-}) {
+export default function ProductCard({ product }) {
   const { title, imageUrl, category, price, id } = product;
-  const [isFavorite, setIsFavorite] = useState(false); // 찜
-  const { user, uid } = useAuthContext();
+  const { isFavorite, handleFavoriteClick } = useFavorites(product); // 찜
   const navigate = useNavigate();
 
   const handleProductClick = () => {
     navigate(`/products/${category}/${id}`, { state: { product } });
   };
-
-  const handleFavoriteClick = () => {
-    if (user) {
-      setIsFavorite((prev) => {
-        !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
-        return !prev;
-      });
-    } else {
-      alert("로그인 해주세요");
-    }
-  };
-
-  useEffect(() => {
-    setIsFavorite(favoritesIdSet?.has(product.id));
-  }, [favoritesIdSet, currentCategory]);
 
   return (
     <div className="m-1 ">
