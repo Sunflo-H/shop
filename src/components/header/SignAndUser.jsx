@@ -60,7 +60,7 @@ export default function SignAndUser() {
                 )}
                 <li className="mb-4 ">
                   <Link
-                    to="/products/favorites"
+                    to="/favorites"
                     className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
                   >
                     My Favorites
@@ -68,7 +68,7 @@ export default function SignAndUser() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    to="/products/history"
+                    to="/history"
                     className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
                   >
                     History
