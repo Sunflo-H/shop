@@ -8,22 +8,12 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { useMemo } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import useFavorites from "../../../hooks/useFavorites";
 
 export default function ProductsByCategory({ category, count, grid_cols }) {
   const {
     productsQuery: { isLoading, error, data },
   } = useProducts(category);
-
-  const { uid } = useAuthContext();
-  const favoriteQuery = useQuery(
-    ["favorites", uid],
-    async () => getFavorites(uid),
-    { staleTime: 60000, refetchOnWindowFocus: false }
-  );
-
-  const favoritesIdSet = useMemo(() => {
-    return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
-  }, [favoriteQuery.data]);
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
@@ -49,7 +39,6 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
               <ProductCard
                 product={product}
                 key={index}
-                favoritesIdSet={favoritesIdSet}
                 currentCategory={category}
               />
             );
