@@ -141,6 +141,26 @@ export async function getCart(uid) {
   }
 }
 
-export async function removeCartItem(product, uid) {
-  return remove(ref(db, `carts/${uid}/${product.id}`));
+export function removeCartItem(product, uid) {
+  remove(ref(db, `carts/${uid}/${product.id}`));
+}
+
+export function addFavorites(product, uid) {
+  set(ref(db, `favorites/${uid}/${product.id}`), product);
+}
+
+export async function getFavorites(uid) {
+  try {
+    const snapshot = await get(ref(db, `favorites/${uid}`));
+
+    const data = snapshot.val();
+    const products = Object.values(data);
+    return products;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function removeFavorites(product, uid) {
+  remove(ref(db, `favorites/${uid}/${product.id}`));
 }
