@@ -11,13 +11,25 @@ import { useQuery } from "react-query";
 import { useEffect } from "react";
 import useFavorites from "../../../hooks/useFavorites";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({
+  product,
+  favoritesIdSet,
+  currentCategory,
+}) {
   const { title, imageUrl, category, price, id } = product;
-  const { isFavorite, handleFavoriteClick } = useFavorites(product); // 찜
+  const { isFavorite, updateFavorites } = useFavorites(
+    product,
+    currentCategory
+  ); // 찜
+
   const navigate = useNavigate();
 
   const handleProductClick = () => {
     navigate(`/products/${category}/${id}`, { state: { product } });
+  };
+
+  const handleFavoritesClick = () => {
+    updateFavorites.mutate();
   };
 
   return (
@@ -26,7 +38,7 @@ export default function ProductCard({ product }) {
         <span className="bg-black text-white py-px px-1 text-sm">New</span>
         <AiFillHeart
           className={`text-2xl cursor-pointer ${isFavorite && "text-rose-500"}`}
-          onClick={handleFavoriteClick}
+          onClick={handleFavoritesClick}
         />
       </div>
       <div className="w-full" onClick={handleProductClick}>

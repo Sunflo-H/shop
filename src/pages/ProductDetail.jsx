@@ -28,7 +28,7 @@ export default function ProductDetail() {
   const [currentSize, setCurrentSize] = useState("S");
   const [currentColor, setCurrentColor] = useState("Black");
 
-  const { isFavorite, handleFavoriteClick } = useFavorites(product);
+  const { isFavorite, updateFavorites } = useFavorites(product);
 
   const handleClick = (e) => {
     const product = {
@@ -56,6 +56,10 @@ export default function ProductDetail() {
 
   const handleColorChange = (e) => {
     setCurrentColor(e.target.value);
+  };
+
+  const handleFavoriteClick = (e) => {
+    updateFavorites.mutate();
   };
 
   return (
