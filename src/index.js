@@ -11,6 +11,7 @@ import UploadProduct from "./pages/UploadProduct";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Products from "./pages/Products";
 import Recommend from "./pages/Recommend";
+import MyFavorites from "./pages/MyFavorites";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <MyCart />
           </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/favorites",
+        element: (
+          // <ProtectedRoute>
+          <MyFavorites />
+          // </ProtectedRoute>
         ),
       },
     ],
