@@ -7,11 +7,12 @@ export default function ProductsCategory({
   const categoryList = ["Men", "Women", "Accessories", "Shoes"];
   return (
     <ul className="flex justify-center gap-8 mb-10">
-      {categoryList.map((category) => (
+      {categoryList.map((category, i) => (
         <CategoryItem
           category={category}
           currentCategory={currentCategory}
           setCurrentCategory={setCurrentCategory}
+          key={i}
         />
       ))}
     </ul>
