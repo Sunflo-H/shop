@@ -17,7 +17,7 @@ export default function ProductCard({
 }) {
   const { title, imageUrl, category, price, id } = product;
   const [isFavorite, setIsFavorite] = useState(false); // 찜
-  const { uid } = useAuthContext();
+  const { user, uid } = useAuthContext();
   const navigate = useNavigate();
 
   const handleProductClick = () => {
@@ -25,15 +25,18 @@ export default function ProductCard({
   };
 
   const handleFavoriteClick = () => {
-    setIsFavorite((prev) => {
-      !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
-      return !prev;
-    });
+    if (user) {
+      setIsFavorite((prev) => {
+        !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
+        return !prev;
+      });
+    } else {
+      alert("로그인 해주세요");
+    }
   };
 
   useEffect(() => {
-    setIsFavorite(favoritesIdSet.has(product.id));
-    favoritesIdSet.has(product.id);
+    setIsFavorite(favoritesIdSet?.has(product.id));
   }, [favoritesIdSet, currentCategory]);
 
   return (
