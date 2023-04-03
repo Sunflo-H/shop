@@ -21,7 +21,7 @@ export default function useFavorites(product, currentCategory) {
   }, [favoriteQuery.data]);
 
   useEffect(() => {
-    setIsFavorite(favoritesIdSet.has(product.id));
+    setIsFavorite(favoritesIdSet.has(product?.id));
   }, [favoriteQuery.data, currentCategory]);
 
   /**
