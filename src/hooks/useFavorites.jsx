@@ -10,12 +10,19 @@ export default function useFavorites(product, currentCategory) {
   const { user, uid } = useAuthContext();
   const queryClient = useQueryClient();
   const [isFavorite, setIsFavorite] = useState(false); // 찜
+
+  /**
+   * firebase로부터 favorites 데이터를 요청한다.
+   */
   const favoriteQuery = useQuery(
     ["favorites", uid],
     async () => getFavorites(uid),
     { staleTime: 60000, refetchOnWindowFocus: false }
   );
 
+  /**
+   * favorites 데이터에서 id를 뽑아 Set에 저장
+   */
   const favoritesIdSet = useMemo(() => {
     return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
   }, [favoriteQuery.data]);
@@ -45,5 +52,5 @@ export default function useFavorites(product, currentCategory) {
     },
   });
 
-  return { isFavorite, updateFavorites };
+  return { favoriteQuery, isFavorite, updateFavorites };
 }
