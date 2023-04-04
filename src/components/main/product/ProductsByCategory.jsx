@@ -26,7 +26,9 @@ export default function ProductsByCategory({ category, count, grid_cols }) {
 
   return (
     <section className="pt-20">
-      {category && <h1 className="text-center text-4xl my-14">{title}</h1>}
+      {category && (
+        <h1 className="text-center text-2xl lg:text-4xl my-14">{title}</h1>
+      )}
       <div
         className={`grid grid-cols-2 
         ${grid_cols ? `md:grid-cols-${grid_cols}` : "md:grid-cols-3"} 
