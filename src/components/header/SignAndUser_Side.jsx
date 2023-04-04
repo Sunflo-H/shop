@@ -7,12 +7,18 @@ import SideListItem from "../ui/SideListItem";
 
 export default function SignAndUser_Side() {
   const { user, login, logout } = useAuthContext();
+  console.log(user);
   const navigate = useNavigate();
-  const optionList = [
-    { title: "My Favorites", action: () => navigate("/products/favorite") },
-    { title: "History", action: () => navigate("/products/history") },
-    { title: "Sign Out", action: () => logout() },
-  ];
+  const optionList = user?.isAdmin
+    ? [
+        { title: "Upload Products", action: () => navigate("/products/new") },
+        { title: "My Favorites", action: () => navigate("/products/favorite") },
+        { title: "Sign Out", action: () => logout() },
+      ]
+    : [
+        { title: "My Favorites", action: () => navigate("/favorites") },
+        { title: "Sign Out", action: () => logout() },
+      ];
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,7 +54,10 @@ export default function SignAndUser_Side() {
               !isOpen && "hidden"
             }`}
           >
-            <div>{user.displayName}</div>
+            <div className="flex items-center gap-4 ml-5 mb-4">
+              <img className="w-10 h-10 rounded-full" src={user.photoURL}></img>
+              <span className="text-lg">{user.displayName}</span>
+            </div>
             {optionList.map((option, i) => (
               <SideListItem
                 title={option.title}
