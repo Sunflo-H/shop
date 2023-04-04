@@ -120,26 +120,3 @@ h1 {
     left: 700px;
   }
 }
-
-/* 
-브라우저가 md이하의 사이즈가 되어 slide의 너비가 줄어들면 그에 맞게 slider의 너비도 줄어야 한다.
-
-width: {
-        banner: "1040px",
-        section: "1465px",
-        slider: "7325px",
-      },
-
-뷰어의 너비가 w-section 
-slide의 너비가 w-section
-위 둘은 같은 클래스를 주면 돼
-
-slider의 너비는 w-slider = w-section * 4
-
-
-
-*/
-
-.test {
-  /* width: calc(25vw * 2); */
-}
