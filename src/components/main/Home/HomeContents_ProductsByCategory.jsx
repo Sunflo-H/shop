@@ -32,7 +32,7 @@ export default function HomeContents_ProductsByCategory() {
       </div>
 
       <div className="text-center ">
-        <Button text="See All" handleClick={handleClick} />
+        <Button text="See All" onClick={handleClick} />
       </div>
     </>
   );

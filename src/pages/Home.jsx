@@ -4,8 +4,24 @@ import Button from "../components/ui/Button";
 import Carousel from "../components/carousel/Carousel";
 import HomeContents_blog from "../components/main/Home/HomeContents_blog";
 import HomeContents_ProductsByCategory from "../components/main/Home/HomeContents_ProductsByCategory";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const goMen = () => {
+    navigate("/products/Women", { state: "Men" });
+  };
+  const goWomen = () => {
+    navigate("/products/Women", { state: "Women" });
+  };
+  const goAccessories = () => {
+    navigate("/products/Accessories", { state: "Accessories" });
+  };
+  const goShoes = () => {
+    navigate("/products/Shoes", { state: "Shoes" });
+  };
+
   return (
     <div className="pt-20">
       <main className="px-5 md:px-10 m-auto max-w-screen-2xl ">
@@ -33,7 +49,7 @@ export default function Home() {
               Summer 2023 collection
             </p>
 
-            <Button text={"View All Collections"} />
+            <Button text={"View All Collections"} onClick={goMen} />
           </div>
         </section>
 
@@ -45,7 +61,11 @@ export default function Home() {
               Accessories Recommend
             </h2>
             <div>
-              <Button text={"Shop Now"} color={"white"} />
+              <Button
+                text={"Shop Now"}
+                color={"white"}
+                onClick={goAccessories}
+              />
             </div>
           </div>
         </section>

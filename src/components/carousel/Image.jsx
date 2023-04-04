@@ -50,7 +50,7 @@ export default function Image({ num, slider, isBtnClicked, text }) {
 
         <Button
           text={"Shop Now"}
-          onClick={() => navigate("/products")}
+          onClick={() => navigate("/products/Women", { state: "Women" })}
           isAni={isAni}
           num={num}
           slider={slider}
