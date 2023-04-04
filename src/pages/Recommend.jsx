@@ -28,10 +28,9 @@ export default function Recommend() {
 
   useEffect(() => {
     setIsAiLoading(false);
-    console.log(recommendation);
   }, [recommendation]);
 
-  function getProductData(url) {
+  function getProductData() {
     if (gender === "Men") {
       return productsQueries[0].data.find(
         (data) => data.imageUrl === recommendationImage.replace(" ", "")
@@ -88,7 +87,7 @@ export default function Recommend() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer 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`,
           },
         }
       );

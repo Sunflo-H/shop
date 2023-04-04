@@ -55,9 +55,9 @@ const router = createBrowserRouter([
       {
         path: "/favorites",
         element: (
-          // <ProtectedRoute>
-          <MyFavorites />
-          // </ProtectedRoute>
+          <ProtectedRoute>
+            <MyFavorites />
+          </ProtectedRoute>
         ),
       },
     ],

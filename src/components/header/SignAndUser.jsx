@@ -67,14 +67,6 @@ export default function SignAndUser() {
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    to="/history"
-                    className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
-                  >
-                    History
-                  </Link>
-                </li>
-                <li className="mb-4">
                   <span
                     className="border-b-2 border-transparent hover:border-black pb-1 cursor-pointer"
                     onClick={handleLogout}
