@@ -20,7 +20,6 @@ export default function Recommend() {
 
   const { productsQueries } = useProducts();
   const [men, women] = productsQueries;
-  console.log(recommendation);
 
   let menUrls = men.data?.map((product) => product.imageUrl);
   let womenUrls = women.data?.map((product) => product.imageUrl);
@@ -88,7 +87,7 @@ export default function Recommend() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer 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`,
           },
         }
       );
