@@ -14,16 +14,15 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useQuery } from "react-query";
 import { useMemo } from "react";
 import useFavorites from "../hooks/useFavorites";
+import Swal from "sweetalert2";
 
 export default function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { user, uid } = useAuthContext();
   const { addCart } = useCart();
   const {
     product,
     product: { id, title, imageUrl, price, description, size, color, category },
   } = useLocation().state;
-
-  const [isAddCart_3s, setIsAddCart_3s] = useState(false);
 
   const [currentSize, setCurrentSize] = useState("S");
   const [currentColor, setCurrentColor] = useState("Black");
@@ -31,23 +30,32 @@ export default function ProductDetail() {
   const { isFavorite, updateFavorites } = useFavorites(product);
 
   const handleClick = (e) => {
-    const product = {
-      id,
-      title,
-      imageUrl,
-      price,
-      size: currentSize, // 얘랑
-      color: currentColor, // 얘랑
-      quantity: 1, // 얘땜에 내부변수 product가 필요
-    };
+    if (user) {
+      const product = {
+        id,
+        title,
+        imageUrl,
+        price,
+        size: currentSize, // 얘랑
+        color: currentColor, // 얘랑
+        quantity: 1, // 얘땜에 내부변수 product가 필요
+      };
 
-    addCart.mutate({ product, uid });
+      addCart.mutate({ product, uid });
 
-    setIsAddCart_3s(true);
-
-    setTimeout(() => {
-      setIsAddCart_3s(false);
-    }, 3000);
+      Swal.fire({
+        icon: "success",
+        title: "Added",
+        confirmButtonColor: "#222",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Sign in first!",
+        confirmButtonColor: "#222",
+      });
+    }
   };
 
   const handleSizeChange = (e) => {
@@ -64,15 +72,6 @@ export default function ProductDetail() {
 
   return (
     <section className=" px-4 md:px-20 pt-20">
-      {isAddCart_3s && (
-        <div
-          className={`fixed top-0 left-1/2  px-4 py-2 font-bold
-                            rounded border border-green-300 bg-green-100
-                          animate-toast`}
-        >
-          Added Cart
-        </div>
-      )}
       <div
         className="flex flex-col lg:flex-row w-full justify-center m-auto max-w-screen-2xl 
                       gap-0 md:gap-20 "

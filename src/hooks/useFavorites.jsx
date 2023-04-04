@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useMemo } from "react";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 export default function useFavorites(product, currentCategory) {
   const { user, uid } = useAuthContext();
@@ -42,7 +43,12 @@ export default function useFavorites(product, currentCategory) {
         return !prev;
       });
     } else {
-      alert("로그인 해주세요");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Sign in first!",
+        confirmButtonColor: "#222",
+      });
     }
   };
 
