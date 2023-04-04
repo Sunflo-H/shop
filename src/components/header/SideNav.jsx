@@ -10,11 +10,20 @@ export default function SideNav({ user, isSideNavOpen }) {
   const navigate = useNavigate();
   const navItemList = [
     { title: "Home", action: () => navigate("/") },
-    { title: "Men", action: () => navigate("/products/men") },
-    { title: "Women", action: () => navigate("/products/women") },
-    { title: "Accessories", action: () => navigate("/products/accessories") },
-    { title: "Shoes", action: () => navigate("/products/shoes") },
-    { title: "Blog", action: () => navigate("/products/blog") },
+    { title: "Men", action: () => navigate("/products/Men", { state: "Men" }) },
+    {
+      title: "Women",
+      action: () => navigate("/products/Women", { state: "Women" }),
+    },
+    {
+      title: "Accessories",
+      action: () => navigate("/products/Accessories", { state: "Accessories" }),
+    },
+    {
+      title: "Shoes",
+      action: () => navigate("/products/Shoes", { state: "Shoes" }),
+    },
+    { title: "Recommend", action: () => navigate("/products/Recommend") },
   ];
 
   return (
