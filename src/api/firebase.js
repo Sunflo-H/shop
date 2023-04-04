@@ -154,7 +154,7 @@ export async function getFavorites(uid) {
     const snapshot = await get(ref(db, `favorites/${uid}`));
 
     const data = snapshot.val();
-    const products = Object.values(data);
+    const products = data && Object.values(data);
     return products;
   } catch (error) {
     console.error(error);
