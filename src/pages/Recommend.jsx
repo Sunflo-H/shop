@@ -20,6 +20,7 @@ export default function Recommend() {
 
   const { productsQueries } = useProducts();
   const [men, women] = productsQueries;
+  console.log(recommendation);
 
   let menUrls = men.data?.map((product) => product.imageUrl);
   let womenUrls = women.data?.map((product) => product.imageUrl);
@@ -87,7 +88,7 @@ export default function Recommend() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer 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`,
           },
         }
       );
@@ -98,18 +99,18 @@ export default function Recommend() {
   };
 
   return (
-    <div className="h-recommend pt-20 mb-20 px-4">
+    <div className=" pt-20 mb-20 px-4">
       <div className="text-center font-bold text-xl mb-4 border-b border-gray-200 py-2 px-4">
         Style Recommendation
       </div>
-      <div className="flex justify-center gap-20 max-w-screen-xl h-full m-auto py-4 ">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-20 max-w-screen-xl h-full m-auto py-4 ">
         <div
-          className={`w-2/5 ${
+          className={`md:w-2/5 ${
             recommendationImage ? "flex flex-col" : "hidden"
           }`}
         >
           <div className="h-3/4 ">
-            <img className={`w-full h-full`} src={recommendationImage}></img>
+            <img className={``} src={recommendationImage}></img>
           </div>
           <div
             className={`${
@@ -128,7 +129,7 @@ export default function Recommend() {
             See now
           </Link>
         </div>
-        <div className=" flex flex-col justify-center w-2/5 h-full">
+        <div className=" flex flex-col justify-center lg:w-96 md:w-2/5 h-full">
           <div className="relative flex flex-col py-4 border border-gray-300 rounded-lg">
             <Option_gender
               genders={genders}
