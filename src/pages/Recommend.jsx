@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Recommend() {
+  const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
   const [inputText, setInputText] = useState("");
   const [recommendation, setRecommendation] = useState("");
   const recommendationText = recommendation.split("@")[1];
@@ -87,7 +88,7 @@ export default function Recommend() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${OPENAI_API_KEY}`,
           },
         }
       );
