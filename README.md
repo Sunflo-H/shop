@@ -12,7 +12,7 @@
 - React Query
 - React Router 
 - SweetAlert
-- 
+
 # 목표
 구글 로그인이 가능한 쇼핑몰 사이트
 
