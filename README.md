@@ -31,9 +31,7 @@
 ![image](https://user-images.githubusercontent.com/70611956/233821144-c00d9cc6-a48c-43c1-a62b-65c2186d2923.png)
 ![image](https://user-images.githubusercontent.com/70611956/233821151-59357d55-e007-4770-a616-87beca7f6981.png)
 ![image](https://user-images.githubusercontent.com/70611956/233823682-e74dd01b-ea54-410d-a15c-92b4e7d4a5ac.png)
-![image](https://user-images.githubusercontent.com/70611956/233823732-53f84b8e-16c4-42fa-8503-6510ff6b6f8e.png)
-![image](https://user-images.githubusercontent.com/70611956/233823738-18026dae-c007-4f4d-96c9-555731157601.png)
-![image](https://user-images.githubusercontent.com/70611956/233823748-06a7abf0-42d5-4721-b0ff-d54b8cdbee5b.png)
+
 
 ## Product List
 ![image](https://user-images.githubusercontent.com/70611956/233871224-975dd1c3-2c10-404a-bfe9-d8c0f31edc65.png)
