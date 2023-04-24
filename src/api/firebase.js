@@ -31,7 +31,7 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-// * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 인증 관련 함수들
+// * 인증 관련 함수들
 
 export function login() {
   signInWithPopup(auth, provider).catch(console.error);
@@ -81,7 +81,7 @@ async function isAdmin(user) {
   }
 }
 
-// * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DB 관련 함수들
+// * DB 관련 함수들
 
 export function uploadNewProduct(product, imageUrl) {
   const id = uuid();
@@ -103,7 +103,6 @@ export async function getProduct_url() {
   let womenUrls = womenProducts.map((product) => product.imageUrl);
 
   return menUrls.concat(womenUrls);
-  // return menProducts.concat(womenProducts);
 }
 
 export async function getProduct(category) {

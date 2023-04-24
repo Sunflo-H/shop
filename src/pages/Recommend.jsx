@@ -12,8 +12,8 @@ export default function Recommend() {
   const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
   const [inputText, setInputText] = useState("");
   const [recommendation, setRecommendation] = useState("");
-  const recommendationText = recommendation.split("@")[1];
   const recommendationImage = recommendation.split("@")[0];
+  const recommendationText = recommendation.split("@")[1];
   const [isAiLoading, setIsAiLoading] = useState(false);
 
   const genders = ["Men", "Women"];
