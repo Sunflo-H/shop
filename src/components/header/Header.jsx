@@ -48,7 +48,10 @@ export default function Navbar() {
           />
         )}
 
-        <SideNav isSideNavOpen={isSideNavOpen} />
+        <SideNav
+          isSideNavOpen={isSideNavOpen}
+          setIsSideNavOpen={setIsSideNavOpen}
+        />
       </div>
     </header>
   );

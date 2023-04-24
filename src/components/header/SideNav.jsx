@@ -1,12 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import SideListItem from "../ui/SideListItem";
-import NavItem from "./NavItem";
-import SignAndUser from "./SignAndUser";
 import SignAndUser_Side from "./SignAndUser_Side";
-import User from "./User";
 
-export default function SideNav({ user, isSideNavOpen }) {
+export default function SideNav({ isSideNavOpen, setIsSideNavOpen }) {
   const navigate = useNavigate();
   const navItemList = [
     { title: "Home", action: () => navigate("/") },
@@ -37,6 +34,7 @@ export default function SideNav({ user, isSideNavOpen }) {
           <SideListItem
             title={navItem.title}
             onClick={navItem.action}
+            setIsSideNavOpen={setIsSideNavOpen}
             key={i}
           />
         ))}
