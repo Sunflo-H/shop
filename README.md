@@ -39,7 +39,7 @@
 ![image](https://user-images.githubusercontent.com/70611956/233871239-11e8af8a-2ca8-4af1-8953-3b89e9fc8c60.png)
 
 ## Cart
-![image](https://user-images.githubusercontent.com/70611956/233871256-e7ee8f95-1181-4373-8d7a-7a46319f2519.png)
+![image](https://github.com/Sunflo-H/shop/assets/70611956/771af165-0d32-448e-aaaf-3d3f53bb24cd)
 
 ## Favorites
 ![image](https://user-images.githubusercontent.com/70611956/233871270-13b477fa-8935-424f-81ab-7160ac673a46.png)
