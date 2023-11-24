@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "../../ui/Button";
-import BlogBottom from "./BlogBottom";
 import BlogTopImage from "./BlogTopImage";
+import BlogBottom from "./BlogBottom";
 
-export default function HomeContents_blog() {
+export default function Layout_blog() {
   const topImageInfo = [
     {
       url: "https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_405,w_270/v1679413296/shoppy/blog4_gmrzw8.jpg",
@@ -27,7 +26,7 @@ export default function HomeContents_blog() {
     },
   ];
   return (
-    <>
+    <div className="w-full h-full bg-gray-100 px-4 md:px-32 pt-14 py-10 mb-20 ">
       <h1
         className="text-5xl font-bold mb-8 text-center 
       md:text-start"
@@ -46,6 +45,6 @@ export default function HomeContents_blog() {
       >
         <BlogBottom />
       </div>
-    </>
+    </div>
   );
 }
