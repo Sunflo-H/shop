@@ -1,11 +1,15 @@
 import React from "react";
 import useProducts from "../../../hooks/useProducts";
-import ProductCard from "./ProductCard";
+import ProductCard from "../product/ProductCard";
+import { useSelector } from "react-redux";
 
-export default function HomeProducts({ category }) {
+export default function Products() {
+  const currentCategory = useSelector(
+    (state) => state.category.currentCategory
+  );
   const {
     productsQuery: { isLoading, error, data },
-  } = useProducts(category);
+  } = useProducts(currentCategory);
 
   if (isLoading) return <div>로딩중</div>;
   if (error) return <div>{error}</div>;
@@ -17,7 +21,7 @@ export default function HomeProducts({ category }) {
           return (
             <ProductCard
               product={product}
-              currentCategory={category}
+              currentCategory={currentCategory}
               key={index}
             />
           );
