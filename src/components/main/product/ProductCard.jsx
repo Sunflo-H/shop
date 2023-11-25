@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
-import {
-  addFavorites,
-  getFavorites,
-  removeFavorites,
-} from "../../../api/firebase";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useQuery } from "react-query";
-import { useEffect } from "react";
+
 import useFavorites from "../../../hooks/useFavorites";
 
 export default function ProductCard({ product, currentCategory }) {
@@ -16,7 +9,7 @@ export default function ProductCard({ product, currentCategory }) {
   const { isFavorite, updateFavorites } = useFavorites(
     product,
     currentCategory
-  ); // 찜
+  );
 
   const navigate = useNavigate();
 
@@ -29,7 +22,7 @@ export default function ProductCard({ product, currentCategory }) {
   };
 
   return (
-    <div className="m-1 ">
+    <div className="m-1  ">
       <div className="flex items-center justify-between mb-4">
         <span className="bg-black text-white py-px px-1 text-sm">New</span>
         <AiFillHeart
@@ -37,7 +30,7 @@ export default function ProductCard({ product, currentCategory }) {
           onClick={handleFavoritesClick}
         />
       </div>
-      <div className="w-full" onClick={handleProductClick}>
+      <div className="w-full cursor-pointer" onClick={handleProductClick}>
         <img src={imageUrl} alt="" />
       </div>
       <div className="flex">

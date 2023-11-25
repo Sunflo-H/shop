@@ -8,7 +8,7 @@ export default function Products() {
   const category = location.state;
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [category]);
 
   return <ProductsByCategory category={category} />;
 }

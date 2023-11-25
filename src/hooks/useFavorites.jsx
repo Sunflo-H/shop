@@ -1,4 +1,3 @@
-import React from "react";
 import { addFavorites, getFavorites, removeFavorites } from "../api/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useState } from "react";

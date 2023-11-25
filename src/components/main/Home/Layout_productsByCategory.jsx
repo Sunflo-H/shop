@@ -6,7 +6,6 @@ import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 
 export default function Layout_productsByCategory() {
-  // const [currentCategory, setCurrentCategory] = useState("Men");
   const currentCategory = useSelector(
     (state) => state.category.currentCategory
   );

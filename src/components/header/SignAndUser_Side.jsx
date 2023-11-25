@@ -7,7 +7,6 @@ import SideListItem from "../ui/SideListItem";
 
 export default function SignAndUser_Side() {
   const { user, login, logout } = useAuthContext();
-  console.log(user);
   const navigate = useNavigate();
   const optionList = user?.isAdmin
     ? [
