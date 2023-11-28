@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/header/Header";
-import { QueryClient, QueryClientProvider } from "react-query";
+
 import { AuthProvider } from "./context/AuthContext";
 import Footer from "./components/footer/Footer";
 import store from "./store";
 import { Provider } from "react-redux";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 function App() {
   const queryClient = new QueryClient();
@@ -17,6 +20,7 @@ function App() {
             <Outlet />
           </AuthProvider>
           <Footer />
+          <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
       </Provider>
     </>

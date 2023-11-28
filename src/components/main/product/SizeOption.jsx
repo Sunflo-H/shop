@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Option_size({ sizeList, currentSize, onChange }) {
+export default function SizeOption({ sizeList, currentSize, onChange }) {
   return (
     <div className="flex mb-4 gap-2 font-bold items-center">
       <div className="w-24 text-lg py-2">SIZE</div>

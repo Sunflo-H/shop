@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -31,7 +31,6 @@ const router = createBrowserRouter([
         path: "/products/:category",
         element: <Products />,
       },
-
       {
         path: "/products/new",
         element: (
@@ -66,9 +65,8 @@ const router = createBrowserRouter([
 
 root.render(
   // <React.StrictMode>
-
   <RouterProvider router={router} />
-  // </React.StrictMode>
+  // {/* </React.StrictMode> */}
 );
 
 reportWebVitals();

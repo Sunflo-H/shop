@@ -1,20 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
-import {
-  addFavorites,
-  getFavorites,
-  removeFavorites,
-  uploadCart,
-} from "../api/firebase";
-import Option_color from "../components/main/product/Option_color";
-import Option_size from "../components/main/product/Option_size";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import useCart from "../hooks/useCart";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useQuery } from "react-query";
-import { useMemo } from "react";
 import useFavorites from "../hooks/useFavorites";
 import Swal from "sweetalert2";
+import SizeOption from "../components/main/product/SizeOption";
+import ColorOption from "../components/main/product/ColorOption";
 
 export default function ProductDetail() {
   const { user, uid } = useAuthContext();
@@ -91,12 +83,12 @@ export default function ProductDetail() {
           <div className="py-2">{description}</div>
           <div className="py-2">
             <div className="w-full ">
-              <Option_size
+              <SizeOption
                 sizeList={size}
                 currentSize={currentSize}
                 onChange={handleSizeChange}
               />
-              <Option_color
+              <ColorOption
                 colorList={color}
                 currentColor={currentColor}
                 onChange={handleColorChange}

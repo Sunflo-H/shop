@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
-import { uploadNewProduct } from "../api/firebase";
-
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
 

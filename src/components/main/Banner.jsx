@@ -7,8 +7,6 @@ export default function Banner() {
   const handleBtnClick = () => {
     navigate("/products");
   };
-  // animate-banner-img
-  //-translate-x-40 md:translate-x-0
   return (
     <section className="relative transition-all mb-20 ">
       <div className=" max-w-screen md:max-w-banner max-h-screen md:max-h-banner bg-white overflow-hidden ">

@@ -111,6 +111,7 @@ export async function getProduct(category) {
     if (snapshot.exists()) {
       const data = snapshot.val();
       let products = Object.values(data); // data객체의 value만 가져온다.
+      // console.log(products);
       return products;
     }
     return [];

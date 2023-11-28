@@ -1,10 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { imageUrlQueries } from "../api/firebase";
 import useProducts from "../hooks/useProducts";
 import { useEffect } from "react";
-import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
@@ -110,7 +108,7 @@ export default function Recommend() {
           }`}
         >
           <div className="h-3/4 ">
-            <img className={``} src={recommendationImage}></img>
+            <img className={``} src={recommendationImage} alt="img"></img>
           </div>
           <div
             className={`${
@@ -131,7 +129,7 @@ export default function Recommend() {
         </div>
         <div className=" flex flex-col justify-center lg:w-96 md:w-2/5 h-full">
           <div className="relative flex flex-col py-4 border border-gray-300 rounded-lg">
-            <Option_gender
+            <OptionGender
               genders={genders}
               currentGender={gender}
               onChange={(e) => setGender(e.target.value)}
@@ -167,7 +165,7 @@ export default function Recommend() {
   );
 }
 
-function Option_gender({ genders, onChange, currentGender }) {
+function OptionGender({ genders, onChange, currentGender }) {
   return (
     <div className="flex mb-4 gap-2 font-bold items-center justify-center">
       {genders.map((gender, i) => (

@@ -11,7 +11,7 @@ const DELIVERY_FEE = 3;
 
 export default function MyCart() {
   const {
-    cartQuery: { isLoading, error, data: productsInCart },
+    cartQuery: { data: productsInCart },
   } = useCart();
 
   const allPrice = () => {

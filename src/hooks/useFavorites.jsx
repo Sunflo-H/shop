@@ -1,7 +1,7 @@
 import { addFavorites, getFavorites, removeFavorites } from "../api/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
@@ -14,11 +14,12 @@ export default function useFavorites(product, currentCategory) {
   /**
    * firebase로부터 favorites 데이터를 요청한다.
    */
-  const favoriteQuery = useQuery(
-    ["favorites", uid],
-    async () => getFavorites(uid),
-    { staleTime: 60000, refetchOnWindowFocus: false }
-  );
+  const favoriteQuery = useQuery({
+    queryKey: ["favorites", uid],
+    queryFn: async () => getFavorites(uid),
+    staleTime: 60000,
+    refetchOnWindowFocus: false,
+  });
 
   /**
    * favorites 데이터에서 id를 뽑아 Set에 저장
@@ -51,7 +52,8 @@ export default function useFavorites(product, currentCategory) {
     }
   };
 
-  const updateFavorites = useMutation(favoriteClick, {
+  const updateFavorites = useMutation({
+    mutationFn: favoriteClick,
     onSuccess: () => {
       queryClient.invalidateQueries(["favorites", uid]);
     },
