@@ -44,7 +44,6 @@ export default function useProducts(category) {
 
   // let productData = { productsQuery, addProduct, productsQueries };
   let productData = { productsQuery, addProduct };
-  console.log(productData);
 
   return productData;
 }
