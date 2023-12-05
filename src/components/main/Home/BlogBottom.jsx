@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../ui/Button";
 import BlogBottomImage from "./BlogBottomImage";
-import { useNavigate } from "react-router-dom";
+import useNavigation from "../../../hooks/useNavigation";
 
 export default function BlogBottom() {
   const bottomImages = [
@@ -12,10 +12,7 @@ export default function BlogBottom() {
     "https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog9_vmczy4.jpg",
     "https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog10_cw41yu.jpg",
   ];
-  const navigate = useNavigate();
-  const goMen = () => {
-    navigate("/products/Men", { state: "Men" });
-  };
+  const { handleGoToMen } = useNavigation();
 
   return (
     <>
@@ -24,7 +21,7 @@ export default function BlogBottom() {
           return <BlogBottomImage image={image} key={i} />;
         })}
         <div className="m-auto lg:hidden mt-10">
-          <Button text="Meet our Community" handleClick={goMen} />
+          <Button text="Meet our Community" handleClick={handleGoToMen} />
         </div>
       </div>
 
@@ -47,7 +44,7 @@ export default function BlogBottom() {
           </div>
         </div>
         <div className="hidden lg:block mt-8">
-          <Button text="Meet our Community" onClick={goMen} />
+          <Button text="Meet our Community" onClick={handleGoToMen} />
         </div>
       </div>
     </>

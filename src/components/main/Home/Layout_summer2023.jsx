@@ -1,11 +1,9 @@
 import React from "react";
 import Button from "../../ui/Button";
-import { Navigate } from "react-router-dom";
+import useNavigation from "../../../hooks/useNavigation";
 
 export default function Layout_summer2023() {
-  const goMen = () => {
-    Navigate("/products/Women", { state: "Men" });
-  };
+  const { handleGoToMen } = useNavigation();
   return (
     <section className="w-full flex flex-col mb-20 ">
       <div className="flex flex-col md:flex-row w-full justify-around gap-2 md:px-20 ">
@@ -29,7 +27,7 @@ export default function Layout_summer2023() {
           Summer 2023 collection
         </p>
 
-        <Button text={"View All Collections"} onClick={goMen} />
+        <Button text={"View All Collections"} onClick={handleGoToMen} />
       </div>
     </section>
   );

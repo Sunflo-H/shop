@@ -1,11 +1,9 @@
 import React from "react";
 import Button from "../../ui/Button";
-import { Navigate } from "react-router-dom";
+import useNavigation from "../../../hooks/useNavigation";
 
 export default function Layout_accessories() {
-  const goAccessories = () => {
-    Navigate("/products/Accessories", { state: "Accessories" });
-  };
+  const { handleGoToAccessories } = useNavigation();
   return (
     <section className="relative w-full h-screen max-h-96 mb-20 bg-black">
       <div className="w-full h-full bg-cover bg-center bg-accessories opacity-70"></div>
@@ -14,7 +12,11 @@ export default function Layout_accessories() {
           Accessories Recommend
         </h2>
         <div>
-          <Button text={"Shop Now"} color={"white"} onClick={goAccessories} />
+          <Button
+            text={"Shop Now"}
+            color={"white"}
+            onClick={handleGoToAccessories}
+          />
         </div>
       </div>
     </section>

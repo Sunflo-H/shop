@@ -4,15 +4,13 @@ import Category from "./Category";
 import Products from "./Products";
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
+import useNavigation from "../../../hooks/useNavigation";
 
 export default function Layout_productsByCategory() {
   const currentCategory = useSelector(
     (state) => state.category.currentCategory
   );
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(`/products/${currentCategory}`, { state: currentCategory });
-  };
+  const { handleGoToCategory } = useNavigation(currentCategory);
   return (
     <section className="w-full flex flex-col m-auto mb-20 ">
       {/* section의 헤더 영역 */}
@@ -33,7 +31,7 @@ export default function Layout_productsByCategory() {
       </div>
 
       <div className="text-center ">
-        <Button text="See All" onClick={handleClick} />
+        <Button text="See All" onClick={handleGoToCategory} />
       </div>
     </section>
   );

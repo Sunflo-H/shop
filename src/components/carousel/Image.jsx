@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
+import useNavigation from "../../hooks/useNavigation";
 
 export default function Image({ num, slider, isBtnClicked, text }) {
-  const navigate = useNavigate();
   const [isAni, setIsAni] = useState(false); //false -> true가 되면서 이미지가 움직여, true인 상태를 유지
-
+  const { handleGoToMen } = useNavigation();
   // 슬라이드 내부 컨텐츠에 적용된 애니메이션이 부드럽게 작동되기 위해 PrevImage, NextImage일때는 slider의 값을 바꿔준다.
   if (slider === 4) slider = 1;
   if (slider === 0) slider = 3;
@@ -50,7 +50,7 @@ export default function Image({ num, slider, isBtnClicked, text }) {
 
         <Button
           text={"Shop Now"}
-          onClick={() => navigate("/products/Women", { state: "Women" })}
+          onClick={handleGoToMen}
           isAni={isAni}
           num={num}
           slider={slider}
