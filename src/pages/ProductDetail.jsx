@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import useCart from "../hooks/useCart";
@@ -20,6 +20,10 @@ export default function ProductDetail() {
   const [currentColor, setCurrentColor] = useState("Black");
 
   const { isFavorite, updateFavorites } = useFavorites(product);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   const handleClick = (e) => {
     if (user) {
