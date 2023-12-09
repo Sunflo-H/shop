@@ -1,4 +1,8 @@
-import { addFavorites, getFavorites, removeFavorites } from "../api/firebase";
+import {
+  addFavorites,
+  getFavorites,
+  removeFavorites,
+} from "../api/firebase_db";
 import { useAuthContext } from "../context/AuthContext";
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
