@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useProducts from "../hooks/useProducts";
-import ProductCard from "../components/main/product/ProductCard";
+import ProductCard from "../components/product/ProductCard";
 
 export default function Products() {
   const { state: category } = useLocation();

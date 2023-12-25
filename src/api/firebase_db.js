@@ -16,15 +16,15 @@ export function uploadNewProduct(product, imageUrl) {
   });
 }
 
-export async function getProduct_url() {
-  let menProducts = await getProduct("Men");
-  let womenProducts = await getProduct("Women");
+// export async function getProduct_url() {
+//   let menProducts = await getProduct("Men");
+//   let womenProducts = await getProduct("Women");
 
-  let menUrls = menProducts.map((product) => product.imageUrl);
-  let womenUrls = womenProducts.map((product) => product.imageUrl);
+//   let menUrls = menProducts.map((product) => product.imageUrl);
+//   let womenUrls = womenProducts.map((product) => product.imageUrl);
 
-  return menUrls.concat(womenUrls);
-}
+//   return menUrls.concat(womenUrls);
+// }
 
 export async function getProduct(category) {
   try {

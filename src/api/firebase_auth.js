@@ -26,10 +26,9 @@ export function logout() {
 }
 
 /**
- *
  * @param {*} setUser
  *
- * - 인증 방법으로 로그인한 유저의 정보를 가져오는 함수
+ * 인증 방법으로 로그인한 유저의 정보를 가져오는 함수
  */
 export function onUserStateChange(setUser) {
   onAuthStateChanged(auth, async (user) => {

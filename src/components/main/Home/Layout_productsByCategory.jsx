@@ -1,10 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Category from "./Category";
-import Products from "./Products";
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 import useNavigation from "../../../hooks/useNavigation";
+import HomeProducts from "../../product/HomeProducts";
 
 export default function Layout_productsByCategory() {
   const currentCategory = useSelector(
@@ -26,7 +25,7 @@ export default function Layout_productsByCategory() {
 
       <div className="flex justify-center mb-14">
         <div className="md:w-2/3">
-          <Products />
+          <HomeProducts />
         </div>
       </div>
 

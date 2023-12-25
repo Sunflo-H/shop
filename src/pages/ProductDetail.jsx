@@ -5,8 +5,8 @@ import useCart from "../hooks/useCart";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import useFavorites from "../hooks/useFavorites";
 import Swal from "sweetalert2";
-import SizeOption from "../components/main/product/SizeOption";
-import ColorOption from "../components/main/product/ColorOption";
+import SizeOption from "../components/product/SizeOption";
+import ColorOption from "../components/product/ColorOption";
 
 export default function ProductDetail() {
   const { user, uid } = useAuthContext();

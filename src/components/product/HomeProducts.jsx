@@ -1,11 +1,11 @@
 import React from "react";
-import useProducts from "../../../hooks/useProducts";
-import ProductCard from "../product/ProductCard";
+import useProducts from "../../hooks/useProducts";
 import { useSelector } from "react-redux";
+import ProductCard from "./ProductCard";
 
 const MAX_PRODUCTS_COUNT = 8;
 
-export default function Products() {
+export default function HomeProducts() {
   const currentCategory = useSelector(
     (state) => state.category.currentCategory
   );

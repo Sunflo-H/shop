@@ -1,8 +1,8 @@
 import React from "react";
 import useFavorites from "../hooks/useFavorites";
-import ProductCard from "../components/main/product/ProductCard";
 import { useEffect } from "react";
 import EmptyProduct from "../components/error/EmptyProduct";
+import ProductCard from "../components/product/ProductCard";
 
 export default function MyFavorites() {
   const { favoriteQuery } = useFavorites();

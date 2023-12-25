@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
-
-import useFavorites from "../../../hooks/useFavorites";
+import useFavorites from "../../hooks/useFavorites";
 
 export default function ProductCard({ product, currentCategory }) {
   const { title, imageUrl, category, price, id } = product;
