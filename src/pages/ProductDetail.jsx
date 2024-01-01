@@ -8,16 +8,20 @@ import Swal from "sweetalert2";
 import SizeOption from "../components/product/SizeOption";
 import ColorOption from "../components/product/ColorOption";
 
+const DEFAULT_SIZE = "S";
+const DEFAULT_COLOR = "Black";
+
 export default function ProductDetail() {
   const { user, uid } = useAuthContext();
   const { addCart } = useCart();
   const {
-    product,
-    product: { id, title, imageUrl, price, description, size, color, category },
-  } = useLocation().state;
+    state: { product },
+  } = useLocation();
+  const { id, title, imageUrl, price, description, size, color, category } =
+    product;
 
-  const [currentSize, setCurrentSize] = useState("S");
-  const [currentColor, setCurrentColor] = useState("Black");
+  const [currentSize, setCurrentSize] = useState(DEFAULT_SIZE);
+  const [currentColor, setCurrentColor] = useState(DEFAULT_COLOR);
 
   const { isFavorite, updateFavorites } = useFavorites(product);
 
@@ -25,8 +29,11 @@ export default function ProductDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const handleClick = (e) => {
+  const handleAddCartClick = (e) => {
     if (user) {
+      // navigate로 가져온 'product'의 옵션(size,color)을 변경할 수 있습니다.
+      // 그렇기 때문에 product를 바로 addCart 하면 안됩니다.
+      // 변경된 옵션 정보를 가지고 있는 product를 addCart 해야합니다.
       const product = {
         id,
         title,
@@ -34,7 +41,7 @@ export default function ProductDetail() {
         price,
         size: currentSize, // 얘랑
         color: currentColor, // 얘랑
-        quantity: 1, // 얘땜에 내부변수 product가 필요
+        quantity: 1, // 얘땜에 지금 이 내부변수 product가 필요
       };
 
       addCart.mutate({ product, uid });
@@ -101,7 +108,7 @@ export default function ProductDetail() {
             <div className="flex items-center my-10 gap-4">
               <div
                 className="block w-full bg-black m-auto py-3 text-white text-xl font-bold text-center cursor-pointer"
-                onClick={handleClick}
+                onClick={handleAddCartClick}
               >
                 Add Cart
               </div>

@@ -46,6 +46,7 @@ export function uploadCart(product, uid) {
 }
 
 export async function getCart(uid) {
+  console.log(uid);
   try {
     const snapshot = await get(ref(db, `carts/${uid}`));
 

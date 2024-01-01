@@ -16,7 +16,7 @@ export default function useFavorites(product, currentCategory) {
   const [isFavorite, setIsFavorite] = useState(false); // 찜
 
   /**
-   * firebase로부터 favorites 데이터를 요청한다.
+   * firebase로부터 favorite product 데이터를 요청합니다.
    */
   const favoriteQuery = useQuery({
     queryKey: ["favorites", uid],
@@ -26,7 +26,7 @@ export default function useFavorites(product, currentCategory) {
   });
 
   /**
-   * favorites 데이터에서 id를 뽑아 Set에 저장
+   * favorites 데이터에서 id를 뽑아 Set으로 저장
    */
   const favoritesIdSet = useMemo(() => {
     return new Set(favoriteQuery.data?.map((favorite) => favorite.id));
@@ -40,10 +40,10 @@ export default function useFavorites(product, currentCategory) {
    * db의 favorites data 와 isFavorite State를 조작하는 함수
    * 클릭이벤트에 사용하여 찜 상태를 db에 전달한다.
    */
-  const favoriteClick = () => {
+  const favoriteBtnClick = () => {
     if (user) {
       setIsFavorite((prev) => {
-        !prev ? addFavorites(product, uid) : removeFavorites(product, uid);
+        prev ? removeFavorites(product, uid) : addFavorites(product, uid);
         return !prev;
       });
     } else {
@@ -57,7 +57,7 @@ export default function useFavorites(product, currentCategory) {
   };
 
   const updateFavorites = useMutation({
-    mutationFn: favoriteClick,
+    mutationFn: favoriteBtnClick,
     onSuccess: () => {
       queryClient.invalidateQueries(["favorites", uid]);
     },

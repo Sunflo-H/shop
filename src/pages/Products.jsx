@@ -7,7 +7,7 @@ import ProductCard from "../components/product/ProductCard";
 export default function Products() {
   const { state: category } = useLocation();
   const {
-    productsQuery: { data },
+    productsQuery: { data: productList },
   } = useProducts(category);
   const title = getTitle(category);
 
@@ -25,13 +25,13 @@ export default function Products() {
         md:grid-cols-3
         max-w-screen-2xl m-auto px-10 gap-5`}
       >
-        {data &&
-          data.map((product, index) => {
+        {productList &&
+          productList.map((product, index) => {
             return (
               <ProductCard
                 product={product}
-                key={index}
                 currentCategory={category}
+                key={index}
               />
             );
           })}
@@ -46,7 +46,6 @@ export default function Products() {
  */
 function getTitle(category) {
   return category === "Men" || category === "Women"
-    ? `SHOP ALL ${category.toUpperCase()}'S CLOTHING
-      `
-    : `The ${category} Shop`;
+    ? `SHOP ALL ${category.toUpperCase()}'S CLOTHING ` // 카테고리 : 남성, 여성일 때
+    : `The ${category} Shop`; // 카테고리 : 악세사리, 신발일 때
 }
