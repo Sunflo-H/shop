@@ -16,7 +16,6 @@ export default function useCart() {
     queryFn: () => getCart(uid),
     staleTime: SEC * 60,
   });
-  console.log(cartQuery);
 
   // 카트에 상품을 추가한다.
   const addCart = useMutation({

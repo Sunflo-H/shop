@@ -39,9 +39,9 @@ export default function ProductDetail() {
         title,
         imageUrl,
         price,
-        size: currentSize, // 얘랑
-        color: currentColor, // 얘랑
-        quantity: 1, // 얘땜에 지금 이 내부변수 product가 필요
+        size: currentSize, // 옵션 SIZE
+        color: currentColor, // 옵션 COLOR
+        quantity: 1, // 옵션 개수
       };
 
       addCart.mutate({ product, uid });

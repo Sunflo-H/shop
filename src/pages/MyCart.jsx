@@ -6,40 +6,45 @@ import PriceCard from "../components/main/cart/PriceCard";
 
 import useCart from "../hooks/useCart";
 import EmptyProduct from "../components/error/EmptyProduct";
+import Swal from "sweetalert2";
 
 const DELIVERY_FEE = 3;
 
 export default function MyCart() {
   const {
-    cartQuery: { data: productsInCart },
+    cartQuery: { data: products },
   } = useCart();
 
   const allPrice = () => {
     return (
-      productsInCart &&
-      productsInCart.reduce(
-        (acc, cur) => acc + Number(cur.price) * cur.quantity,
-        0
-      )
+      products &&
+      products.reduce((acc, cur) => acc + Number(cur.price) * cur.quantity, 0)
     );
   };
 
-  useEffect(() => {
-    console.log(productsInCart);
-  }, [productsInCart]);
+  const handleCheckOutClick = () => {
+    Swal.fire({
+      icon: "success",
+      title: "CHECK OUT",
+      confirmButtonColor: "#222",
+    });
+  };
 
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
   return (
     <div className="px-4 pt-20 ">
       <div className="text-center py-2 px-4 border-b">
         <span className="text-xl font-bold">My Cart</span>
       </div>
-      {productsInCart ? (
+      {products === undefined || products?.length === 0 ? (
         <EmptyProduct />
       ) : (
         <>
           <div className="px-5 max-w-screen-2xl m-auto">
-            {productsInCart &&
-              productsInCart.map((product, i) => (
+            {products &&
+              products.map((product, i) => (
                 <CartItem product={product} key={i} />
               ))}
 
@@ -60,7 +65,12 @@ export default function MyCart() {
             </div>
 
             <div className="bg-black text-center py-1 mt-10 mb-20 cursor-pointer">
-              <div className="text-white font-bold py-2">주문하기</div>
+              <div
+                className="text-white font-bold py-2"
+                onClick={handleCheckOutClick}
+              >
+                CHECK OUT
+              </div>
             </div>
           </div>
         </>
