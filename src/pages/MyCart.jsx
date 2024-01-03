@@ -30,15 +30,12 @@ export default function MyCart() {
     });
   };
 
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
   return (
     <div className="px-4 pt-20 ">
       <div className="text-center py-2 px-4 border-b">
         <span className="text-xl font-bold">My Cart</span>
       </div>
-      {products === undefined || products?.length === 0 ? (
+      {!products || products?.length === 0 ? (
         <EmptyProduct />
       ) : (
         <>
