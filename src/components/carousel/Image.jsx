@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
-import useNavigation from "../../hooks/useNavigation";
+import useCategoryNavigation from "../../hooks/useCategoryNavigation";
 
 export default function Image({ num, slider, isBtnClicked, text }) {
   const [isAni, setIsAni] = useState(false); //false -> true가 되면서 이미지가 움직여, true인 상태를 유지
-  const { handleGoToMen } = useNavigation();
+  const { handleGoToMen } = useCategoryNavigation();
   // 슬라이드 내부 컨텐츠에 적용된 애니메이션이 부드럽게 작동되기 위해 PrevImage, NextImage일때는 slider의 값을 바꿔준다.
   if (slider === 4) slider = 1;
   if (slider === 0) slider = 3;

@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "../../ui/Button";
-import useNavigation from "../../../hooks/useNavigation";
+import useCategoryNavigation from "../../../hooks/useCategoryNavigation";
 
 export default function Layout_summer2023() {
-  const { handleGoToMen } = useNavigation();
+  const { handleGoToMen } = useCategoryNavigation();
   return (
     <section className="w-full flex flex-col mb-20 ">
       <div className="flex flex-col md:flex-row w-full justify-around gap-2 md:px-20 ">

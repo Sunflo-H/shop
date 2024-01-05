@@ -2,14 +2,14 @@ import React from "react";
 import Category from "./Category";
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
-import useNavigation from "../../../hooks/useNavigation";
+import useCategoryNavigation from "../../../hooks/useCategoryNavigation";
 import HomeProducts from "../../product/HomeProducts";
 
 export default function Layout_productsByCategory() {
   const currentCategory = useSelector(
     (state) => state.category.currentCategory
   );
-  const { handleGoToCategory } = useNavigation(currentCategory);
+  const { handleGoToCategory } = useCategoryNavigation(currentCategory);
   return (
     <section className="w-full flex flex-col m-auto mb-20 ">
       {/* section의 헤더 영역 */}

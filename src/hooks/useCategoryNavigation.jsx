@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function useNavigation(currentCategory) {
+export default function useCategoryNavigation(currentCategory) {
   const navigate = useNavigate();
 
   const handleGoToMen = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../ui/Button";
 import BlogBottomImage from "./BlogBottomImage";
-import useNavigation from "../../../hooks/useNavigation";
+import useCategoryNavigation from "../../../hooks/useCategoryNavigation";
 
 export default function BlogBottom() {
   const bottomImages = [
@@ -12,7 +12,7 @@ export default function BlogBottom() {
     "https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog9_vmczy4.jpg",
     "https://res.cloudinary.com/dysdtbktd/image/upload/c_scale,h_296,w_270/v1679413298/shoppy/blog10_cw41yu.jpg",
   ];
-  const { handleGoToMen } = useNavigation();
+  const { handleGoToMen } = useCategoryNavigation();
 
   return (
     <>

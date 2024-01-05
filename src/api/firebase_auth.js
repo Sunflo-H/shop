@@ -1,8 +1,8 @@
 import app from "./firebase_config";
 import {
+  GoogleAuthProvider,
   getAuth,
   signInWithPopup,
-  GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
@@ -17,8 +17,13 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
+/**
+ * 팝업 창을 사용하여 로그인 과정 진행
+ */
 export function login() {
-  signInWithPopup(auth, provider).catch(console.error);
+  signInWithPopup(auth, provider).then((result) => {
+    console.log(result);
+  });
 }
 
 export function logout() {

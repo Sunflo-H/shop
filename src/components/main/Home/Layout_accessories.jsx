@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "../../ui/Button";
-import useNavigation from "../../../hooks/useNavigation";
+import useCategoryNavigation from "../../../hooks/useCategoryNavigation";
 
 export default function Layout_accessories() {
-  const { handleGoToAccessories } = useNavigation();
+  const { handleGoToAccessories } = useCategoryNavigation();
   return (
     <section className="relative w-full h-screen max-h-96 mb-20 bg-black">
       <div className="w-full h-full bg-cover bg-center bg-accessories opacity-70"></div>
