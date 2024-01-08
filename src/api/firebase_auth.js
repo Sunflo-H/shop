@@ -21,13 +21,11 @@ provider.setCustomParameters({
  * 팝업 창을 사용하여 로그인 과정 진행
  */
 export function login() {
-  signInWithPopup(auth, provider).then((result) => {
-    console.log(result);
-  });
+  signInWithPopup(auth, provider);
 }
 
 export function logout() {
-  signOut(auth).catch(console.error);
+  signOut(auth);
 }
 
 /**
@@ -35,16 +33,15 @@ export function logout() {
  *
  * 인증 방법으로 로그인한 유저의 정보를 가져오는 함수
  */
-export function onUserStateChange(setUser) {
+export function onUserStateChange(changeUserState) {
   onAuthStateChanged(auth, async (user) => {
-    const user_addAdminData = user && (await isAdmin(user));
-    setUser(user_addAdminData); // 유저 정보 저장
+    const user_addAdmin = user && (await addIsAdmin(user)); // isAdmin 속성이 추가된 user
 
+    changeUserState(user_addAdmin); // 유저 정보 저장
     /*
-     * setUser 는 콜백함수
-     *  (user) => {
-     *   setIsLoading(false);
+     *  changeUserState (user) => {
      *   setUser(user);
+     *   setIsLoading(false);
      *  }
      */
   });
@@ -52,11 +49,11 @@ export function onUserStateChange(setUser) {
 
 /**
  * @param {*} user
- * @returns user or user_addAdminData
+ * @returns user (isAdmin : true/false 속성 추가)
  *
  * user.uid와 일치하는 값이 admins에 있는지 확인하여 있다면 user에 isAdmin 속성을 추가하여 반환하는 함수
  */
-async function isAdmin(user) {
+async function addIsAdmin(user) {
   try {
     const snapshot = await get(ref(db, `admins/`)); // DB에서 admins/ 경로의 데이터를 가져온다.
     if (snapshot.exists()) {

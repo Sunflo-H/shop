@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   // 구글 로그인 유저 정보를 담는 state
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   /**
    * 상품 업로드나, 장바구니처럼 아무나 접근할수 없는 URL이 있다.
@@ -17,14 +17,13 @@ export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    onUserStateChange((user) => {
-      // user ? 로그인중이면 로그인한 유저정보 : 아니면 null
-      setUser(user);
-
-      // 유저 정보를 받아왔다면 지연 종료
-      setIsLoading(false);
-    });
+    onUserStateChange(changeUserState);
   }, []);
+
+  function changeUserState(user) {
+    setUser(user);
+    setIsLoading(false);
+  }
 
   return (
     <AuthContext.Provider
