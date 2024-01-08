@@ -1,11 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/product/ProductCard";
 
 export default function Products() {
-  const { state: category } = useLocation();
+  const { category } = useParams();
+
   const {
     productsQuery: { data: productList },
   } = useProducts(category);
