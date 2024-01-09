@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
+import Category from "../components/main/UploadProduct/Category";
+
+const category = ["Men", "Women", "Accessories", "Shoes"];
 
 export default function UploadProduct() {
   const [isUploading, setIsUploading] = useState();
@@ -63,71 +66,16 @@ export default function UploadProduct() {
 
       <form className="flex flex-col px-12" onSubmit={handleSubmit}>
         <div className="flex mb-4 gap-2 font-bold">
-          <input
-            className="hidden"
-            type="radio"
-            name="category"
-            value="Men"
-            id="Men"
-            required
-            onChange={handleChange}
-          />
-          <label
-            className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product?.category === "Men" && "bg-black text-white"
-            }`}
-            htmlFor="Men"
-          >
-            Men
-          </label>
-          <input
-            className="hidden"
-            type="radio"
-            name="category"
-            value="Women"
-            id="Women"
-            onChange={handleChange}
-          />
-          <label
-            className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product?.category === "Women" && "bg-black text-white"
-            }`}
-            htmlFor="Women"
-          >
-            Women
-          </label>
-          <input
-            className="hidden"
-            type="radio"
-            name="category"
-            value="Accessories"
-            id="Accessories"
-            onChange={handleChange}
-          />
-          <label
-            className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product?.category === "Accessories" && "bg-black text-white"
-            }`}
-            htmlFor="Accessories"
-          >
-            Accessories
-          </label>
-          <input
-            className="hidden"
-            type="radio"
-            name="category"
-            value="Shoes"
-            id="Shoes"
-            onChange={handleChange}
-          />
-          <label
-            className={`px-4 py-2 border border-gary-300 cursor-pointer ${
-              product?.category === "Shoes" && "bg-black text-white"
-            }`}
-            htmlFor="Shoes"
-          >
-            Shoes
-          </label>
+          {category.map((item, index) => {
+            return (
+              <Category
+                category={item}
+                handleChange={handleChange}
+                product={product}
+                key={index}
+              />
+            );
+          })}
         </div>
 
         <input
