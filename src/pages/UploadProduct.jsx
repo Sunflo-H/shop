@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
-import Category from "../components/main/UploadProduct/Category";
+import Category from "../components/main/UploadProduct/Input_category";
+import Input_file from "../components/main/UploadProduct/Input_file";
 
 const category = ["Men", "Women", "Accessories", "Shoes"];
 
@@ -78,14 +79,7 @@ export default function UploadProduct() {
           })}
         </div>
 
-        <input
-          className="px-4 pt-3.5 pb-3 outline-none border border-gray-300 my-1"
-          type="file"
-          accept="image/*"
-          name="file"
-          required
-          onChange={handleChange}
-        />
+        <Input_file handleChange={handleChange} />
 
         <input
           className={inputStyle}
