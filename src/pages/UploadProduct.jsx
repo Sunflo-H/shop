@@ -4,9 +4,11 @@ import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
 import Category from "../components/main/UploadProduct/Input_category";
 import Input_file from "../components/main/UploadProduct/Input_file";
+import Input_text from "../components/main/UploadProduct/Input_text";
 
 const category = ["Men", "Women", "Accessories", "Shoes"];
-
+const productDetails = ["title", "description", "price"];
+const inputStyle = "p-4 outline-none border border-gray-300 my-1";
 export default function UploadProduct() {
   const [isUploading, setIsUploading] = useState();
   const [success, setSuccess] = useState();
@@ -20,7 +22,6 @@ export default function UploadProduct() {
     color: "",
   });
   const { addProduct } = useProducts(product?.category);
-  const inputStyle = "p-4 outline-none border border-gray-300 my-1";
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -81,33 +82,16 @@ export default function UploadProduct() {
 
         <Input_file handleChange={handleChange} />
 
-        <input
-          className={inputStyle}
-          type="text"
-          name="title"
-          value={product?.title}
-          placeholder="Title"
-          required
-          onChange={handleChange}
-        />
-        <input
-          className={inputStyle}
-          type="number"
-          name="price"
-          value={product?.price}
-          placeholder="Price"
-          required
-          onChange={handleChange}
-        />
-        <input
-          className={inputStyle}
-          type="text"
-          name="description"
-          value={product?.description}
-          placeholder="Description"
-          required
-          onChange={handleChange}
-        />
+        {productDetails.map((item) => {
+          return (
+            <Input_text
+              attribute={item}
+              value={product[item]}
+              handleChange={handleChange}
+            />
+          );
+        })}
+
         <input
           className={inputStyle}
           type="text"
