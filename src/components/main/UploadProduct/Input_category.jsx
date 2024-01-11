@@ -1,5 +1,4 @@
-export default function category({ category, handleChange, product }) {
-  console.log(category);
+export default function Input_category({ category, handleChange, product }) {
   return (
     <>
       <input

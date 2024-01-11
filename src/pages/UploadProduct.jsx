@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
-import Category from "../components/main/UploadProduct/Input_category";
+import Input_Category from "../components/main/UploadProduct/Input_category";
 import Input_file from "../components/main/UploadProduct/Input_file";
 import Input_text from "../components/main/UploadProduct/Input_text";
+import Input_size from "../components/main/UploadProduct/Input_size";
+import Input_color from "../components/main/UploadProduct/Input_color";
 
 const category = ["Men", "Women", "Accessories", "Shoes"];
 const productDetails = ["title", "description", "price"];
+const size = ["S", "M", "L", "XL"];
+const color = ["Black", "Red", "Green", "Blue", "Yellow"];
 const inputStyle = "p-4 outline-none border border-gray-300 my-1";
 export default function UploadProduct() {
   const [isUploading, setIsUploading] = useState();
@@ -70,7 +74,7 @@ export default function UploadProduct() {
         <div className="flex mb-4 gap-2 font-bold">
           {category.map((item, index) => {
             return (
-              <Category
+              <Input_Category
                 category={item}
                 handleChange={handleChange}
                 product={product}
@@ -78,6 +82,16 @@ export default function UploadProduct() {
               />
             );
           })}
+        </div>
+        <div className="flex mb-4 gap-2 font-bold">
+          {size.map((item) => (
+            <Input_size size={item} />
+          ))}
+        </div>
+        <div className="flex mb-4 gap-2 font-bold">
+          {color.map((item) => (
+            <Input_color color={item} />
+          ))}
         </div>
 
         <Input_file handleChange={handleChange} />
@@ -92,7 +106,7 @@ export default function UploadProduct() {
           );
         })}
 
-        <input
+        {/* <input
           className={inputStyle}
           type="text"
           name="size"
@@ -100,7 +114,7 @@ export default function UploadProduct() {
           placeholder="Size (Separate with commas(,))"
           required
           onChange={handleChange}
-        />
+        /> */}
         <input
           className={inputStyle}
           type="text"
