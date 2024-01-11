@@ -1,4 +1,4 @@
-export default function Input_color({ color }) {
+export default function Input_color({ color, handleChange }) {
   return (
     <>
       <input
@@ -8,7 +8,7 @@ export default function Input_color({ color }) {
         value={color}
         id={color}
         required
-        // onChange={handleChange}
+        onChange={handleChange}
       />
       <label
         className={`px-4 py-2 border border-gary-300 cursor-pointer `}
