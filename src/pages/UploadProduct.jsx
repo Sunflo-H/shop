@@ -13,6 +13,7 @@ const productDetails = ["title", "description", "price"];
 const size = ["S", "M", "L", "XL"];
 const color = ["Black", "Red", "Green", "Blue", "Yellow"];
 const inputStyle = "p-4 outline-none border border-gray-300 my-1";
+
 export default function UploadProduct() {
   const [isUploading, setIsUploading] = useState();
   const [success, setSuccess] = useState();
@@ -22,13 +23,14 @@ export default function UploadProduct() {
     title: "",
     price: "",
     description: "",
-    size: "",
-    color: "",
+    size: [],
+    color: [],
   });
   const { addProduct } = useProducts(product?.category);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    console.log(name, value);
     if (name === "file") {
       setFile(files[0]);
       return;
@@ -56,7 +58,7 @@ export default function UploadProduct() {
       setIsUploading(false);
     }
   };
-
+  console.log(product);
   return (
     <section className="text-center max-w-screen-2xl m-auto pt-20">
       <h2 className="text-2xl font-bold my-4">Upload New Products</h2>
@@ -72,25 +74,25 @@ export default function UploadProduct() {
 
       <form className="flex flex-col px-12" onSubmit={handleSubmit}>
         <div className="flex mb-4 gap-2 font-bold">
-          {category.map((item, index) => {
+          {category.map((item) => {
             return (
               <Input_Category
                 category={item}
-                handleChange={handleChange}
                 product={product}
-                key={index}
+                setProduct={setProduct}
+                key={item}
               />
             );
           })}
         </div>
         <div className="flex mb-4 gap-2 font-bold">
           {size.map((item) => (
-            <Input_size size={item} />
+            <Input_size size={item} setProduct={setProduct} key={item} />
           ))}
         </div>
         <div className="flex mb-4 gap-2 font-bold">
           {color.map((item) => (
-            <Input_color color={item} />
+            <Input_color color={item} setProduct={setProduct} key={item} />
           ))}
         </div>
 
@@ -102,6 +104,7 @@ export default function UploadProduct() {
               attribute={item}
               value={product[item]}
               handleChange={handleChange}
+              key={item}
             />
           );
         })}
@@ -115,7 +118,7 @@ export default function UploadProduct() {
           required
           onChange={handleChange}
         /> */}
-        <input
+        {/* <input
           className={inputStyle}
           type="text"
           name="color"
@@ -123,7 +126,7 @@ export default function UploadProduct() {
           placeholder="Colors (Separate with commas(,))"
           required
           onChange={handleChange}
-        />
+        /> */}
 
         <UploadButton
           text={isUploading ? "Uploading..." : "Products Upload"}

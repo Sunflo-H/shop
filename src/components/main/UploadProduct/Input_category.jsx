@@ -1,4 +1,8 @@
-export default function Input_category({ category, handleChange, product }) {
+export default function Input_category({ category, product, setProduct }) {
+  const handleCategoryChange = (e) => {
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+  };
   return (
     <>
       <input
@@ -8,7 +12,7 @@ export default function Input_category({ category, handleChange, product }) {
         value={category}
         id={category}
         required
-        onChange={handleChange}
+        onChange={handleCategoryChange}
       />
       <label
         className={`px-4 py-2 border border-gary-300 cursor-pointer ${
