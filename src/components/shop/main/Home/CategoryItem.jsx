@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chageCurrentCategory } from "../../../slice/categorySlice";
+import { chageCurrentCategory } from "../../../../slice/categorySlice";
 
 export default function CategoryItem({ category }) {
   const dispatch = useDispatch();

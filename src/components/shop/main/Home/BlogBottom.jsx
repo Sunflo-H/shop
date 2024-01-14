@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../ui/Button";
+import Button from "../../../ui/Button";
 import BlogBottomImage from "./BlogBottomImage";
-import useCategoryNavigation from "../../../hooks/useCategoryNavigation";
+import useCategoryNavigation from "../../../../hooks/useCategoryNavigation";
 
 export default function BlogBottom() {
   const bottomImages = [

@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiShoppingBag } from "react-icons/fi";
-import { BsFillPencilFill, BsBag } from "react-icons/bs";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import Nav from "./Nav";
 import { RxHamburgerMenu } from "react-icons/rx";
-import User from "./User";
-import { useAuthContext } from "../../context/AuthContext";
-import useCart from "../../hooks/useCart";
+import { useAuthContext } from "../../../context/AuthContext";
 import Cart from "./Cart";
 import SideNav from "./SideNav";
 import SignAndUser from "./SignAndUser";
-import Pen from "./Pen";
 import { GrClose } from "react-icons/gr";
 
 export default function Navbar() {

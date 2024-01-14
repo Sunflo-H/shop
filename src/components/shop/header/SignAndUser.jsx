@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { BsPlusLg } from "react-icons/bs";
-import { BiMinus } from "react-icons/bi";
 import { MdArrowDropDown } from "react-icons/md";
-import { BsFillPencilFill } from "react-icons/bs";
-
-import { useAuthContext } from "../../context/AuthContext";
-import SideListItem from "../ui/SideListItem";
+import { useAuthContext } from "../../../context/AuthContext";
 import User from "./User";
 import { Link } from "react-router-dom";
 

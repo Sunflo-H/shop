@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-  BsPinterest,
-  BsYoutube,
-  BsLinkedin,
-} from "react-icons/bs";
+import { BsGithub, BsInstagram, BsTwitter, BsPinterest } from "react-icons/bs";
 import { HiPhone } from "react-icons/hi";
-import { GrMail, GrLinkedin, GrLinkedinOption } from "react-icons/gr";
-import { FaFacebook, FaFacebookF, FaYoutube } from "react-icons/fa";
-import Button from "../ui/Button";
+import { GrMail, GrLinkedinOption } from "react-icons/gr";
+import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import List from "./List";
 
 export default function Footer() {

@@ -8,10 +8,12 @@ import Home from "./pages/Home";
 import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import UploadProduct from "./pages/UploadProduct";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Products from "./pages/Products";
 import Recommend from "./pages/Recommend";
 import MyFavorites from "./pages/MyFavorites";
+import ProtectedRoute_isUser from "./components/protectedRoute/ProtectedRoute_isUser";
+import ProtectedRoute_isAdmin from "./components/protectedRoute/ProtectedRoute_isAdmin";
+import ProductManage from "./pages/ProductManage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -34,9 +36,9 @@ const router = createBrowserRouter([
       {
         path: "/products/new",
         element: (
-          <ProtectedRoute requireAdmin>
+          <ProtectedRoute_isUser requireAdmin>
             <UploadProduct />
-          </ProtectedRoute>
+          </ProtectedRoute_isUser>
         ),
       },
       {
@@ -46,20 +48,28 @@ const router = createBrowserRouter([
       {
         path: "/carts",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute_isUser>
             <MyCart />
-          </ProtectedRoute>
+          </ProtectedRoute_isUser>
         ),
       },
       {
         path: "/favorites",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute_isUser>
             <MyFavorites />
-          </ProtectedRoute>
+          </ProtectedRoute_isUser>
         ),
       },
     ],
+  },
+  {
+    path: "/manage",
+    element: (
+      // <ProtectedRoute_isAdmin>
+      <ProductManage />
+    ),
+    children: [],
   },
 ]);
 

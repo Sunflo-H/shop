@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SideListItem from "../ui/SideListItem";
+import SideListItem from "../../ui/SideListItem";
 import SignAndUser_Side from "./SignAndUser_Side";
 
 export default function SideNav({ isSideNavOpen, setIsSideNavOpen }) {

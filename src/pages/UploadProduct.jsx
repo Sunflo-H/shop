@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { imageUploadAndGetUrl } from "../api/cloudinary";
 import UploadButton from "../components/ui/UploadButton";
 import useProducts from "../hooks/useProducts";
-import Input_Category from "../components/main/UploadProduct/Input_category";
-import Input_file from "../components/main/UploadProduct/Input_file";
-import Input_text from "../components/main/UploadProduct/Input_text";
-import Input_size from "../components/main/UploadProduct/Input_size";
-import Input_color from "../components/main/UploadProduct/Input_color";
+import Input_Category from "../components/shop/main/UploadProduct/Input_category";
+import Input_file from "../components/shop/main/UploadProduct/Input_file";
+import Input_text from "../components/shop/main/UploadProduct/Input_text";
+import Input_size from "../components/shop/main/UploadProduct/Input_size";
+import Input_color from "../components/shop/main/UploadProduct/Input_color";
 
 const category = ["Men", "Women", "Accessories", "Shoes"];
 const productDetails = ["title", "description", "price"];
@@ -30,7 +30,7 @@ export default function UploadProduct() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    console.log(name, value);
+
     if (name === "file") {
       setFile(files[0]);
       return;
@@ -58,7 +58,7 @@ export default function UploadProduct() {
       setIsUploading(false);
     }
   };
-  console.log(product);
+
   return (
     <section className="text-center max-w-screen-2xl m-auto pt-20">
       <h2 className="text-2xl font-bold my-4">Upload New Products</h2>

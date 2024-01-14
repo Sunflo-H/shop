@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsBag, BsBagFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import useCart from "../../hooks/useCart";
+import useCart from "../../../hooks/useCart";
 
 export default function Cart() {
   const [isHover, setIsHover] = useState(false);

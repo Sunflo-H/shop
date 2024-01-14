@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/header/Header";
-
+import Header from "./components/shop/header/Header";
 import { AuthProvider } from "./context/AuthContext";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/shop/footer/Footer";
 import store from "./store";
 import { Provider } from "react-redux";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
