@@ -2,7 +2,7 @@ import React from "react";
 
 export default function header() {
   return (
-    <div className="w-screen flex px-4 py-2 border-b border-gray-300 ">
+    <div className="w-screen flex px-4 py-2 border-b border-gray-300 bg-white mb-8 ">
       <div className="flex self-center top-1/2 text-xl font-bold ml-4">
         Product Management
       </div>

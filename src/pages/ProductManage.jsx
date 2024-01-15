@@ -4,10 +4,12 @@ import Nav from "../components/ProductManagement/nav/Nav";
 
 export default function ProductManagement() {
   return (
-    <>
+    <div className="bg-gray-200 h-screen">
       <Header />
-      <Nav />
-      <Outlet />
-    </>
+      <div className="flex">
+        <Nav />
+        <Outlet />
+      </div>
+    </div>
   );
 }
