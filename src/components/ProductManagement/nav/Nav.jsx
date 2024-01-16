@@ -7,9 +7,10 @@ const category = ["All", "Men", "Women", "Shoes", "Accessories"];
 export default function Nav() {
   const [currentCategory, setCurrentCategory] = useState(category[0]);
 
-  const handleCategoryClick = (e) => {
-    console.log(e.target);
+  const handleCategoryClick = (e, value) => {
+    setCurrentCategory(value);
   };
+
   return (
     <div className="w-auto h-full text-lg font-bold bg-white ml-6 pb-4 ">
       <div className="flex gap-2 text-blue-500 px-8 py-4 ">
@@ -24,7 +25,7 @@ export default function Nav() {
           <CategoryItem
             value={item}
             currentCategory={currentCategory}
-            onClick={handleCategoryClick}
+            handleCategoryClick={handleCategoryClick}
             key={index}
           />
         ))}
@@ -33,13 +34,14 @@ export default function Nav() {
   );
 }
 
-function CategoryItem({ value, currentCategory }) {
+function CategoryItem({ value, currentCategory, handleCategoryClick }) {
   const activeCategoryStyle = `text-blue-600 bg-blue-100`;
   return (
     <div
-      className={`pl-12 py-2 cursor-pointer hover:bg-blue-100 ${
+      className={`pl-12 py-2 cursor-pointer hover:bg-blue-50 ${
         currentCategory === value ? activeCategoryStyle : ""
       } `}
+      onClick={(e) => handleCategoryClick(e, value)}
     >
       {value}
     </div>
