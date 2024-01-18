@@ -19,7 +19,11 @@ export default function Nav_category({
         isOpen={isOpen}
       />
 
-      <div className={`${isOpen ? "" : "max-h-0"} overflow-hidden`}>
+      <div
+        className={`${
+          isOpen ? " max-h-96" : "max-h-0"
+        } overflow-hidden duration-300 `}
+      >
         {category.map((item, index) => (
           <CategoryItem
             value={item}
