@@ -40,6 +40,21 @@ export async function getProduct(category) {
     console.error(error);
   }
 }
+export async function getProduct_all() {
+  try {
+    const snapshot = await get(ref(db, `products`));
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      console.log(data);
+      let products = Object.values(data); // data객체의 value만 가져온다.
+      console.log(products);
+      return products;
+    }
+    return [];
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export function uploadCart(product, uid) {
   set(ref(db, `carts/${uid}/${product.id}`), product);

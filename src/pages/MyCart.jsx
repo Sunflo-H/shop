@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { FaEquals } from "react-icons/fa";
-// import CartItem from "../components/main/cart/CartItem";
-// import PriceCard from "../components/main/cart/PriceCard";
+import CartItem from "../components/shop/main/cart/CartItem";
+import PriceCard from "../components/shop/main/cart/PriceCard";
 import useCart from "../hooks/useCart";
 import EmptyProduct from "../components/error/EmptyProduct";
 import Swal from "sweetalert2";

@@ -1,10 +1,9 @@
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  useMutation,
-  useQueries,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
-import { getProduct, uploadNewProduct } from "../api/firebase_db";
+  getProduct,
+  getProduct_all,
+  uploadNewProduct,
+} from "../api/firebase_db";
 
 const SEC = 1000;
 /**
@@ -17,6 +16,12 @@ export default function useProducts(category) {
   const productsQuery = useQuery({
     queryKey: ["products", category],
     queryFn: async () => getProduct(category),
+    staleTime: SEC * 60,
+  });
+
+  const productsQuery_all = useQuery({
+    queryKey: ["products", "all"],
+    queryFn: async () => getProduct_all(),
     staleTime: SEC * 60,
   });
 
@@ -43,7 +48,7 @@ export default function useProducts(category) {
   });
 
   // let productData = { productsQuery, addProduct, productsQueries };
-  let productData = { productsQuery, addProduct };
+  let productData = { productsQuery, addProduct, productsQuery_all };
 
   return productData;
 }
