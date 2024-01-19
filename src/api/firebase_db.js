@@ -47,7 +47,6 @@ export async function getProduct_all() {
       const data = snapshot.val();
       console.log(data);
       let products = Object.values(data); // data객체의 value만 가져온다.
-      console.log(products);
       return products;
     }
     return [];
