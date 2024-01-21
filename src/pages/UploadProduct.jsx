@@ -8,8 +8,8 @@ import Input_text from "../components/shop/main/UploadProduct/Input_text";
 import Input_size from "../components/shop/main/UploadProduct/Input_size";
 import Input_color from "../components/shop/main/UploadProduct/Input_color";
 
-const category = ["Men", "Women", "Accessories", "Shoes"];
-const productDetails = ["title", "description", "price"];
+const category = ["Men", "Women", "Accessories", "Shoes", "Test"];
+const productDetails = ["title", "description"];
 const size = ["S", "M", "L", "XL"];
 const color = ["Black", "Red", "Green", "Blue", "Yellow"];
 const inputStyle = "p-4 outline-none border border-gray-300 my-1";
@@ -85,7 +85,7 @@ export default function UploadProduct() {
             );
           })}
         </div>
-        <div className="flex mb-4 gap-2 font-bold">
+        {/* <div className="flex mb-4 gap-2 font-bold">
           {size.map((item) => (
             <Input_size size={item} setProduct={setProduct} key={item} />
           ))}
@@ -94,7 +94,7 @@ export default function UploadProduct() {
           {color.map((item) => (
             <Input_color color={item} setProduct={setProduct} key={item} />
           ))}
-        </div>
+        </div> */}
 
         <Input_file handleChange={handleChange} />
 
@@ -108,8 +108,26 @@ export default function UploadProduct() {
             />
           );
         })}
+        <input
+          className={inputStyle}
+          type="number"
+          name="price"
+          value={product?.price}
+          placeholder="price"
+          required
+          onChange={handleChange}
+        />
+        <input
+          className={inputStyle}
+          type="number"
+          name="stock"
+          value={product?.stock}
+          placeholder="Stock"
+          required
+          onChange={handleChange}
+        />
 
-        {/* <input
+        <input
           className={inputStyle}
           type="text"
           name="size"
@@ -117,8 +135,8 @@ export default function UploadProduct() {
           placeholder="Size (Separate with commas(,))"
           required
           onChange={handleChange}
-        /> */}
-        {/* <input
+        />
+        <input
           className={inputStyle}
           type="text"
           name="color"
@@ -126,7 +144,7 @@ export default function UploadProduct() {
           placeholder="Colors (Separate with commas(,))"
           required
           onChange={handleChange}
-        /> */}
+        />
 
         <UploadButton
           text={isUploading ? "Uploading..." : "Products Upload"}
