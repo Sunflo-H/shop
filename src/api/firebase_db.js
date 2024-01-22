@@ -6,6 +6,11 @@ const db = getDatabase(app); // 실시간 데이터베이스 기능 호출
 
 export function uploadProduct(product, imageUrl) {
   const id = uuid();
+  const PRODUCT_STATUS = {
+    SALE: "Sale",
+    SOLD_OUT: "Sold Out",
+    HIDE: "Hide",
+  };
   return set(ref(db, `products/${product.category}/${id}`), {
     ...product,
     id,
@@ -14,6 +19,7 @@ export function uploadProduct(product, imageUrl) {
     stock: Number(product.stock),
     size: product.size.split(","),
     color: product.color.split(","),
+    status: PRODUCT_STATUS.SALE, // [Sale, Sold Out, Hide]
   });
 }
 

@@ -27,7 +27,7 @@ export default function UploadProduct() {
     size: [],
     color: [],
   });
-  const { addProduct } = useProducts(product?.category);
+  const { uploadProduct } = useProducts(product?.category);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -45,7 +45,7 @@ export default function UploadProduct() {
     console.log(product);
     try {
       const imageUrl = await imageUploadAndGetUrl(file);
-      addProduct.mutate(
+      uploadProduct.mutate(
         { product, imageUrl },
         {
           onSuccess: () => {
