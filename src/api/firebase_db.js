@@ -4,13 +4,14 @@ import app from "./firebase_config";
 
 const db = getDatabase(app); // 실시간 데이터베이스 기능 호출
 
-export function uploadNewProduct(product, imageUrl) {
+export function uploadProduct(product, imageUrl) {
   const id = uuid();
   return set(ref(db, `products/${product.category}/${id}`), {
     ...product,
     id,
     imageUrl,
     price: Number(product.price),
+    stock: Number(product.stock),
     size: product.size.split(","),
     color: product.color.split(","),
   });

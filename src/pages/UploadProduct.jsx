@@ -23,6 +23,7 @@ export default function UploadProduct() {
     title: "",
     price: "",
     description: "",
+    stock: "",
     size: [],
     color: [],
   });
@@ -38,9 +39,10 @@ export default function UploadProduct() {
     setProduct({ ...product, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleUploadProduct = async (e) => {
     e.preventDefault();
     setIsUploading(true);
+    console.log(product);
     try {
       const imageUrl = await imageUploadAndGetUrl(file);
       addProduct.mutate(
@@ -72,7 +74,7 @@ export default function UploadProduct() {
         />
       )}
 
-      <form className="flex flex-col px-12" onSubmit={handleSubmit}>
+      <form className="flex flex-col px-12" onSubmit={handleUploadProduct}>
         <div className="flex mb-4 gap-2 font-bold">
           {category.map((item) => {
             return (

@@ -3,6 +3,7 @@ import {
   getProduct,
   getProduct_all,
   uploadNewProduct,
+  uploadProduct,
 } from "../api/firebase_db";
 
 const SEC = 1000;
@@ -41,7 +42,7 @@ export default function useProducts(category) {
 
   // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
   const addProduct = useMutation({
-    mutationFn: ({ product, imageUrl }) => uploadNewProduct(product, imageUrl),
+    mutationFn: ({ product, imageUrl }) => uploadProduct(product, imageUrl),
     onSuccess: () => {
       queryClient.invalidateQueries(["products", category]);
     },
