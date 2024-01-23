@@ -52,7 +52,6 @@ export async function getProduct_all() {
     const snapshot = await get(ref(db, `products`));
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data);
       let products = Object.values(data); // data객체의 value만 가져온다.
       return products;
     }

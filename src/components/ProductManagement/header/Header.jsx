@@ -15,7 +15,7 @@ export default function Header() {
         className="ml-auto bg-blue-500 text-white p-2 cursor-pointer"
         onClick={handleAddProductClick}
       >
-        Add Product
+        Upload Product
       </div>
     </div>
   );

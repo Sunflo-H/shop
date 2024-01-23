@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useProducts from "../../../hooks/useProducts";
 
+const PRODUCT_STATUS = {
+  SALE: "Sale",
+  SOLD_OUT: "Sold Out",
+  HIDE: "Hide",
+};
 export default function ProductStatus() {
   //   const [currnetProductStatus, setCurrentProductStatus] = useState("ALL");
   const productStatus = ["ALL", "Sale", "Sold Out", "Hide"];
@@ -13,13 +18,23 @@ export default function ProductStatus() {
   const shoes = data ? Object.entries(data[2]) : [];
   const women = data ? Object.entries(data[3]) : [];
 
-  const totalLength =
-    accessories.length + men.length + shoes.length + women.length;
+  const productList = [accessories, men, shoes, women];
+  console.log(productList);
+  const totalLength = data
+    ? productList.reduce((acc, cur) => acc + cur.length, 0)
+    : 0;
 
-  const saleLength = accessories.filter((item) => {
-    const product = item[1];
-    console.log(product);
-  });
+  const saleLength = data
+    ? productList.reduce((acc, productByCategory) => {
+        const filteredProductList = productByCategory.filter((product) => {
+          const productData = product[1];
+          console.log(productData); //! status를 이제 firebase에 일일이 추가해줘야한다. ㅅㅂ status랑 stock이 없으니까 안나오지 ㅄ
+          return productData.status === PRODUCT_STATUS.SALE;
+        });
+        // console.log(filteredProductList);
+        return acc + filteredProductList;
+      }, 0)
+    : 0;
   console.log(saleLength);
 
   // const soldOutLength =
