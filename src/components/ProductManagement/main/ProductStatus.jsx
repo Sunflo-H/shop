@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useProducts from "../../../hooks/useProducts";
+import { updateProduct } from "../../../api/firebase_db";
 
 const PRODUCT_STATUS = {
   SALE: "Sale",
@@ -16,10 +17,11 @@ export default function ProductStatus() {
   const accessories = data ? Object.entries(data[0]) : [];
   const men = data ? Object.entries(data[1]) : [];
   const shoes = data ? Object.entries(data[2]) : [];
-  const women = data ? Object.entries(data[3]) : [];
+  const test = data ? Object.entries(data[3]) : [];
+  const women = data ? Object.entries(data[4]) : [];
 
   const productList = [accessories, men, shoes, women];
-  console.log(productList);
+
   const totalLength = data
     ? productList.reduce((acc, cur) => acc + cur.length, 0)
     : 0;
@@ -28,16 +30,26 @@ export default function ProductStatus() {
     ? productList.reduce((acc, productByCategory) => {
         const filteredProductList = productByCategory.filter((product) => {
           const productData = product[1];
-          console.log(productData); //! status를 이제 firebase에 일일이 추가해줘야한다. ㅅㅂ status랑 stock이 없으니까 안나오지 ㅄ
+          // console.log(productData); //! status를 이제 firebase에 일일이 추가해줘야한다. ㅅㅂ status랑 stock이 없으니까 안나오지 ㅄ
           return productData.status === PRODUCT_STATUS.SALE;
         });
         // console.log(filteredProductList);
         return acc + filteredProductList;
       }, 0)
     : 0;
-  console.log(saleLength);
 
   // const soldOutLength =
+
+  const handleTest = (e) => {
+    console.log(test[0][1]);
+    const [key, product] = test[0];
+    console.log(key);
+    console.log(product);
+    const updatedProduct = { ...product };
+    updatedProduct.title = "씨봉방봉";
+
+    updateProduct(key, updatedProduct);
+  };
 
   return (
     <ul className="flex gap-4">
@@ -46,6 +58,7 @@ export default function ProductStatus() {
           {item} {totalLength}
         </li>
       ))}
+      <div onClick={handleTest}>상품 업데이트</div>
     </ul>
   );
 }

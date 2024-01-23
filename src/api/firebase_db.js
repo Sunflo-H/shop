@@ -1,4 +1,13 @@
-import { getDatabase, ref, set, get, remove } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  remove,
+  push,
+  child,
+  update,
+} from "firebase/database";
 import { v4 as uuid } from "uuid";
 import app from "./firebase_config";
 
@@ -59,6 +68,17 @@ export async function getProduct_all() {
   } catch (error) {
     console.error(error);
   }
+}
+
+export function updateProduct(key, product) {
+  // const newProductKey = push(
+  //   child(ref(db), `products/${product.category}`)
+  // ).key;
+
+  const updates = {};
+  updates[`products/${product.category}/${key}`] = product;
+
+  return update(ref(db), updates);
 }
 
 export function uploadCart(product, uid) {
