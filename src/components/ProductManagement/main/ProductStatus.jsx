@@ -18,21 +18,6 @@ export default function ProductStatus() {
 
   const productList = [accessories, men, shoes, women, test];
 
-  // const totalLength = data
-  //   ? productList.reduce((acc, cur) => acc + cur.length, 0)
-  //   : 0;
-
-  // const saleLength = data
-  //   ? productList.reduce((acc, productByCategory) => {
-  //       const filteredProductList = productByCategory.filter((product) => {
-  //         const productData = product[1];
-  //         return productData.status === PRODUCT_STATUS.SALE;
-  //       });
-  //       return acc + filteredProductList.length;
-  //     }, 0)
-  //   : 0;
-
-  // const soldOutLength =
   function getLength(type) {
     let length = 0;
     if (type === "all") {
