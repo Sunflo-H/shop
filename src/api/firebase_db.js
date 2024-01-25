@@ -71,10 +71,6 @@ export async function getProduct_all() {
 }
 
 export function updateProduct(key, product) {
-  // const newProductKey = push(
-  //   child(ref(db), `products/${product.category}`)
-  // ).key;
-
   const updates = {};
   updates[`products/${product.category}/${key}`] = product;
 

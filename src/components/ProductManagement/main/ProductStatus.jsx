@@ -41,14 +41,15 @@ export default function ProductStatus() {
   // const soldOutLength =
 
   const handleTest = (e) => {
-    console.log(test[0][1]);
-    const [key, product] = test[0];
-    console.log(key);
-    console.log(product);
-    const updatedProduct = { ...product };
-    updatedProduct.title = "씨봉방봉";
+    for (let i = 0; i < women.length; i++) {
+      const [key, product] = women[i];
+      const updatedProduct = { ...product };
 
-    updateProduct(key, updatedProduct);
+      updatedProduct.stock = 50;
+      updatedProduct.status = "Sale";
+
+      updateProduct(key, updatedProduct);
+    }
   };
 
   return (
