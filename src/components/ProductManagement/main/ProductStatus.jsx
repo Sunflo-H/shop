@@ -4,7 +4,7 @@ import { updateProduct } from "../../../api/firebase_db";
 
 const PRODUCT_STATUS_FILTER = ["all", "Sale", "Sold Out", "Hide"];
 export default function ProductStatus() {
-  //   const [currnetProductStatus, setCurrentProductStatus] = useState("ALL");
+  const [filter, setFilter] = useState("ALL");
   const productStatus = ["ALL", "Sale", "Sold Out", "Hide"];
   const {
     productsQuery_all: { data },
@@ -46,14 +46,23 @@ export default function ProductStatus() {
     // }
   };
 
+  const handleFilterClick = (status) => {
+    setFilter(status);
+  };
+
   return (
     <ul className="flex gap-4">
-      {productStatus.map((item, index) => (
-        <li className="p-4 border-b border-black" key={index}>
-          {item} {getLength(PRODUCT_STATUS_FILTER[index])}
+      {productStatus.map((status, index) => (
+        <li
+          className={`p-4  font-bold cursor-pointer ${
+            status === filter ? "text-blue-500 border-blue-500 border-b-2" : " "
+          }`}
+          key={index}
+          onClick={() => handleFilterClick(status)}
+        >
+          {status} {getLength(PRODUCT_STATUS_FILTER[index])}
         </li>
       ))}
-      <div onClick={handleTest}>상품 업데이트</div>
     </ul>
   );
 }

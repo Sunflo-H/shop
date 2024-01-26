@@ -3,8 +3,8 @@ import ProductStatus from "./ProductStatus";
 
 export default function Main() {
   return (
-    <div className="">
-      <div>
+    <div className="grow">
+      <div className="flex border-gray-300 border-b ">
         <ProductStatus />
         <div>
           <select>
@@ -14,7 +14,9 @@ export default function Main() {
           </select>
         </div>
       </div>
-      <div>검색창</div>
+      <div className="flex flex-col mt-4">
+        <input className="px-4 py-2" type="text" placeholder="상품명 검색" />
+      </div>
       <div>
         <div>상품 헤더</div>
         <div>상품 리스트</div>
