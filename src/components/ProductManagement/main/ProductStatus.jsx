@@ -54,7 +54,7 @@ export default function ProductStatus() {
     <ul className="flex gap-4">
       {productStatus.map((status, index) => (
         <li
-          className={`p-4  font-bold cursor-pointer ${
+          className={`p-4 pt-0  font-bold cursor-pointer ${
             status === filter ? "text-blue-500 border-blue-500 border-b-2" : " "
           }`}
           key={index}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ProductStatus from "./ProductStatus";
+import { CiSearch } from "react-icons/ci";
 
 export default function Main() {
   return (
@@ -14,8 +15,15 @@ export default function Main() {
           </select>
         </div>
       </div>
-      <div className="flex flex-col mt-4">
-        <input className="px-4 py-2" type="text" placeholder="상품명 검색" />
+      <div className="mt-4 ">
+        <div className="flex justify-between bg-white w-3/4">
+          <input
+            className="px-4 py-2 grow outline-none"
+            type="text"
+            placeholder="상품명 검색"
+          />
+          <CiSearch className="text-2xl self-center mr-4" />
+        </div>
       </div>
       <div>
         <div>상품 헤더</div>
