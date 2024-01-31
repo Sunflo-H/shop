@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useProducts from "../../../hooks/useProducts";
 import { updateProduct } from "../../../api/firebase_db";
+import { format } from "date-fns";
 
 const PRODUCT_STATUS_FILTER = ["all", "Sale", "Sold Out", "Hide"];
 export default function ProductStatus() {
@@ -37,11 +38,12 @@ export default function ProductStatus() {
   }
 
   const handleTest = (e) => {
+    // let date = format(new Date(), "yyyy-MM-dd"); //=> '2014-01-11'
     // for (let i = 0; i < women.length; i++) {
     //   const [key, product] = women[i];
     //   const updatedProduct = { ...product };
-    //   updatedProduct.stock = 50;
-    //   updatedProduct.status = "Sale";
+    //   updatedProduct.registrationDate = date;
+    //   updatedProduct.updateDate = date;
     //   updateProduct(key, updatedProduct);
     // }
   };
@@ -63,6 +65,7 @@ export default function ProductStatus() {
           {status} {getLength(PRODUCT_STATUS_FILTER[index])}
         </li>
       ))}
+      {/* <div onClick={handleTest}>업데이트!</div> */}
     </ul>
   );
 }
