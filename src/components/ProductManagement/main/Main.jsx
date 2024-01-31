@@ -1,8 +1,28 @@
 import React from "react";
 import ProductStatus from "./ProductStatus";
 import { CiSearch } from "react-icons/ci";
+import useProducts from "../../../hooks/useProducts";
+import ProductListItem from "./ProductListItem";
 
 export default function Main() {
+  const {
+    productsQuery_all: { data },
+  } = useProducts();
+
+  const accessories = data ? Object.entries(data[0]) : []; // [[key,value],[key,value]] 형태
+  const men = data ? Object.entries(data[1]) : [];
+  const shoes = data ? Object.entries(data[2]) : [];
+  const test = data ? Object.entries(data[3]) : [];
+  const women = data ? Object.entries(data[4]) : [];
+
+  const productList_keyAndValue = [
+    ...accessories,
+    ...men,
+    ...shoes,
+    ...women,
+    ...test,
+  ];
+
   return (
     <div className="grow">
       <div className="flex border-gray-300 border-b ">
@@ -39,7 +59,13 @@ export default function Main() {
         </div>
         <div className="">
           <ul>
-            <li className="flex px-8 py-3">
+            {productList_keyAndValue.map((product_KeyAndValue, index) => (
+              <ProductListItem
+                product_KeyAndValue={product_KeyAndValue}
+                key={index}
+              />
+            ))}
+            {/* <li className="flex px-8 py-3">
               <div className="w-20">
                 <input type="checkbox" />
                 <span className="ml-1">9999</span>
@@ -50,26 +76,7 @@ export default function Main() {
               <div className="w-40 text-center">Sold Out</div>
               <div className="w-16 text-center mr-4">50</div>
               <div className="w-48 text-center">2024-01-30</div>
-            </li>
-            <li className="flex px-8 py-3">
-              <div className="w-20">
-                <input type="checkbox" />
-                <span className="ml-1">2</span>
-              </div>
-              <div className="w-96 text-center">Men's cloth 2</div>
-              <div className="w-36 text-center">500$</div>
-              <div className="w-48 text-center">Men</div>
-              <div className="w-40 text-center">Sale</div>
-              <div className="w-16 text-center mr-4">100</div>
-              <div className="w-48 text-center">2024-01-30</div>
-            </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            </li> */}
           </ul>
         </div>
       </div>
