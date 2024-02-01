@@ -8,13 +8,13 @@ export default function ProductListItem({ product_KeyAndValue }) {
         <input type="checkbox" />
         <span className="ml-1">9999</span>
       </div>
-      <div className="w-96 text-center">{product.title}</div>
-      <div className="w-36 text-center">{product.price}</div>
-      <div className="w-48 text-center">{product.category}</div>
+      <div className="w-72 text-center">{product.title}</div>
+      <div className="w-28 text-center">{product.price}</div>
+      <div className="w-40 text-center">{product.category}</div>
       <div className="w-40 text-center">{product.status}</div>
       <div className="w-16 text-center mr-4">{product.stock}</div>
-      <div className="w-48 text-center">{product.registrationDate}</div>
-      <div className="w-48 text-center">{product.updateDate}</div>
+      <div className="w-40 text-center">{product.registrationDate}</div>
+      <div className="w-40 text-center">{product.updateDate}</div>
     </li>
   );
 }

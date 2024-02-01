@@ -52,12 +52,13 @@ export default function Main() {
           <div className="w-20">
             <input type="checkbox" /> No
           </div>
-          <div className="w-96 text-center">Title</div>
-          <div className="w-36 text-center">Price</div>
-          <div className="w-48 text-center">Category</div>
+          <div className="w-72 text-center">Title</div>
+          <div className="w-28 text-center">Price</div>
+          <div className="w-40 text-center">Category</div>
           <div className="w-40 text-center">Status</div>
           <div className="w-16  text-center mr-4">Stock</div>
-          <div className="w-48 text-center">Registration Date</div>
+          <div className="w-40 text-center">Registration Date</div>
+          <div className="w-40 text-center">Update Date</div>
         </div>
         <div className="">
           <ul>
@@ -67,18 +68,6 @@ export default function Main() {
                 key={index}
               />
             ))}
-            {/* <li className="flex px-8 py-3">
-              <div className="w-20">
-                <input type="checkbox" />
-                <span className="ml-1">9999</span>
-              </div>
-              <div className="w-96 text-center">Men's cloth 1</div>
-              <div className="w-36 text-center">1000$</div>
-              <div className="w-48 text-center">Men</div>
-              <div className="w-40 text-center">Sold Out</div>
-              <div className="w-16 text-center mr-4">50</div>
-              <div className="w-48 text-center">2024-01-30</div>
-            </li> */}
           </ul>
         </div>
       </div>
