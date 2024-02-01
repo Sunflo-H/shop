@@ -1,9 +1,15 @@
 import React from "react";
 
-export default function ProductListItem({ product_KeyAndValue }) {
+export default function ProductListItem({
+  product_KeyAndValue,
+  index,
+  viewCount,
+}) {
   const [key, product] = product_KeyAndValue;
-  return (
-    <li className="flex px-8 py-3">
+
+  console.log(index);
+  return index > viewCount ? null : (
+    <li className="flex px-8 py-2 ">
       <div className="w-20">
         <input type="checkbox" />
         <span className="ml-1">9999</span>

@@ -22,7 +22,7 @@ export default function Nav_category({
       <div
         className={`${
           isOpen ? " max-h-96" : "max-h-0"
-        } overflow-hidden duration-300 `}
+        } overflow-hidden duration-200 `}
       >
         {category.map((item, index) => (
           <CategoryItem

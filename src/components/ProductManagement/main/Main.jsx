@@ -6,6 +6,7 @@ import ProductListItem from "./ProductListItem";
 
 import { format } from "date-fns";
 
+const viewCount = 10;
 export default function Main() {
   const {
     productsQuery_all: { data },
@@ -66,6 +67,8 @@ export default function Main() {
               <ProductListItem
                 product_KeyAndValue={product_KeyAndValue}
                 key={index}
+                index={index}
+                viewCount={viewCount}
               />
             ))}
           </ul>
