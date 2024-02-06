@@ -7,7 +7,6 @@ export default function ProductListItem({
 }) {
   const [key, product] = product_KeyAndValue;
 
-  console.log(index);
   return index > viewCount ? null : (
     <li className="flex px-8 py-2 ">
       <div className="w-20">
