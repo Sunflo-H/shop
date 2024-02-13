@@ -2,8 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getProduct,
   getProduct_all,
-  uploadNewProduct,
-  uploadProduct,
+  uploadProductToFirebase,
 } from "../api/firebase_db";
 
 const SEC = 1000;
@@ -42,7 +41,8 @@ export default function useProducts(category) {
 
   // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
   const uploadProduct = useMutation({
-    mutationFn: ({ product, imageUrl }) => uploadProduct(product, imageUrl),
+    mutationFn: ({ productToUpload }) =>
+      uploadProductToFirebase(productToUpload),
     onSuccess: () => {
       queryClient.invalidateQueries(["products", category]);
     },

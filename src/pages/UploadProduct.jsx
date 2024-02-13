@@ -7,6 +7,7 @@ import Input_file from "../components/shop/main/UploadProduct/Input_file";
 import Input_text from "../components/shop/main/UploadProduct/Input_text";
 import Input_size from "../components/shop/main/UploadProduct/Input_size";
 import Input_color from "../components/shop/main/UploadProduct/Input_color";
+import { v4 as uuid } from "uuid";
 
 const category = ["Men", "Women", "Accessories", "Shoes", "Test"];
 const productDetails = ["title", "description"];
@@ -42,17 +43,37 @@ export default function UploadProduct() {
   const handleUploadProduct = async (e) => {
     e.preventDefault();
     setIsUploading(true);
-    console.log(product);
+
+    const id = uuid();
+    const PRODUCT_STATUS = {
+      SALE: "Sale",
+      SOLD_OUT: "Sold Out",
+      HIDE: "Hide",
+    };
+    const imageUrl = await imageUploadAndGetUrl(file);
+    const productToUpload = {
+      ...product,
+      id,
+      imageUrl,
+      price: Number(product.price),
+      stock: Number(product.stock),
+      size: product.size.split(","),
+      color: product.color.split(","),
+      status: PRODUCT_STATUS.SALE, // [Sale, Sold Out, Hide]
+    };
+
     try {
-      const imageUrl = await imageUploadAndGetUrl(file);
       uploadProduct.mutate(
-        { product, imageUrl },
+        { productToUpload },
         {
           onSuccess: () => {
             setSuccess(true);
             setTimeout(() => {
               setSuccess(false);
             }, 3000);
+          },
+          onError: (error) => {
+            console.log(error);
           },
         }
       );
@@ -87,16 +108,7 @@ export default function UploadProduct() {
             );
           })}
         </div>
-        {/* <div className="flex mb-4 gap-2 font-bold">
-          {size.map((item) => (
-            <Input_size size={item} setProduct={setProduct} key={item} />
-          ))}
-        </div>
-        <div className="flex mb-4 gap-2 font-bold">
-          {color.map((item) => (
-            <Input_color color={item} setProduct={setProduct} key={item} />
-          ))}
-        </div> */}
+        {/* <div className=  */}
 
         <Input_file handleChange={handleChange} />
 

@@ -8,28 +8,14 @@ import {
   child,
   update,
 } from "firebase/database";
-import { v4 as uuid } from "uuid";
+
 import app from "./firebase_config";
 
 const db = getDatabase(app); // 실시간 데이터베이스 기능 호출
 
-export function uploadProduct(product, imageUrl) {
-  const id = uuid();
-  const PRODUCT_STATUS = {
-    SALE: "Sale",
-    SOLD_OUT: "Sold Out",
-    HIDE: "Hide",
-  };
-  return set(ref(db, `products/${product.category}/${id}`), {
-    ...product,
-    id,
-    imageUrl,
-    price: Number(product.price),
-    stock: Number(product.stock),
-    size: product.size.split(","),
-    color: product.color.split(","),
-    status: PRODUCT_STATUS.SALE, // [Sale, Sold Out, Hide]
-  });
+export function uploadProductToFirebase(product) {
+  console.log(product);
+  return set(ref(db, `products/${product.category}/${product.id}`), product);
 }
 
 // export async function getProduct_url() {
