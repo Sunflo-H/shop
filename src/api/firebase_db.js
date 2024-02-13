@@ -14,7 +14,6 @@ import app from "./firebase_config";
 const db = getDatabase(app); // 실시간 데이터베이스 기능 호출
 
 export function uploadProductToFirebase(product) {
-  console.log(product);
   return set(ref(db, `products/${product.category}/${product.id}`), product);
 }
 
