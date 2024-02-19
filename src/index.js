@@ -14,7 +14,7 @@ import MyFavorites from "./pages/MyFavorites";
 import ProtectedRoute_isUser from "./components/protectedRoute/ProtectedRoute_isUser";
 import ProtectedRoute_isAdmin from "./components/protectedRoute/ProtectedRoute_isAdmin";
 import ProductManage from "./pages/ProductManage";
-import Main from "./components/ProductManagement/main/Main";
+import ProductList from "./components/ProductManagement/main/ProductList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Main />,
+        element: <ProductList />,
       },
     ],
   },
