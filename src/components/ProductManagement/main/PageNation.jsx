@@ -4,67 +4,85 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-const DATA_LENGTH = 50;
-const MAX_VIEW = 5;
-const RANGE = [1, 2, 3, 4, 5];
-let count_showItem = 10;
+const DATA_LENGTH = 52;
+const PAGE_PER_PAGEGORUP = 5;
+const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
+const ITEM_PER_PAGE = 15;
 
-// 1~5
-// 6~10
-// 11~15
-// 16~20
-// 21~25
+let minPageGroup = 1;
+let maxPageGroup = Math.floor(DATA_LENGTH / ITEM_PER_PAGE);
+let minPage = 1;
+let maxPage = Math.ceil(DATA_LENGTH / ITEM_PER_PAGE);
 
-/**
- * 총 데이터는 50개라고 치자
- * page를 정해야해
- * 1,2,3,4,5 count = 0 ; count * RANGE + 1,2,3,4,5
- * 6,7,8,9,10
- * ...
- * 46,47,48,49,50
- *
- *
- *
- */
+console.log(maxPageGroup);
+console.log(maxPage);
 
 export default function PageNation() {
-  const [page, setPage] = useState(0);
-  const handlePageClick = () => {
-    console.log("hi");
+  const [pageGroup, setPageGroup] = useState(0);
+  const [curPage, setCurPage] = useState(
+    pageGroup * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
+  );
+  const handleNumberClick = (number) => {
+    setCurPage(number);
+  };
+  const handlePagePrevMoveClick = () => {
+    if (pageGroup !== 0) setPageGroup((prev) => prev - 1);
+  };
+  const handleNumberPrevMoveClick = () => {
+    if (curPage !== 1) setCurPage((prev) => prev - 1);
+  };
+  const handlePageNextMoveClick = () => {
+    if (pageGroup !== maxPageGroup) setPageGroup((prev) => prev + 1);
+  };
+  const handleNumberNextMoveClick = () => {
+    if (curPage !== 1) setCurPage((prev) => prev + 1);
   };
   return (
-    <div className="w-full border border-black flex items-center justify-center">
+    <div className="w-full flex items-center justify-center gap-1 mt-4">
       <div className="flex text-2xl">
-        <div className="px-2 py-1 hover:bg-gray-300 rounded-md">
+        <div
+          className="px-2 py-1 hover:bg-gray-300 rounded-md"
+          onClick={handlePagePrevMoveClick}
+        >
           <MdKeyboardDoubleArrowLeft />
         </div>
-        <div className="px-2 py-1 hover:bg-gray-300 rounded-md">
+        <div
+          className="px-2 py-1 hover:bg-gray-300 rounded-md"
+          onClick={handleNumberPrevMoveClick}
+        >
           <MdKeyboardArrowLeft />
         </div>
       </div>
-      <div
-        className="flex items-center h-10 text-center font-bold"
-        onClick={handlePageClick}
-      >
-        {RANGE.map((item, index) => (
-          <PageNumber number={page * 5 + item} />
+      <div className="flex items-center h-10 text-center font-bold gap-1">
+        {ARR_PAGE_PER_PAGEGORUP.map((item, index) => (
+          <PageNumber
+            number={pageGroup * PAGE_PER_PAGEGORUP + item}
+            curPage={curPage}
+            handleNumberClick={handleNumberClick}
+            key={index}
+          />
         ))}
       </div>
       <div className="flex text-2xl">
         <div className="px-2 py-1 hover:bg-gray-300 rounded-md">
-          <MdKeyboardArrowRight />
+          <MdKeyboardArrowRight onClick={handleNumberNextMoveClick} />
         </div>
         <div className="px-2 py-1 hover:bg-gray-300 rounded-md">
-          <MdKeyboardDoubleArrowRight />
+          <MdKeyboardDoubleArrowRight onClick={handlePageNextMoveClick} />
         </div>
       </div>
     </div>
   );
 }
 
-function PageNumber({ number }) {
+function PageNumber({ number, curPage, handleNumberClick }) {
   return (
-    <div className="px-4 py-1 hover:bg-blue-200 hover:text-blue-500 rounded-md">
+    <div
+      className={`px-4 py-1 rounded-md cursor-pointer ${
+        number == curPage ? "bg-blue-200 text-blue-500" : "hover:bg-gray-300"
+      }`}
+      onClick={() => handleNumberClick(number)}
+    >
       {number}
     </div>
   );

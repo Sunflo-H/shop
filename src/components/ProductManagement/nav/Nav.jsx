@@ -9,7 +9,7 @@ export default function Nav({ item }) {
   const handleCategoryClick = (e, value) => {
     setCurrentCategory(value);
   };
-  console.log(item);
+  // console.log(item);
 
   return (
     <div className="self-start text-lg font-bold bg-white mx-6 pb-4">

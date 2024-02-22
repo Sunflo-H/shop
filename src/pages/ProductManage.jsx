@@ -17,7 +17,7 @@ export default function ProductManagement() {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <div className="flex flex-col bg-gray-200 h-screen border-black border">
+        <div className="flex flex-col h-screen bg-gray-200 ">
           <Header />
           <div className="flex self-center w-screen max-w-screen-2xl ">
             <Nav item={item} />
