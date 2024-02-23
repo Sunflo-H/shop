@@ -3,13 +3,12 @@ import { FiSettings } from "react-icons/fi";
 import Category from "./Category";
 
 const categoryList = [["ALL", "Men", "Women", "Shoes", "Accessories"]];
-export default function Nav({ item }) {
+export default function Nav() {
   const [currentCategory, setCurrentCategory] = useState(categoryList[0][0]);
 
   const handleCategoryClick = (e, value) => {
     setCurrentCategory(value);
   };
-  // console.log(item);
 
   return (
     <div className="self-start text-lg font-bold bg-white mx-6 pb-4">

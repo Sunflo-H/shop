@@ -13,8 +13,6 @@ let minPage = 1;
 let maxPage = Math.ceil(DATA_LENGTH / ITEM_PER_PAGE);
 let minPageGroup = 0;
 let maxPageGroup = Math.ceil(maxPage / 5);
-console.log("maxPage : ", maxPage);
-console.log("maxPageGroup : ", maxPageGroup);
 
 export default function PageNation() {
   const [pageGroup, setPageGroup] = useState(minPageGroup);

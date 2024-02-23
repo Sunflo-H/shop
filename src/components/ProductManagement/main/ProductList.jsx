@@ -5,9 +5,12 @@ import useProducts from "../../../hooks/useProducts";
 import ProductListItem from "./ProductListItem";
 
 import { format } from "date-fns";
+import { useSelector } from "react-redux";
 
 const viewCount = 10;
 export default function ProductList() {
+  const a = useSelector((state) => state.product);
+  // console.log(a);
   const {
     productsQuery_all: { data },
   } = useProducts();
@@ -25,6 +28,7 @@ export default function ProductList() {
     ...women,
     ...test,
   ];
+  // console.log(productList_keyAndValue);
 
   return (
     <div className="mt-4 bg-white">

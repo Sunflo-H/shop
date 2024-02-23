@@ -15,8 +15,12 @@ import ProtectedRoute_isUser from "./components/protectedRoute/ProtectedRoute_is
 import ProtectedRoute_isAdmin from "./components/protectedRoute/ProtectedRoute_isAdmin";
 import ProductManage from "./pages/ProductManage";
 import ProductList from "./components/ProductManagement/main/ProductList";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,8 +71,11 @@ const router = createBrowserRouter([
   {
     path: "/manage",
     element: (
-      // <ProtectedRoute_isAdmin>
-      <ProductManage />
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <ProductManage />
+        </Provider>
+      </QueryClientProvider>
     ),
     children: [
       {
