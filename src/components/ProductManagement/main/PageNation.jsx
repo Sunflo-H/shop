@@ -72,7 +72,7 @@ export default function PageNation() {
     } else setCurPage((prev) => prev + 1);
   };
   return (
-    <div className="w-full flex items-center justify-center gap-1 mt-4">
+    <div className="w-full flex items-center justify-center gap-1 mt-4 mb-2">
       <div className="flex text-2xl">
         <div
           className="px-2 py-1 hover:bg-gray-300 rounded-md cursor-pointer"

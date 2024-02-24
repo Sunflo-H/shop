@@ -5,20 +5,20 @@ import useProducts from "../hooks/useProducts";
 export const productSlice = createSlice({
   name: "product", // 내가 직접 다루지는 않지만 내부적으로 각 slice들을 구분하는 역할
   initialState: {
-    products: [1, 2, 3],
+    products: [],
+    viewCount: 10,
   },
   reducers: {
     // 상태를 다루는 '리듀서 함수'들
     setProducts: (state, action) => {
-      console.log(state.products[0]);
-      console.log(action.payload);
       state.products = action.payload;
     },
-    // chageCurrentCategory: (state, action) => {
-    //   state.currentCategory = action.payload;
-    // },
+    changeViewCount: (state, action) => {
+      console.log("체인지~");
+      state.viewCount = action.payload;
+    },
   },
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setProducts, changeViewCount } = productSlice.actions;
 export default productSlice.reducer;

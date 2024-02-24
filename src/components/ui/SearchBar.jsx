@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 
 export default function SearchBar() {
   return (
-    <div className="mt-4 border ">
+    <div className="mt-2 border ">
       <div className="flex justify-between bg-white">
         <input
           className="px-6 py-3 grow outline-none"

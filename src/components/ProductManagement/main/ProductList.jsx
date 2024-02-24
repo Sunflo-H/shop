@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductStatus from "./ProductStatus";
 import { CiSearch } from "react-icons/ci";
 import useProducts from "../../../hooks/useProducts";
@@ -7,28 +7,13 @@ import ProductListItem from "./ProductListItem";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
 
-const viewCount = 10;
 export default function ProductList() {
-  const a = useSelector((state) => state.product);
-  // console.log(a);
-  const {
-    productsQuery_all: { data },
-  } = useProducts();
+  let products = useSelector((state) => state.product.products);
+  let viewCount = useSelector((state) => state.product.viewCount);
 
-  const accessories = data ? Object.entries(data[0]) : []; // [[key,value],[key,value]] 형태
-  const men = data ? Object.entries(data[1]) : [];
-  const shoes = data ? Object.entries(data[2]) : [];
-  const test = data ? Object.entries(data[3]) : [];
-  const women = data ? Object.entries(data[4]) : [];
-
-  const productList_keyAndValue = [
-    ...accessories,
-    ...men,
-    ...shoes,
-    ...women,
-    ...test,
-  ];
-  // console.log(productList_keyAndValue);
+  useEffect(() => {
+    console.log(viewCount);
+  }, [viewCount]);
 
   return (
     <div className="mt-4 bg-white">
@@ -46,9 +31,9 @@ export default function ProductList() {
       </div>
       <div className="">
         <ul>
-          {productList_keyAndValue.map((product_KeyAndValue, index) => (
+          {products?.map((product_KeyValue, index) => (
             <ProductListItem
-              product_KeyAndValue={product_KeyAndValue}
+              product_KeyAndValue={product_KeyValue}
               key={index}
               index={index}
               viewCount={viewCount}

@@ -12,36 +12,22 @@ import useProducts from "../hooks/useProducts";
 import { setProducts } from "../slice/productSlice";
 
 export default function ProductManagement() {
+  const dispatch = useDispatch();
   const {
     productsQuery_all: { data },
   } = useProducts();
-
-  const dispatch = useDispatch();
-
-  const accessories = data ? Object.entries(data[0]) : []; // [[key,value],[key,value]] 형태
-  const men = data ? Object.entries(data[1]) : [];
-  const shoes = data ? Object.entries(data[2]) : [];
-  const test = data ? Object.entries(data[3]) : [];
-  const women = data ? Object.entries(data[4]) : [];
-
-  const productList_keyAndValue = [
-    ...accessories,
-    ...men,
-    ...shoes,
-    ...women,
-    ...test,
-  ];
+  let productList_keyValue = transformKeyValue(data);
+  const asd = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    dispatch(setProducts(productList_keyAndValue));
+    dispatch(setProducts(productList_keyValue));
   }, [data]);
 
-  const [item, setItem] = useState(1);
   return (
-    <div className="flex flex-col h-screen bg-gray-200 ">
+    <div className="flex flex-col min-h-screen bg-gray-200 ">
       <Header />
       <div className="flex self-center w-screen max-w-screen-2xl ">
-        <Nav item={item} />
+        <Nav />
         <div className="grow">
           <div className="flex border-gray-300 border-b ">
             <ProductStatus />
@@ -54,4 +40,21 @@ export default function ProductManagement() {
       </div>
     </div>
   );
+}
+
+function transformKeyValue(data) {
+  const accessories = data ? Object.entries(data[0]) : []; // [[key,value],[key,value]] 형태
+  const men = data ? Object.entries(data[1]) : [];
+  const shoes = data ? Object.entries(data[2]) : [];
+  const test = data ? Object.entries(data[3]) : [];
+  const women = data ? Object.entries(data[4]) : [];
+
+  const productList_keyValue = [
+    ...accessories,
+    ...men,
+    ...shoes,
+    ...women,
+    ...test,
+  ];
+  return productList_keyValue;
 }
