@@ -11,10 +11,6 @@ export default function ProductList() {
   let products = useSelector((state) => state.product.products);
   let viewCount = useSelector((state) => state.product.viewCount);
 
-  useEffect(() => {
-    console.log(viewCount);
-  }, [viewCount]);
-
   return (
     <div className="mt-4 bg-white">
       <div className="flex px-8 py-2 border-b border-gray-300 font-bold">
