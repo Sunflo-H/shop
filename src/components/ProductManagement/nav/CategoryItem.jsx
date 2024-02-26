@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeCurrentCategory } from "../../../slice/productManagementSlice";
+import { filterByCategory } from "../../../slice/productManagementSlice";
 
-export default function CategoryItem({
-  value,
-  // currentCategory,
-  // handleCategoryClick,
-}) {
+export default function CategoryItem({ value }) {
   const dispatch = useDispatch();
   const currentCategory = useSelector(
     (state) => state.productManagement.currentCategory
@@ -17,7 +13,7 @@ export default function CategoryItem({
       className={`pl-12 py-2 cursor-pointer hover:bg-blue-50 ${
         currentCategory === value ? activeCategoryStyle : ""
       } `}
-      onClick={() => dispatch(changeCurrentCategory(value))}
+      onClick={() => dispatch(filterByCategory(value))}
     >
       {value}
     </div>
