@@ -9,7 +9,7 @@ import PageNation from "../components/ProductManagement/main/PageNation";
 import SelectBox from "../components/ui/SelectBox";
 import SearchBar from "../components/ui/SearchBar";
 import useProducts from "../hooks/useProducts";
-import { setProducts } from "../slice/productManageSlice";
+import { setProducts } from "../slice/productManagementSlice";
 
 export default function ProductManagement() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function ProductManagement() {
     productsQuery_all: { data },
   } = useProducts();
   let productList_keyValue = transformKeyValue(data);
-  const asd = useSelector((state) => state.product.products);
+  const asd = useSelector((state) => state.product_manage.products);
 
   useEffect(() => {
     dispatch(setProducts(productList_keyValue));
