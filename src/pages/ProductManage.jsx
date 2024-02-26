@@ -17,7 +17,6 @@ export default function ProductManagement() {
     productsQuery_all: { data },
   } = useProducts();
   let productList_keyValue = transformKeyValue(data);
-  const asd = useSelector((state) => state.product_manage.products);
 
   useEffect(() => {
     dispatch(setProducts(productList_keyValue));

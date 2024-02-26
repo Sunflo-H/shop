@@ -9,11 +9,6 @@ export default function CategoryTitle({ title, handleCollapsible, isOpen }) {
           className="flex gap-1 px-3 pb-2 cursor-pointer "
           onClick={handleCollapsible}
         >
-          {/* {isOpen ? (
-            <FaCaretDown className="self-center" />
-          ) : (
-            <FaCaretUp className="self-center" />
-          )} */}
           <FaCaretRight
             className={`self-center ${isOpen ? "rotate-90" : ""} duration-300`}
           />

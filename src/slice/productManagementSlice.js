@@ -7,8 +7,8 @@ export const productManagementSlice = createSlice({
   initialState: {
     products: [],
     viewCount: 10,
-    currentCategory: "Men",
-    categoryList: ["Men", "Women", "Accessories", "Shoes"],
+    currentCategory: "All",
+    categoryList: ["All", "Men", "Women", "Accessories", "Shoes"],
   },
   reducers: {
     // 상태를 다루는 '리듀서 함수'들
@@ -18,12 +18,15 @@ export const productManagementSlice = createSlice({
     changeViewCount: (state, action) => {
       state.viewCount = action.payload;
     },
-    chageCurrentCategory: (state, action) => {
+    changeCurrentCategory: (state, action) => {
       state.currentCategory = action.payload;
+    },
+    filter_category: (state, action) => {
+      console.log(state.products);
     },
   },
 });
 
-export const { setProducts, changeViewCount, chageCurrentCategory } =
+export const { setProducts, changeViewCount, changeCurrentCategory } =
   productManagementSlice.actions;
 export default productManagementSlice.reducer;

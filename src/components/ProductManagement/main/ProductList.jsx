@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
-import ProductStatus from "./ProductStatus";
-import { CiSearch } from "react-icons/ci";
-import useProducts from "../../../hooks/useProducts";
+import React from "react";
 import ProductListItem from "./ProductListItem";
 
-import { format } from "date-fns";
 import { useSelector } from "react-redux";
 
 export default function ProductList() {
-  let products = useSelector((state) => state.product.products);
-  let viewCount = useSelector((state) => state.product.viewCount);
+  let products = useSelector((state) => state.productManagement.products);
+  let viewCount = useSelector((state) => state.productManagement.viewCount);
 
   return (
     <div className="mt-4 bg-white">
