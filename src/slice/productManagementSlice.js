@@ -21,9 +21,15 @@ export const productManagementSlice = createSlice({
     },
     filterByCategory: (state, action) => {
       state.currentCategory = action.payload;
-      state.products = state.products_origin.filter(
-        (product) => product[1].category === action.payload
-      );
+      if (state.currentCategory === "All")
+        state.products = state.products_origin;
+      else {
+        state.products = state.products_origin.filter(
+          (product) => product[1].category === action.payload
+        );
+      }
+      // console.log(state.products);
+      // console.log(current(state.products_origin));
     },
   },
 });
