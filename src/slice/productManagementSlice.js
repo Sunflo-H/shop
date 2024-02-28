@@ -1,39 +1,76 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
-// 외부에서 상품 데이터를 요청 -> productSlice에 데이터 저장 -> productSlice로부터 데이터 보여주기
+// 외부에서 상품 데이터를 요청 -> slice에 데이터 저장 -> 컴포넌트는 slice로부터 데이터를 가져와서 렌더링한다.
 export const productManagementSlice = createSlice({
-  name: "productManagement", // 내가 직접 다루지는 않지만 내부적으로 각 slice들을 구분하는 역할
+  name: "productManagement",
   initialState: {
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
-    products: [], // 필터되서 보여지는 데이터
+    products: {
+      // category
+      accessories: [],
+      men: [],
+      shoes: [],
+      women: [],
+      test: [],
+      // status
+      sale: [],
+      soldout: [],
+      hide: [],
+    },
+    viewProducts: [], // 필터되서 보여지는 데이터
     viewCount: 10,
-    categoryList: ["All", "Men", "Women", "Accessories", "Shoes"],
-    currentCategory: "All",
+    categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
+    currentCategory: "ALL",
+    productStatus: ["ALL", "Sale", "Sold Out", "Hide"],
+    currentStatus: "ALL",
   },
   reducers: {
-    // 상태를 다루는 '리듀서 함수'들
-    setProducts_init: (state, action) => {
+    initProducts: (state, action) => {
       state.products_origin = action.payload;
-      state.products = state.products_origin;
+      // category
+      state.products.accessories = state.products_origin.filter(
+        (product) => product[1].category === "Accessories"
+      );
+      state.products.men = state.products_origin.filter(
+        (product) => product[1].category === "Men"
+      );
+      state.products.shoes = state.products_origin.filter(
+        (product) => product[1].category === "Shoes"
+      );
+      state.products.women = state.products_origin.filter(
+        (product) => product[1].category === "Women"
+      );
+      state.products.test = state.products_origin.filter(
+        (product) => product[1].category === "Test"
+      );
+      // status
+      // state.products.test = state.products_origin.filter(
+      //   (product) => product[1].status === "Sale"
+      // );
+      // state.products.test = state.products_origin.filter(
+      //   (product) => product[1].status === "Sold Out"
+      // );
+      // state.products.test = state.products_origin.filter(
+      //   (product) => product[1].status === "Hide"
+      // );
+      state.viewProducts = state.products_origin;
+      console.log(current(state.products));
     },
     changeViewCount: (state, action) => {
       state.viewCount = action.payload;
     },
     filterByCategory: (state, action) => {
       state.currentCategory = action.payload;
-      if (state.currentCategory === "All")
-        state.products = state.products_origin;
+      if (state.currentCategory === "ALL")
+        state.viewProducts = state.products_origin;
       else {
-        state.products = state.products_origin.filter(
-          (product) => product[1].category === action.payload
-        );
+        state.viewProducts = state.products[action.payload.toLowerCase()];
       }
-      // console.log(state.products);
-      // console.log(current(state.products_origin));
     },
+    status: (state, action) => {},
   },
 });
 
-export const { setProducts_init, changeViewCount, filterByCategory } =
+export const { initProducts, changeViewCount, filterByCategory } =
   productManagementSlice.actions;
 export default productManagementSlice.reducer;

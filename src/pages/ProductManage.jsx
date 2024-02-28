@@ -9,7 +9,7 @@ import PageNation from "../components/ProductManagement/main/PageNation";
 import SelectBox from "../components/ui/SelectBox";
 import SearchBar from "../components/ui/SearchBar";
 import useProducts from "../hooks/useProducts";
-import { setProducts_init } from "../slice/productManagementSlice";
+import { initProducts } from "../slice/productManagementSlice";
 
 export default function ProductManagement() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function ProductManagement() {
   let productList_keyValue = transformKeyValue(data);
 
   useEffect(() => {
-    dispatch(setProducts_init(productList_keyValue));
+    dispatch(initProducts(productList_keyValue));
   }, [data]);
 
   return (

@@ -37,17 +37,6 @@ export default function ProductStatus() {
     return length;
   }
 
-  const handleTest = (e) => {
-    // let date = format(new Date(), "yyyy-MM-dd"); //=> '2014-01-11'
-    // for (let i = 0; i < women.length; i++) {
-    //   const [key, product] = women[i];
-    //   const updatedProduct = { ...product };
-    //   updatedProduct.registrationDate = date;
-    //   updatedProduct.updateDate = date;
-    //   updateProduct(key, updatedProduct);
-    // }
-  };
-
   const handleFilterClick = (status) => {
     setFilter(status);
   };
@@ -65,7 +54,20 @@ export default function ProductStatus() {
           {status} {getLength(PRODUCT_STATUS_FILTER[index])}
         </li>
       ))}
-      {/* <div onClick={handleTest}>업데이트!</div> */}
     </ul>
   );
 }
+
+const 업데이트코드 = (e) => {
+  // let date = format(new Date(), "yyyy-MM-dd"); //=> '2014-01-11'
+  // for (let i = 0; i < women.length; i++) {
+  //   const [key, product] = women[i];
+  //   const updatedProduct = { ...product };
+  //   updatedProduct.registrationDate = date;
+  //   updatedProduct.updateDate = date;
+  //   updateProduct(key, updatedProduct);
+  // }
+  {
+    /* <div onClick={handleTest}>업데이트!</div> */
+  }
+};

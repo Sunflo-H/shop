@@ -4,9 +4,9 @@ import ProductListItem from "./ProductListItem";
 import { useSelector } from "react-redux";
 
 export default function ProductList() {
-  let products = useSelector((state) => state.productManagement.products);
+  let products = useSelector((state) => state.productManagement.viewProducts);
   let viewCount = useSelector((state) => state.productManagement.viewCount);
-
+  console.log(products);
   return (
     <div className="mt-4 bg-white">
       <div className="flex px-8 py-2 border-b border-gray-300 font-bold">
