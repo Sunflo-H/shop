@@ -2,56 +2,44 @@ import React, { useEffect, useState } from "react";
 import useProducts from "../../../hooks/useProducts";
 import { updateProduct } from "../../../api/firebase_db";
 import { format } from "date-fns";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filterByCategory,
+  filterByStatus,
+} from "../../../slice/productManagementSlice";
 
-const PRODUCT_STATUS_FILTER = ["all", "Sale", "Sold Out", "Hide"];
 export default function ProductStatus() {
-  const [filter, setFilter] = useState("ALL");
-  const productStatus = ["ALL", "Sale", "Sold Out", "Hide"];
-  const {
-    productsQuery_all: { data },
-  } = useProducts(); // 0123935872394: {상품데이터} 이런 형태라서 데이터를 수정해야한다
+  const dispatch = useDispatch();
+  const currentStatus = useSelector(
+    (state) => state.productManagement.currentStatus
+  );
+  const products = useSelector(
+    (state) => state.productManagement.products_origin
+  );
+  const statusList = useSelector((state) => state.productManagement.statusList);
 
-  const accessories = data ? Object.entries(data[0]) : [];
-  const men = data ? Object.entries(data[1]) : [];
-  const shoes = data ? Object.entries(data[2]) : [];
-  const test = data ? Object.entries(data[3]) : [];
-  const women = data ? Object.entries(data[4]) : [];
-
-  const productList = [accessories, men, shoes, women, test];
-
-  function getLength(type) {
-    let length = 0;
-    if (type === "all") {
-      length = data ? productList.reduce((acc, cur) => acc + cur.length, 0) : 0;
+  function productCountByStatus(type) {
+    let count = 0;
+    if (type === "ALL") {
+      count = products.length;
     } else {
-      length = data
-        ? productList.reduce((acc, productByCategory) => {
-            const filteredProductList = productByCategory.filter((product) => {
-              const productData = product[1];
-              return productData.status === type;
-            });
-            return acc + filteredProductList.length;
-          }, 0)
-        : 0;
+      count = products.filter((product) => product[1].status === type).length;
     }
-    return length;
+    return count;
   }
-
-  const handleFilterClick = (status) => {
-    setFilter(status);
-  };
 
   return (
     <ul className="flex gap-4">
-      {productStatus.map((status, index) => (
+      {statusList.map((status, index) => (
         <li
           className={`p-4 pt-0 pb-2  font-bold cursor-pointer ${
-            status === filter ? "text-blue-500 border-blue-500 border-b-2" : " "
+            status === currentStatus &&
+            "text-blue-500 border-blue-500 border-b-2"
           }`}
           key={index}
-          onClick={() => handleFilterClick(status)}
+          onClick={() => dispatch(filterByStatus(status))}
         >
-          {status} {getLength(PRODUCT_STATUS_FILTER[index])}
+          {status} {productCountByStatus(status)}
         </li>
       ))}
     </ul>

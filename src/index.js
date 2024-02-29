@@ -12,8 +12,7 @@ import Products from "./pages/Products";
 import Recommend from "./pages/Recommend";
 import MyFavorites from "./pages/MyFavorites";
 import ProtectedRoute_isUser from "./components/protectedRoute/ProtectedRoute_isUser";
-import ProtectedRoute_isAdmin from "./components/protectedRoute/ProtectedRoute_isAdmin";
-import ProductManage from "./pages/ProductManage";
+import ProductManagement from "./pages/ProductManagement";
 import ProductList from "./components/ProductManagement/main/ProductList";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
@@ -73,7 +72,7 @@ const router = createBrowserRouter([
     element: (
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <ProductManage />
+          <ProductManagement />
         </Provider>
       </QueryClientProvider>
     ),
