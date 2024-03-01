@@ -3,10 +3,7 @@ import useProducts from "../../../hooks/useProducts";
 import { updateProduct } from "../../../api/firebase_db";
 import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  filterByCategory,
-  filterByStatus,
-} from "../../../slice/productManagementSlice";
+import { filterByStatus } from "../../../slice/productManagementSlice";
 
 export default function ProductStatus() {
   const dispatch = useDispatch();
@@ -14,11 +11,11 @@ export default function ProductStatus() {
     (state) => state.productManagement.currentStatus
   );
   const products = useSelector(
-    (state) => state.productManagement.products_origin
+    (state) => state.productManagement.products_category
   );
   const statusList = useSelector((state) => state.productManagement.statusList);
 
-  function productCountByStatus(type) {
+  function countProductsByStatus(type) {
     let count = 0;
     if (type === "ALL") {
       count = products.length;
@@ -39,7 +36,7 @@ export default function ProductStatus() {
           key={index}
           onClick={() => dispatch(filterByStatus(status))}
         >
-          {status} {productCountByStatus(status)}
+          {status} {countProductsByStatus(status)}
         </li>
       ))}
     </ul>
