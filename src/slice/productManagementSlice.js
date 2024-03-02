@@ -12,6 +12,8 @@ export const productManagementSlice = createSlice({
     currentCategory: "ALL",
     statusList: ["ALL", "Sale", "Sold Out", "Hide"],
     currentStatus: "ALL",
+    currentPage: "1",
+    currentPageGroup: "0",
   },
   reducers: {
     initProducts: (state, action) => {
