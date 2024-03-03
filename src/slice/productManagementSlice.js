@@ -4,6 +4,11 @@ import { createSlice, current } from "@reduxjs/toolkit";
 export const productManagementSlice = createSlice({
   name: "productManagement",
   initialState: {
+    /**
+     * filter: { category: "ALL", status: "ALL" }
+     * 나는 필터 객체를 조절하면 돼고
+     * 매번 아이템은 filter를 참고해서 products_origin으로부터 가져온다.
+     */
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
     products_category: [], // 카테고리 필터가 적용된 데이터
     products: [], // 필터되서 보여지는 데이터
@@ -14,6 +19,7 @@ export const productManagementSlice = createSlice({
     currentStatus: "ALL",
     currentPage: "1",
     currentPageGroup: "0",
+    filter: { category: "ALL", status: "ALL" },
   },
   reducers: {
     initProducts: (state, action) => {
@@ -21,12 +27,13 @@ export const productManagementSlice = createSlice({
       state.products_category = state.products_origin;
       state.products = state.products_origin;
     },
+
     changeViewCount: (state, action) => {
       state.viewCount = action.payload;
     },
     filterByCategory: (state, action) => {
       state.currentCategory = action.payload;
-      resetStatus();
+      state.currentStatus = "ALL";
       if (state.currentCategory === "ALL") {
         state.products_category = state.products_origin;
         state.products = state.products_category;
@@ -36,15 +43,9 @@ export const productManagementSlice = createSlice({
         );
         state.products = state.products_category;
       }
-
-      function resetStatus() {
-        state.currentStatus = "ALL";
-      }
     },
     filterByStatus: (state, action) => {
-      console.log(current(state.products_category));
       state.currentStatus = action.payload;
-      // 카테고리 필터가 적용중인 경우와 아닌경우
 
       if (state.currentStatus === "ALL")
         state.products = state.products_category;
@@ -54,6 +55,9 @@ export const productManagementSlice = createSlice({
         );
       }
     },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
@@ -62,5 +66,6 @@ export const {
   changeViewCount,
   filterByCategory,
   filterByStatus,
+  setCurrentPage,
 } = productManagementSlice.actions;
 export default productManagementSlice.reducer;

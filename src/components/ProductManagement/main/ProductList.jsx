@@ -1,7 +1,7 @@
 import React from "react";
 import ProductListItem from "./ProductListItem";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductList() {
   let products = useSelector((state) => state.productManagement.products);

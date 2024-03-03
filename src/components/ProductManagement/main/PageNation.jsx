@@ -3,21 +3,22 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
 const PAGE_PER_PAGEGORUP = 5;
 export default function PageNation() {
-  // const dataLength = useSelector((state) => state.productManagement.products?.length);
+  const dispatch = useDispatch();
+  const dataLength = useSelector(
+    (state) => state.productManagement.products?.length
+  );
 
   const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
-  let dataLength = 52;
+
   let viewCount = useSelector((state) => state.productManagement.viewCount);
   let maxPage = Math.ceil(dataLength / viewCount);
   let maxPageGroup = Math.ceil(maxPage / 5);
-  // console.log(maxPage);
-  // console.log(maxPageGroup);
   const [pageGroup, setPageGroup] = useState(MIN_PAGEGROUP);
   const [curPage, setCurPage] = useState(
     (MIN_PAGEGROUP - 1) * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
@@ -28,7 +29,6 @@ export default function PageNation() {
   };
 
   const handlePrevPageGroupClick = () => {
-    console.log(pageGroup);
     if (pageGroup === MIN_PAGEGROUP) return;
 
     setPageGroup((prev) => {
