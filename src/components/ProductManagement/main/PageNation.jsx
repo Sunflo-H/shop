@@ -4,6 +4,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { setCurrentPage } from "../../../slice/productManagementSlice";
 
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
@@ -19,13 +20,14 @@ export default function PageNation() {
   let viewCount = useSelector((state) => state.productManagement.viewCount);
   let maxPage = Math.ceil(dataLength / viewCount);
   let maxPageGroup = Math.ceil(maxPage / 5);
+  let currentPage = useSelector((state) => state.productManagement.currentPage);
   const [pageGroup, setPageGroup] = useState(MIN_PAGEGROUP);
   const [curPage, setCurPage] = useState(
     (MIN_PAGEGROUP - 1) * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
   );
 
-  const handlePageClick = (number) => {
-    setCurPage(number);
+  const handlePageClick = (page) => {
+    dispatch(setCurrentPage(page));
   };
 
   const handlePrevPageGroupClick = () => {
@@ -33,11 +35,17 @@ export default function PageNation() {
 
     setPageGroup((prev) => {
       let prevPageGroup = prev - 1;
-      setCurPage(
-        () =>
+      dispatch(
+        setCurrentPage(
           (prevPageGroup - 1) * PAGE_PER_PAGEGORUP +
-          ARR_PAGE_PER_PAGEGORUP[ARR_PAGE_PER_PAGEGORUP.length - 1]
+            ARR_PAGE_PER_PAGEGORUP[ARR_PAGE_PER_PAGEGORUP.length - 1]
+        )
       );
+      // setCurPage(
+      //   () =>
+      //     (prevPageGroup - 1) * PAGE_PER_PAGEGORUP +
+      //     ARR_PAGE_PER_PAGEGORUP[ARR_PAGE_PER_PAGEGORUP.length - 1]
+      // );
       return prevPageGroup;
     });
   };
@@ -48,10 +56,15 @@ export default function PageNation() {
     setPageGroup((prev) => {
       let nextPageGroup = prev + 1;
 
-      setCurPage(
-        () =>
+      dispatch(
+        setCurrentPage(
           (nextPageGroup - 1) * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
+        )
       );
+      // setCurPage(
+      //   () =>
+      //     (nextPageGroup - 1) * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
+      // );
       return nextPageGroup;
     });
   };
@@ -64,7 +77,8 @@ export default function PageNation() {
 
     if (curPage === curPageGroup_firstPage) {
       handlePrevPageGroupClick();
-    } else setCurPage((prev) => prev - 1);
+    } else dispatch(setCurrentPage(currentPage - 1));
+    // setCurPage((prev) => prev - 1);
   };
 
   const handleNextPageClick = () => {
@@ -76,7 +90,8 @@ export default function PageNation() {
 
     if (curPage === curPageGroup_lastPage) {
       handleNextPageGroupClick();
-    } else setCurPage((prev) => prev + 1);
+    } else setCurrentPage(currentPage + 1);
+    // setCurPage((prev) => prev + 1);
   };
   return (
     <div className="w-full flex items-center justify-center gap-1 mt-4 mb-2">
@@ -101,7 +116,7 @@ export default function PageNation() {
           return (
             <Page
               page={page}
-              curPage={curPage}
+              currentPage={currentPage}
               handlePageClick={handlePageClick}
               key={index}
             />
@@ -120,11 +135,11 @@ export default function PageNation() {
   );
 }
 
-function Page({ page, curPage, handlePageClick }) {
+function Page({ page, currentPage, handlePageClick }) {
   return (
     <div
       className={`px-4 py-1 rounded-md cursor-pointer ${
-        page == curPage ? "bg-blue-200 text-blue-500" : "hover:bg-gray-300"
+        page == currentPage ? "bg-blue-200 text-blue-500" : "hover:bg-gray-300"
       }`}
       onClick={() => handlePageClick(page)}
     >

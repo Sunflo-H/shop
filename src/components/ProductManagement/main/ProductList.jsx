@@ -4,8 +4,18 @@ import ProductListItem from "./ProductListItem";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductList() {
-  let products = useSelector((state) => state.productManagement.products);
-  let viewCount = useSelector((state) => state.productManagement.viewCount);
+  const products = useSelector((state) => state.productManagement.products);
+  const viewCount = useSelector((state) => state.productManagement.viewCount);
+  const page = useSelector((state) => state.productManagement.currentPage);
+  const pageGroup = useSelector(
+    (state) => state.productManagement.currentPageGroup
+  );
+
+  /**
+   * page = 1
+   * pageGroup = 0
+   */
+  // products.filter();
 
   return (
     <div className="mt-4 bg-white">

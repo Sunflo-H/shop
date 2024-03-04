@@ -1,6 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
 // 외부에서 상품 데이터를 요청 -> slice에 데이터 저장 -> 컴포넌트는 slice로부터 데이터를 가져와서 렌더링한다.
+const MIN_PAGE = 1;
+const MIN_PAGEGROUP = 1;
+const PAGE_PER_PAGEGORUP = 5;
 export const productManagementSlice = createSlice({
   name: "productManagement",
   initialState: {
@@ -17,8 +20,8 @@ export const productManagementSlice = createSlice({
     currentCategory: "ALL",
     statusList: ["ALL", "Sale", "Sold Out", "Hide"],
     currentStatus: "ALL",
-    currentPage: "1",
-    currentPageGroup: "0",
+    currentPage: 1,
+    currentPageGroup: 1,
     filter: { category: "ALL", status: "ALL" },
   },
   reducers: {
@@ -57,6 +60,7 @@ export const productManagementSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+      console.log(state.currentPage);
     },
   },
 });
