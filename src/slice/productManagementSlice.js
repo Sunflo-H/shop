@@ -60,7 +60,9 @@ export const productManagementSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
-      console.log(state.currentPage);
+    },
+    setCurrentPageGroup: (state, action) => {
+      state.currentPageGroup = action.payload;
     },
   },
 });
@@ -71,5 +73,6 @@ export const {
   filterByCategory,
   filterByStatus,
   setCurrentPage,
+  setCurrentPageGroup,
 } = productManagementSlice.actions;
 export default productManagementSlice.reducer;
