@@ -10,12 +10,9 @@ export default function ProductList() {
   const pageGroup = useSelector(
     (state) => state.productManagement.currentPageGroup
   );
-
-  /**
-   * page = 1
-   * pageGroup = 0
-   */
-  // products.filter();
+  let start = viewCount * (page - 1);
+  let last = viewCount * page;
+  let productsPerPage = products.slice(start, last);
 
   return (
     <div className="mt-4 bg-white">
@@ -33,7 +30,7 @@ export default function ProductList() {
       </div>
       <div className="">
         <ul>
-          {products?.map((product_KeyValue, index) => (
+          {productsPerPage?.map((product_KeyValue, index) => (
             <ProductListItem
               product_KeyAndValue={product_KeyValue}
               key={index}

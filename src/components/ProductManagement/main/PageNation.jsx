@@ -12,14 +12,13 @@ import {
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
 const PAGE_PER_PAGEGORUP = 5;
+const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
 export default function PageNation() {
   const dispatch = useDispatch();
-  const dataLength = 100;
-  // const dataLength = useSelector(
-  //   (state) => state.productManagement.products?.length
-  // );
-
-  const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
+  // const dataLength = 100;
+  const dataLength = useSelector(
+    (state) => state.productManagement.products?.length
+  );
 
   let viewCount = useSelector((state) => state.productManagement.viewCount);
   let maxPage = Math.ceil(dataLength / viewCount);
@@ -30,10 +29,6 @@ export default function PageNation() {
   const currentPageGroup = useSelector(
     (state) => state.productManagement.currentPageGroup
   );
-  const [pageGroup, setPageGroup] = useState(MIN_PAGEGROUP);
-  // const [curPage, setCurPage] = useState(
-  //   (MIN_PAGEGROUP - 1) * PAGE_PER_PAGEGORUP + ARR_PAGE_PER_PAGEGORUP[0]
-  // );
 
   //! 지금 페이지네이션의 curPage를 slice로 적용을 해봤어
   //! 근데!!! 페이지네이션의 상태값들을 다른데서 사용하나?
