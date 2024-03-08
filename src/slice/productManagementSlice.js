@@ -1,17 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
 // 외부에서 상품 데이터를 요청 -> slice에 데이터 저장 -> 컴포넌트는 slice로부터 데이터를 가져와서 렌더링한다.
-const MIN_PAGE = 1;
-const MIN_PAGEGROUP = 1;
-const PAGE_PER_PAGEGORUP = 5;
 export const productManagementSlice = createSlice({
   name: "productManagement",
   initialState: {
-    /**
-     * filter: { category: "ALL", status: "ALL" }
-     * 나는 필터 객체를 조절하면 돼고
-     * 매번 아이템은 filter를 참고해서 products_origin으로부터 가져온다.
-     */
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
     products_category: [], // 카테고리 필터가 적용된 데이터
     products: [], // 필터되서 보여지는 데이터
@@ -22,7 +14,6 @@ export const productManagementSlice = createSlice({
     currentStatus: "ALL",
     currentPage: 1,
     currentPageGroup: 1,
-    filter: { category: "ALL", status: "ALL" },
   },
   reducers: {
     initProducts: (state, action) => {
