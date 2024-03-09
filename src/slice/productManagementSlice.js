@@ -12,8 +12,8 @@ export const productManagementSlice = createSlice({
     currentCategory: "ALL",
     statusList: ["ALL", "Sale", "Sold Out", "Hide"],
     currentStatus: "ALL",
-    currentPage: 1,
-    currentPageGroup: 1,
+    currentPage: 1, // 현재 페이지
+    currentPageGroup: 1, // 현재 페이지 그룹 1~5, 6~10// 1이면 1~5
     search: null,
   },
   reducers: {
@@ -58,6 +58,8 @@ export const productManagementSlice = createSlice({
     },
     setSearch: (state, action) => {
       state.search = action.payload;
+      state.currentCategory = "ALL";
+      state.currentStatus = "ALL";
     },
   },
 });
