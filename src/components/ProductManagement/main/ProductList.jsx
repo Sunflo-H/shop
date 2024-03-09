@@ -7,9 +7,8 @@ export default function ProductList() {
   const products = useSelector((state) => state.productManagement.products);
   const viewCount = useSelector((state) => state.productManagement.viewCount);
   const page = useSelector((state) => state.productManagement.currentPage);
-  const pageGroup = useSelector(
-    (state) => state.productManagement.currentPageGroup
-  );
+  const search = useSelector((state) => state.productManagement.search);
+
   let start = viewCount * (page - 1);
   let last = viewCount * page;
   let productsPerPage = products.slice(start, last);

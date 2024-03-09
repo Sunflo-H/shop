@@ -14,6 +14,7 @@ export const productManagementSlice = createSlice({
     currentStatus: "ALL",
     currentPage: 1,
     currentPageGroup: 1,
+    search: null,
   },
   reducers: {
     initProducts: (state, action) => {
@@ -55,6 +56,9 @@ export const productManagementSlice = createSlice({
     setCurrentPageGroup: (state, action) => {
       state.currentPageGroup = action.payload;
     },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
   },
 });
 
@@ -65,5 +69,6 @@ export const {
   filterByStatus,
   setCurrentPage,
   setCurrentPageGroup,
+  setSearch,
 } = productManagementSlice.actions;
 export default productManagementSlice.reducer;
