@@ -4,7 +4,7 @@ import productManagementReducer from "./slice/productManagementSlice";
 
 export default configureStore({
   reducer: {
-    // category: categoryReducer,
+    category: categoryReducer,
     productManagement: productManagementReducer,
   },
 });
