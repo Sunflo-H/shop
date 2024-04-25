@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import {
   getProduct,
   getProduct_all,
@@ -27,17 +32,17 @@ export default function useProducts(category) {
 
   //!필요 없는 코드인것 같아 잠시 주석처리합니다. 모든 리팩토링 작업이 마무리 되었을 때 아무 이상이 없다면 이 코드를 삭제해주세요
   // 상품의 URL을 불러온다.
-  // const productsQueries = useQueries({
-  //   queries: [
-  //     { queryKey: ["products", "Men"], queryFn: async () => getProduct("Men") },
-  //     {
-  //       queryKey: ["products", "Women"],
-  //       queryFn: async () => getProduct("Women"),
-  //     },
-  //   ],
+  const productsQueries = useQueries({
+    queries: [
+      { queryKey: ["products", "Men"], queryFn: async () => getProduct("Men") },
+      {
+        queryKey: ["products", "Women"],
+        queryFn: async () => getProduct("Women"),
+      },
+    ],
 
-  //   staleTime: SEC * 60,
-  // });
+    staleTime: SEC * 60,
+  });
 
   // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
 
@@ -50,7 +55,12 @@ export default function useProducts(category) {
   });
 
   // let productData = { productsQuery, addProduct, productsQueries };
-  let productData = { productsQuery, uploadProduct, productsQuery_all };
+  let productData = {
+    productsQuery,
+    uploadProduct,
+    productsQuery_all,
+    productsQueries,
+  };
 
   return productData;
 }
