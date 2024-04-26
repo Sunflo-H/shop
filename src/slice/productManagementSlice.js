@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 // 외부에서 상품 데이터를 요청 -> slice에 데이터 저장 -> 컴포넌트는 slice로부터 데이터를 가져와서 렌더링한다.
 export const productManagementSlice = createSlice({
@@ -7,7 +7,7 @@ export const productManagementSlice = createSlice({
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
     products_category: [], // 카테고리 필터가 적용된 데이터
     products: [], // 필터되서 보여지는 데이터
-    viewCount: 10,
+    viewCount: 10, // 한번에 보여질 데이터 개수
     categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
     currentCategory: "ALL",
     statusList: ["ALL", "Sale", "Sold Out", "Hide"],

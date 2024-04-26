@@ -30,7 +30,17 @@ export default function useProducts(category) {
     staleTime: SEC * 60,
   });
 
-  //!필요 없는 코드인것 같아 잠시 주석처리합니다. 모든 리팩토링 작업이 마무리 되었을 때 아무 이상이 없다면 이 코드를 삭제해주세요
+  // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
+
+  const uploadProduct = useMutation({
+    mutationFn: ({ productToUpload }) =>
+      uploadProductToFirebase(productToUpload),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["products", category]);
+    },
+  });
+
+  // AI코드
   // 상품의 URL을 불러온다.
   const productsQueries = useQueries({
     queries: [
@@ -44,17 +54,6 @@ export default function useProducts(category) {
     staleTime: SEC * 60,
   });
 
-  // 새 상품을 등록한다. 업데이트가 되어야 하므로 Mutate를 사용한다.
-
-  const uploadProduct = useMutation({
-    mutationFn: ({ productToUpload }) =>
-      uploadProductToFirebase(productToUpload),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["products", category]);
-    },
-  });
-
-  // let productData = { productsQuery, addProduct, productsQueries };
   let productData = {
     productsQuery,
     uploadProduct,

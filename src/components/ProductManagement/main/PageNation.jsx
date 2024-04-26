@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -13,9 +13,9 @@ const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
 const PAGE_PER_PAGEGORUP = 5;
 const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
+
 export default function PageNation() {
   const dispatch = useDispatch();
-  // const dataLength = 100;
   const dataLength = useSelector(
     (state) => state.productManagement.products?.length
   );
