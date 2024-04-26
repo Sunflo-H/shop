@@ -5,12 +5,15 @@ import { useSelector } from "react-redux";
 
 export default function Nav_category() {
   const [isOpen, setIsOpen] = useState(true);
+
   const handleCollapsible = () => {
     setIsOpen((prev) => !prev);
   };
+
   const categoryList = useSelector(
     (state) => state.productManagement.categoryList
   );
+
   return (
     <>
       <CategoryTitle
