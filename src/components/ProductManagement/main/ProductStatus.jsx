@@ -3,7 +3,7 @@ import useProducts from "../../../hooks/useProducts";
 import { updateProduct } from "../../../api/firebase_db";
 import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByStatus } from "../../../slice/productManagementSlice";
+import { filterByStatus } from "../../../slice/productsManagement/productManagementSlice";
 
 export default function ProductStatus() {
   const dispatch = useDispatch();

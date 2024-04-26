@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeViewCount } from "../../slice/productManagementSlice";
+import { changeViewCount } from "../../slice/productsManagement/productManagementSlice";
 
 export default function SelectBox() {
   const dispatch = useDispatch();

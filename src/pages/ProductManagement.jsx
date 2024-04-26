@@ -9,7 +9,7 @@ import PageNation from "../components/ProductManagement/main/PageNation";
 import SelectBox from "../components/ui/SelectBox";
 import SearchBar from "../components/ui/SearchBar";
 import useProducts from "../hooks/useProducts";
-import { initProducts } from "../slice/productManagementSlice";
+import { initProducts } from "../slice/productsManagement/productManagementSlice";
 
 export default function ProductManagement() {
   const dispatch = useDispatch();
