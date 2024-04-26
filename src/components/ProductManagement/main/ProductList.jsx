@@ -1,8 +1,8 @@
 import React from "react";
-import ProductListItem from "./ProductListItem";
+import ProductListItem from "./productListUI/ProductListItem";
 
 import { useSelector } from "react-redux";
-import ProductListTitles from "./ProductListTitles";
+import ProductListTitles from "./productListUI/ProductListTitles";
 
 export default function ProductList() {
   const products_origin = useSelector(
@@ -10,11 +10,15 @@ export default function ProductList() {
   );
   const products = useSelector((state) => state.productManagement.products);
   const viewCount = useSelector((state) => state.productManagement.viewCount);
-  const page = useSelector((state) => state.productManagement.currentPage);
+  const currentPage = useSelector(
+    (state) => state.productManagement.currentPage
+  );
   const search = useSelector((state) => state.productManagement.search);
 
-  let start = viewCount * (page - 1);
-  let last = viewCount * page;
+  console.log(currentPage);
+
+  let start = viewCount * (currentPage - 1);
+  let last = viewCount * currentPage;
   let productsPerPage = products.slice(start, last);
 
   if (search)

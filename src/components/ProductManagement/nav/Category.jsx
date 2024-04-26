@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CategoryItem from "./CategoryItem";
-import CategoryTitle from "./CategoryTitle";
+import CategoryItem from "./CategoryUI/CategoryItem";
+import CategoryTitle from "./CategoryUI/CategoryTitle";
 import { useSelector } from "react-redux";
 
 export default function Nav_category() {
