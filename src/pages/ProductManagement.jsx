@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/ProductManagement/header/Header";
 import Nav from "../components/ProductManagement/nav/Nav";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import ProductStatus from "../components/ProductManagement/main/ProductStatus";
 
 import PageNation from "../components/ProductManagement/main/PageNation";

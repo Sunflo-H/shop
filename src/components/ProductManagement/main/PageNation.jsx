@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPage,
   setCurrentPageGroup,
-} from "../../../slice/productsManagement/productManagementSlice";
+} from "../../../slice/productsManagement/pageNationSlice";
+import Page from "./Page";
 
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
@@ -20,14 +21,12 @@ export default function PageNation() {
     (state) => state.productManagement.products?.length
   );
 
-  let viewCount = useSelector((state) => state.productManagement.viewCount);
+  let viewCount = useSelector((state) => state.pageNation.viewCount);
   let maxPage = Math.ceil(dataLength / viewCount);
   let maxPageGroup = Math.ceil(maxPage / 5);
-  const currentPage = useSelector(
-    (state) => state.productManagement.currentPage
-  );
+  const currentPage = useSelector((state) => state.pageNation.currentPage);
   const currentPageGroup = useSelector(
-    (state) => state.productManagement.currentPageGroup
+    (state) => state.pageNation.currentPageGroup
   );
 
   //! 지금 페이지네이션의 curPage를 slice로 적용을 해봤어
@@ -88,12 +87,15 @@ export default function PageNation() {
   return (
     <div className="w-full flex items-center justify-center gap-1 mt-4 mb-2">
       <div className="flex text-2xl">
+        {/* 이전 페이지그룹으로 이동 버튼 */}
         <div
           className="px-2 py-1 hover:bg-gray-300 rounded-md cursor-pointer"
           onClick={handlePrevPageGroupClick}
         >
           <MdKeyboardDoubleArrowLeft />
         </div>
+
+        {/* 이전 페이지으로 이동 버튼 */}
         <div
           className="px-2 py-1 hover:bg-gray-300 rounded-md cursor-pointer"
           onClick={handlePrevPageClick}
@@ -101,6 +103,7 @@ export default function PageNation() {
           <MdKeyboardArrowLeft />
         </div>
       </div>
+      {/* 페이지 넘버 */}
       <div className="flex items-center h-10 text-center font-bold gap-1">
         {ARR_PAGE_PER_PAGEGORUP.map((item, index) => {
           let page = (currentPageGroup - 1) * PAGE_PER_PAGEGORUP + item;
@@ -116,26 +119,15 @@ export default function PageNation() {
         })}
       </div>
       <div className="flex text-2xl">
+        {/* 다음 페이지으로 이동 버튼 */}
         <div className="px-2 py-1 hover:bg-gray-300 rounded-md cursor-pointer">
           <MdKeyboardArrowRight onClick={handleNextPageClick} />
         </div>
+        {/* 다음 페이지그룹으로 이동 버튼 */}
         <div className="px-2 py-1 hover:bg-gray-300 rounded-md cursor-pointer">
           <MdKeyboardDoubleArrowRight onClick={handleNextPageGroupClick} />
         </div>
       </div>
-    </div>
-  );
-}
-
-function Page({ page, currentPage, handlePageClick }) {
-  return (
-    <div
-      className={`px-4 py-1 rounded-md cursor-pointer ${
-        page == currentPage ? "bg-blue-200 text-blue-500" : "hover:bg-gray-300"
-      }`}
-      onClick={() => handlePageClick(page)}
-    >
-      {page}
     </div>
   );
 }

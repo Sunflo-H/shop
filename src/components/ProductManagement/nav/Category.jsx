@@ -3,6 +3,8 @@ import CategoryItem from "./CategoryUI/CategoryItem";
 import CategoryTitle from "./CategoryUI/CategoryTitle";
 import { useSelector } from "react-redux";
 
+const categoryList = ["ALL", "Men", "Women", "Accessories", "Shoes"];
+
 export default function Nav_category() {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -10,9 +12,10 @@ export default function Nav_category() {
     setIsOpen((prev) => !prev);
   };
 
-  const categoryList = useSelector(
-    (state) => state.productManagement.categoryList
-  );
+  //! slice 안써보려고 주석처리
+  // const categoryList = useSelector(
+  //   (state) => state.productManagement.categoryList
+  // );
 
   return (
     <>
@@ -27,8 +30,8 @@ export default function Nav_category() {
           isOpen ? " max-h-96" : "max-h-0"
         } overflow-hidden duration-200 `}
       >
-        {categoryList.map((item, index) => (
-          <CategoryItem value={item} key={index} />
+        {categoryList.map((currentCategory, index) => (
+          <CategoryItem currentCategory={currentCategory} key={index} />
         ))}
       </div>
     </>

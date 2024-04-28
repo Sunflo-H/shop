@@ -5,22 +5,26 @@ import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByStatus } from "../../../slice/productsManagement/productManagementSlice";
 
+const statusList = ["ALL", "Sale", "Sold Out", "Hide"];
+
 export default function ProductStatus() {
   const dispatch = useDispatch();
-  const currentStatus = useSelector(
-    (state) => state.productManagement.currentStatus
+  const activeStatus = useSelector(
+    (state) => state.productManagement.activeStatus
   );
   const products = useSelector(
-    (state) => state.productManagement.products_category
+    (state) => state.productManagement.products_filtered_category
   );
-  const statusList = useSelector((state) => state.productManagement.statusList);
 
-  function countProductsByStatus(type) {
+  //! slice안쓰는 버전
+  // const statusList = useSelector((state) => state.productManagement.statusList);
+
+  function getCountProductsByStatus(status) {
     let count = 0;
-    if (type === "ALL") {
+    if (status === "ALL") {
       count = products.length;
     } else {
-      count = products.filter((product) => product[1].status === type).length;
+      count = products.filter((product) => product[1].status === status).length;
     }
     return count;
   }
@@ -30,13 +34,13 @@ export default function ProductStatus() {
       {statusList.map((status, index) => (
         <li
           className={`p-4 pt-0 pb-2  font-bold cursor-pointer ${
-            status === currentStatus &&
+            status === activeStatus &&
             "text-blue-500 border-blue-500 border-b-2"
           }`}
           key={index}
           onClick={() => dispatch(filterByStatus(status))}
         >
-          {status} {countProductsByStatus(status)}
+          {status} {getCountProductsByStatus(status)}
         </li>
       ))}
     </ul>
