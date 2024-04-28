@@ -8,7 +8,9 @@ export default function ProductList() {
   const products_origin = useSelector(
     (state) => state.productManagement.products_origin
   );
-  const products = useSelector((state) => state.productManagement.products);
+  const products = useSelector(
+    (state) => state.productManagement.products_filtered_final
+  );
   const viewCount = useSelector((state) => state.productManagement.viewCount);
   const currentPage = useSelector(
     (state) => state.productManagement.currentPage

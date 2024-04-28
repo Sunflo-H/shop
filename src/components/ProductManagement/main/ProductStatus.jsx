@@ -13,7 +13,7 @@ export default function ProductStatus() {
     (state) => state.productManagement.activeStatus
   );
   const products = useSelector(
-    (state) => state.productManagement.products_category
+    (state) => state.productManagement.products_filtered_category
   );
 
   //! slice안쓰는 버전
