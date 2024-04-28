@@ -8,6 +8,7 @@ import {
   setCurrentPage,
   setCurrentPageGroup,
 } from "../../../slice/productsManagement/pageNationSlice";
+import Page from "./Page";
 
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
@@ -123,19 +124,6 @@ export default function PageNation() {
           <MdKeyboardDoubleArrowRight onClick={handleNextPageGroupClick} />
         </div>
       </div>
-    </div>
-  );
-}
-
-function Page({ page, currentPage, handlePageClick }) {
-  return (
-    <div
-      className={`px-4 py-1 rounded-md cursor-pointer ${
-        page == currentPage ? "bg-blue-200 text-blue-500" : "hover:bg-gray-300"
-      }`}
-      onClick={() => handlePageClick(page)}
-    >
-      {page}
     </div>
   );
 }
