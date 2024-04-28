@@ -8,9 +8,9 @@ export const productManagementSlice = createSlice({
     products_category: [], // 카테고리 필터가 적용된 데이터
     products: [], // 필터되서 보여지는 데이터
     viewCount: 10, // 한번에 보여질 데이터 개수
-    categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
-    currentCategory: "ALL",
-    statusList: ["ALL", "Sale", "Sold Out", "Hide"],
+    // categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
+    activeCategory: "ALL",
+    // statusList: ["ALL", "Sale", "Sold Out", "Hide"],
     currentStatus: "ALL",
     currentPage: 1, // 현재 페이지
     currentPageGroup: 1, // 현재 페이지 그룹 1~5, 6~10// 1이면 1~5
@@ -27,9 +27,9 @@ export const productManagementSlice = createSlice({
       state.viewCount = action.payload;
     },
     filterByCategory: (state, action) => {
-      state.currentCategory = action.payload;
+      state.activeCategory = action.payload;
       state.currentStatus = "ALL";
-      if (state.currentCategory === "ALL") {
+      if (state.activeCategory === "ALL") {
         state.products_category = state.products_origin;
         state.products = state.products_category;
       } else {
@@ -58,7 +58,7 @@ export const productManagementSlice = createSlice({
     },
     setSearch: (state, action) => {
       state.search = action.payload;
-      state.currentCategory = "ALL";
+      state.activeCategory = "ALL";
       state.currentStatus = "ALL";
     },
   },

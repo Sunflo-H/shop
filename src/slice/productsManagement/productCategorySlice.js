@@ -7,19 +7,19 @@ export const productCategorySlice = createSlice({
     categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
   },
   reducers: {
-    filterByCategory: (state, action) => {
-      state.currentCategory = action.payload;
-      state.currentStatus = "ALL";
-      if (state.currentCategory === "ALL") {
-        state.products_category = state.products_origin;
-        state.products = state.products_category;
-      } else {
-        state.products_category = state.products_origin.filter(
-          (product) => product[1].category === action.payload
-        );
-        state.products = state.products_category;
-      }
-    },
+    // filterByCategory: (state, action) => {
+    //   state.currentCategory = action.payload;
+    //   state.currentStatus = "ALL";
+    //   if (state.currentCategory === "ALL") {
+    //     state.products_category = state.products_origin;
+    //     state.products = state.products_category;
+    //   } else {
+    //     state.products_category = state.products_origin.filter(
+    //       (product) => product[1].category === action.payload
+    //     );
+    //     state.products = state.products_category;
+    //   }
+    // },
   },
 });
 

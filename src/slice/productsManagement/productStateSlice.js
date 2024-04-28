@@ -7,17 +7,16 @@ export const productStateSlice = createSlice({
     statusList: ["ALL", "Sale", "Sold Out", "Hide"],
   },
   reducers: {
-    filterByStatus: (state, action) => {
-      state.currentStatus = action.payload;
-
-      if (state.currentStatus === "ALL")
-        state.products = state.products_category;
-      else {
-        state.products = state.products_category.filter(
-          (product) => product[1].status === action.payload
-        );
-      }
-    },
+    // filterByStatus: (state, action) => {
+    //   state.currentStatus = action.payload;
+    //   if (state.currentStatus === "ALL")
+    //     state.products = state.products_category;
+    //   else {
+    //     state.products = state.products_category.filter(
+    //       (product) => product[1].status === action.payload
+    //     );
+    //   }
+    // },
   },
 });
 
