@@ -7,11 +7,8 @@ export const productManagementSlice = createSlice({
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
     products_filtered_category: [], // 카테고리 필터가 적용된 데이터 // status의 옆 숫자에 쓰입니다. 필수!
     products_filtered_final: [], // 최종적으로 필터되서 보여지는 데이터
-    viewCount: 10, // 한번에 보여질 데이터 개수
     activeCategory: "ALL",
     activeStatus: "ALL",
-    currentPage: 1, // 현재 페이지
-    currentPageGroup: 1, // 현재 페이지 그룹 1~5, 6~10// 1이면 1~5
     search: null,
   },
   reducers: {
@@ -46,33 +43,9 @@ export const productManagementSlice = createSlice({
         );
       }
     },
-    // changeViewCount: (state, action) => {
-    //   state.viewCount = action.payload;
-    // },
-
-    // setCurrentPage: (state, action) => {
-    //   state.currentPage = action.payload;
-    // },
-
-    // setCurrentPageGroup: (state, action) => {
-    //   state.currentPageGroup = action.payload;
-    // },
-
-    // setSearch: (state, action) => {
-    //   state.search = action.payload;
-    //   state.activeCategory = "ALL";
-    //   state.activeStatus = "ALL";
-    // },
   },
 });
 
-export const {
-  initProducts,
-  filterByCategory,
-  filterByStatus,
-  // changeViewCount,
-  // setCurrentPage,
-  // setCurrentPageGroup,
-  setSearch,
-} = productManagementSlice.actions;
+export const { initProducts, filterByCategory, filterByStatus, setSearch } =
+  productManagementSlice.actions;
 export default productManagementSlice.reducer;
