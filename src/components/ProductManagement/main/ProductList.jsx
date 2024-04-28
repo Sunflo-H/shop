@@ -11,10 +11,8 @@ export default function ProductList() {
   const products = useSelector(
     (state) => state.productManagement.products_filtered_final
   );
-  const viewCount = useSelector((state) => state.productManagement.viewCount);
-  const currentPage = useSelector(
-    (state) => state.productManagement.currentPage
-  );
+  const viewCount = useSelector((state) => state.pageNation.viewCount);
+  const currentPage = useSelector((state) => state.pageNation.currentPage);
   const search = useSelector((state) => state.productManagement.search);
 
   let productsPerPage = getProductsPerPage(products, currentPage, viewCount);

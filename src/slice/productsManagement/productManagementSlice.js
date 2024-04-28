@@ -21,10 +21,6 @@ export const productManagementSlice = createSlice({
       state.products_filtered_final = state.products_origin;
     },
 
-    changeViewCount: (state, action) => {
-      state.viewCount = action.payload;
-    },
-
     filterByCategory: (state, action) => {
       state.activeCategory = action.payload;
       state.activeStatus = "ALL";
@@ -50,20 +46,23 @@ export const productManagementSlice = createSlice({
         );
       }
     },
+    // changeViewCount: (state, action) => {
+    //   state.viewCount = action.payload;
+    // },
 
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
-    },
+    // setCurrentPage: (state, action) => {
+    //   state.currentPage = action.payload;
+    // },
 
-    setCurrentPageGroup: (state, action) => {
-      state.currentPageGroup = action.payload;
-    },
+    // setCurrentPageGroup: (state, action) => {
+    //   state.currentPageGroup = action.payload;
+    // },
 
-    setSearch: (state, action) => {
-      state.search = action.payload;
-      state.activeCategory = "ALL";
-      state.activeStatus = "ALL";
-    },
+    // setSearch: (state, action) => {
+    //   state.search = action.payload;
+    //   state.activeCategory = "ALL";
+    //   state.activeStatus = "ALL";
+    // },
   },
 });
 
