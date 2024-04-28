@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPage,
   setCurrentPageGroup,
-} from "../../../slice/productsManagement/productManagementSlice";
+} from "../../../slice/productsManagement/pageNationSlice";
 
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;

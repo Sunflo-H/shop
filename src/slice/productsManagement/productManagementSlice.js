@@ -69,12 +69,11 @@ export const productManagementSlice = createSlice({
 
 export const {
   initProducts,
-  changeViewCount,
   filterByCategory,
   filterByStatus,
-  setCurrentPage,
-  setCurrentPageGroup,
+  // changeViewCount,
+  // setCurrentPage,
+  // setCurrentPageGroup,
   setSearch,
-  filter,
 } = productManagementSlice.actions;
 export default productManagementSlice.reducer;
