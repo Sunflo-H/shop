@@ -11,7 +11,7 @@ export const productManagementSlice = createSlice({
     // categoryList: ["ALL", "Men", "Women", "Accessories", "Shoes"],
     activeCategory: "ALL",
     // statusList: ["ALL", "Sale", "Sold Out", "Hide"],
-    currentStatus: "ALL",
+    activeStatus: "ALL",
     currentPage: 1, // 현재 페이지
     currentPageGroup: 1, // 현재 페이지 그룹 1~5, 6~10// 1이면 1~5
     search: null,
@@ -28,7 +28,7 @@ export const productManagementSlice = createSlice({
     },
     filterByCategory: (state, action) => {
       state.activeCategory = action.payload;
-      state.currentStatus = "ALL";
+      state.activeStatus = "ALL";
       if (state.activeCategory === "ALL") {
         state.products_category = state.products_origin;
         state.products = state.products_category;
@@ -40,9 +40,9 @@ export const productManagementSlice = createSlice({
       }
     },
     filterByStatus: (state, action) => {
-      state.currentStatus = action.payload;
+      state.activeStatus = action.payload;
 
-      if (state.currentStatus === "ALL")
+      if (state.activeStatus === "ALL")
         state.products = state.products_category;
       else {
         state.products = state.products_category.filter(
@@ -59,7 +59,7 @@ export const productManagementSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload;
       state.activeCategory = "ALL";
-      state.currentStatus = "ALL";
+      state.activeStatus = "ALL";
     },
   },
 });
