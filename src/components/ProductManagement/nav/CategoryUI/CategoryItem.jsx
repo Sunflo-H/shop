@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { filterByCategory } from "../../../../slice/productsManagement/productManagementSlice";
 
-export default function CategoryItem({ value }) {
+export default function CategoryItem({ currentCategory }) {
   const dispatch = useDispatch();
 
   // 현재 활성화 중인 카테고리 값을 가져온다.
@@ -18,11 +18,11 @@ export default function CategoryItem({ value }) {
   return (
     <div
       className={`pl-12 py-2 cursor-pointer hover:bg-blue-50 ${
-        activeCategory === value ? activeCategoryStyle : ""
+        activeCategory === currentCategory ? activeCategoryStyle : ""
       } `}
-      onClick={() => dispatch(filterByCategory(value))}
+      onClick={() => dispatch(filterByCategory(currentCategory))}
     >
-      {value}
+      {currentCategory}
     </div>
   );
 }

@@ -30,8 +30,8 @@ export default function Nav_category() {
           isOpen ? " max-h-96" : "max-h-0"
         } overflow-hidden duration-200 `}
       >
-        {categoryList.map((category, index) => (
-          <CategoryItem value={category} key={index} />
+        {categoryList.map((currentCategory, index) => (
+          <CategoryItem currentCategory={currentCategory} key={index} />
         ))}
       </div>
     </>

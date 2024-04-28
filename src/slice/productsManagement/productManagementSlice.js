@@ -5,8 +5,8 @@ export const productManagementSlice = createSlice({
   name: "productManagement",
   initialState: {
     products_origin: [], // 모든 상품 정보가 있는 오리지널 데이터
-    products_filtered_category: [], // 카테고리 필터가 적용된 데이터
-    products_filtered_final: [], // 필터되서 보여지는 데이터
+    products_filtered_category: [], // 카테고리 필터가 적용된 데이터 // status의 옆 숫자에 쓰입니다. 필수!
+    products_filtered_final: [], // 최종적으로 필터되서 보여지는 데이터
     viewCount: 10, // 한번에 보여질 데이터 개수
     activeCategory: "ALL",
     activeStatus: "ALL",
@@ -75,5 +75,6 @@ export const {
   setCurrentPage,
   setCurrentPageGroup,
   setSearch,
+  filter,
 } = productManagementSlice.actions;
 export default productManagementSlice.reducer;
