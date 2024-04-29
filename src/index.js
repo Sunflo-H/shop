@@ -9,7 +9,7 @@ import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
 import UploadProduct from "./pages/UploadProduct";
 import Products from "./pages/Products";
-import Recommend from "./pages/Recommend";
+import ProductsRecommend from "./pages/ProductsRecommend";
 import MyFavorites from "./pages/MyFavorites";
 import ProtectedRoute_isUser from "./components/protectedRoute/ProtectedRoute_isUser";
 import ProductManagement from "./pages/ProductManagement";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/recommend",
-        element: <Recommend />,
+        element: <ProductsRecommend />,
       },
       {
         path: "/products/:category",

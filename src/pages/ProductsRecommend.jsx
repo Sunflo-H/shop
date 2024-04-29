@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-export default function Recommend() {
+export default function ProductsRecommend() {
   const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
   const [inputText, setInputText] = useState("");
   const [recommendation, setRecommendation] = useState("");
