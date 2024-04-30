@@ -8,7 +8,7 @@ export default function Nav() {
     "Women",
     "Accessories",
     "Shoes",
-    "Recommend",
+    // "Recommend",
   ];
 
   return (
