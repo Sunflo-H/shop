@@ -5,6 +5,7 @@ import useProducts from "../hooks/useProducts";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { OpenAIApi } from "openai";
 
 export default function ProductsRecommend() {
   const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
@@ -74,8 +75,10 @@ export default function ProductsRecommend() {
         
  
        ${question} The answer is:`;
+
       const response = await axios.post(
-        "https://api.openai.com/v1/completions",
+        //"https://api.openai.com/v1/completions",
+        "https://api.openai.com/v1/chat/completions",
         {
           model: "text-davinci-003",
 
@@ -90,11 +93,49 @@ export default function ProductsRecommend() {
           },
         }
       );
+      console.log(response);
       setRecommendation(response.data.choices[0].text);
     } catch (error) {
       console.error("Error calling OpenAI API:", error);
     }
   };
+
+  // async function main() {
+  //   console.log("call gpt");
+  //   const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${OPENAI_API_KEY}`,
+  //     },
+  //     body: JSON.stringify({
+  //       model: "gpt-3.5-turbo",
+  //       messages: [
+  //         { role: "user", content: "초급 사용자를 위한 영어 단어 3개 알려줘" },
+  //       ],
+  //       temperature: 0.5,
+  //       max_tokens: 200,
+  //     }),
+  //   });
+  //   const responseData = await response.json();
+  //   console.log(responseData);
+  //   return responseData;
+  // }
+
+  const openai = new OpenAIApi({
+    apiKey: { OPENAI_API_KEY },
+  });
+  const handleSendMessage = async () => {
+    console.log(openai);
+    const response = await openai.axios.create({
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: "asd" },
+      ],
+    });
+    console.log(response.);
+  };
+  // main();
 
   return (
     <div className=" pt-20 mb-20 px-4">
@@ -146,7 +187,9 @@ export default function ProductsRecommend() {
 
             <div
               className="mt-10 mx-10 py-2 border bg-black text-white text-xl text-center cursor-pointer "
-              onClick={getClothingRecommendation}
+              // onClick={getClothingRecommendation}
+              // onClick={main}
+              onClick={handleSendMessage}
             >
               Get Recommendation
             </div>
