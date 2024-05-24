@@ -133,7 +133,6 @@ export default function ProductsRecommend() {
         { role: "user", content: "asd" },
       ],
     });
-    console.log(response.);
   };
   // main();
 

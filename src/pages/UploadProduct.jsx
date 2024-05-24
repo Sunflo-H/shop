@@ -8,6 +8,7 @@ import Input_text from "../components/shop/main/UploadProduct/Input_text";
 import Input_size from "../components/shop/main/UploadProduct/Input_size";
 import Input_color from "../components/shop/main/UploadProduct/Input_color";
 import { v4 as uuid } from "uuid";
+import Swal from "sweetalert2";
 
 const category = ["Men", "Women", "Accessories", "Shoes", "Test"];
 const productDetails = ["title", "description"];
@@ -44,12 +45,12 @@ export default function UploadProduct() {
     e.preventDefault();
     setIsUploading(true);
 
-    const id = uuid();
     const PRODUCT_STATUS = {
       SALE: "Sale",
       SOLD_OUT: "Sold Out",
       HIDE: "Hide",
     };
+    const id = uuid();
     const imageUrl = await imageUploadAndGetUrl(file);
     const productToUpload = {
       ...product,
@@ -79,6 +80,12 @@ export default function UploadProduct() {
       );
     } finally {
       setIsUploading(false);
+
+      Swal.fire({
+        icon: "success",
+        title: "✅ Upload Successfully",
+        confirmButtonColor: "#222",
+      });
     }
   };
 
@@ -86,7 +93,7 @@ export default function UploadProduct() {
     <section className="text-center max-w-screen-2xl m-auto pt-20">
       <h2 className="text-2xl font-bold my-4">Upload New Products</h2>
 
-      {success && <p className="my-2">✅Upload Successfully.</p>}
+      {/* {success && <p className="my-2">✅Upload Successfully.</p>} */}
       {file && (
         <img
           className="w-80 h-96 mx-auto mb-2"
@@ -108,7 +115,6 @@ export default function UploadProduct() {
             );
           })}
         </div>
-        {/* <div className=  */}
 
         <Input_file handleChange={handleChange} />
 
