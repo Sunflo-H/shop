@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/ProductManagement/header/Header";
-import Nav from "../components/ProductManagement/nav/Nav";
+import Header from "../../components/ProductManagement/header/Header";
+import Nav from "../../components/ProductManagement/nav/Nav";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import ProductStatus from "../components/ProductManagement/main/ProductStatus";
+import ProductStatus from "../../components/ProductManagement/main/ProductStatus";
 
-import PageNation from "../components/ProductManagement/main/PageNation";
-import SelectBox from "../components/ui/SelectBox";
-import SearchBar from "../components/ui/SearchBar";
-import useProducts from "../hooks/useProducts";
-import { initProducts } from "../slice/productsManagement/productManagementSlice";
+import PageNation from "../../components/ProductManagement/main/PageNation";
+import SelectBox from "../../components/ui/SelectBox";
+import SearchBar from "../../components/ui/SearchBar";
+import useProducts from "../../hooks/useProducts";
+import { initProducts } from "../../slice/productsManagement/productManagementSlice";
 
 export default function ProductManagement() {
   const dispatch = useDispatch();

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import useCart from "../hooks/useCart";
+import { useAuthContext } from "../../context/AuthContext";
+import useCart from "../../hooks/useCart";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import useFavorites from "../hooks/useFavorites";
+import useFavorites from "../../hooks/useFavorites";
 import Swal from "sweetalert2";
-import SizeOption from "../components/product/SizeOption";
-import ColorOption from "../components/product/ColorOption";
+import SizeOption from "../../components/product/SizeOption";
+import ColorOption from "../../components/product/ColorOption";
 
 const DEFAULT_SIZE = "S";
 const DEFAULT_COLOR = "Black";

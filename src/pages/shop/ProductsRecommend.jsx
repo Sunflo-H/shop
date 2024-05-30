@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import useProducts from "../hooks/useProducts";
+import useProducts from "../../hooks/useProducts";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { imageUploadAndGetUrl } from "../api/cloudinary";
-import UploadButton from "../components/ui/UploadButton";
-import useProducts from "../hooks/useProducts";
-import Input_Category from "../components/shop/main/UploadProduct/Input_category";
-import Input_file from "../components/shop/main/UploadProduct/Input_file";
-import Input_text from "../components/shop/main/UploadProduct/Input_text";
-import Input_size from "../components/shop/main/UploadProduct/Input_size";
-import Input_color from "../components/shop/main/UploadProduct/Input_color";
+import { imageUploadAndGetUrl } from "../../api/cloudinary";
+import UploadButton from "../../components/ui/UploadButton";
+import useProducts from "../../hooks/useProducts";
+import Input_Category from "../../components/shop/main/UploadProduct/Input_category";
+import Input_file from "../../components/shop/main/UploadProduct/Input_file";
+import Input_text from "../../components/shop/main/UploadProduct/Input_text";
+import Input_size from "../../components/shop/main/UploadProduct/Input_size";
+import Input_color from "../../components/shop/main/UploadProduct/Input_color";
 import { v4 as uuid } from "uuid";
 import Swal from "sweetalert2";
 
-const category = ["Men", "Women", "Accessories", "Shoes", "Test"];
+const category = ["Men", "Women", "Accessories", "Shoes"];
 const productDetails = ["title", "description"];
 const size = ["S", "M", "L", "XL"];
 const color = ["Black", "Red", "Green", "Blue", "Yellow"];

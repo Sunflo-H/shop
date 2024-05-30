@@ -1,9 +1,9 @@
 import React from "react";
-import Layout_summer2023 from "../components/shop/main/Home/Layout_summer2023";
-import Layout_accessories from "../components/shop/main/Home/Layout_accessories";
-import Layout_productsByCategory from "../components/shop/main/Home/Layout_productsByCategory";
-import Layout_blog from "../components/shop/main/Home/Layout_blog";
-import Layout_carousel from "../components/shop/main/Home/Layout_carousel";
+import Layout_summer2023 from "../../components/shop/main/Home/Layout_summer2023";
+import Layout_accessories from "../../components/shop/main/Home/Layout_accessories";
+import Layout_productsByCategory from "../../components/shop/main/Home/Layout_productsByCategory";
+import Layout_blog from "../../components/shop/main/Home/Layout_blog";
+import Layout_carousel from "../../components/shop/main/Home/Layout_carousel";
 
 export default function Home() {
   function test() {
