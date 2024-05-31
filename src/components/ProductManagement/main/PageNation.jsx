@@ -11,10 +11,10 @@ import {
 import Page from "./Page";
 
 /**
- * 페이지 네이션 변수
- * Page = 1,2,3,4,5 같은 Page입니다.
- * PageGroup = 한번에 5개(1,2,3,4,5)의 Page를 보여준다면 이 5개의 Page를 하나의 PageGroup라고 합니다.
- *
+ ** 페이지 네이션 변수
+ * page : 1,2,3,4,5 같은 page입니다.
+ * pageGroup : 한번에 5개(1,2,3,4,5)의 page를 보여준다면 이 5개의 page를 하나의 pageGroup라고 합니다.
+ * viewCount : 한번에 보여질 page 개수입니다.
  */
 
 const MIN_PAGE = 1;
