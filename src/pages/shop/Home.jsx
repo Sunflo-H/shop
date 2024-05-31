@@ -12,7 +12,6 @@ export default function Home() {
   test();
   return (
     <div className="pt-20">
-      <button onClick={() => test}>하하</button>
       <main className="px-5 md:px-10 m-auto max-w-screen-2xl ">
         <Layout_carousel />
         <Layout_summer2023 />
