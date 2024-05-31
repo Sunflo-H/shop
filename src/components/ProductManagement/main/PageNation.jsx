@@ -10,6 +10,13 @@ import {
 } from "../../../slice/productsManagement/pageNationSlice";
 import Page from "./Page";
 
+/**
+ * 페이지 네이션 변수
+ * Page = 1,2,3,4,5 같은 Page입니다.
+ * PageGroup = 한번에 5개(1,2,3,4,5)의 Page를 보여준다면 이 5개의 Page를 하나의 PageGroup라고 합니다.
+ *
+ */
+
 const MIN_PAGE = 1;
 const MIN_PAGEGROUP = 1;
 const PAGE_PER_PAGEGORUP = 5;
