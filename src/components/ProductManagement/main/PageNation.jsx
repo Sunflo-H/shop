@@ -24,12 +24,12 @@ const ARR_PAGE_PER_PAGEGORUP = [1, 2, 3, 4, 5];
 
 export default function PageNation() {
   const dispatch = useDispatch();
-  const dataLength = useSelector(
-    (state) => state.productManagement.products?.length
+  const productCount = useSelector(
+    (state) => state.productManagement.products_filtered_final?.length
   );
 
   let viewCount = useSelector((state) => state.pageNation.viewCount);
-  let maxPage = Math.ceil(dataLength / viewCount);
+  let maxPage = Math.ceil(productCount / viewCount);
   let maxPageGroup = Math.ceil(maxPage / 5);
   const currentPage = useSelector((state) => state.pageNation.currentPage);
   const currentPageGroup = useSelector(
